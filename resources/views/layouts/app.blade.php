@@ -85,6 +85,10 @@
                         </svg>
                         <span>Settings</span>
                     </a>
+                    <button id="toggleDarkMode" class="p-2 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded">
+                        Toggle Dark Mode
+                    </button>
+
                 </div>
             </nav>
 
@@ -130,3 +134,19 @@
         @livewireScripts
     </body>
 </html>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const html = document.documentElement;
+        const darkMode = localStorage.getItem('dark');
+
+        if (darkMode === 'true') {
+            html.classList.add('dark');
+        }
+
+        document.getElementById('toggleDarkMode').addEventListener('click', function () {
+            html.classList.toggle('dark');
+            localStorage.setItem('dark', html.classList.contains('dark'));
+        });
+    });
+</script>
