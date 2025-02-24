@@ -1,7 +1,7 @@
 @props(['name'])
 
 <div x-data="{ infoModalIsOpen: false }">
-    <button x-on:click="infoModalIsOpen = true" type="button" class="w-36 border border-sky-500 whitespace-nowrap rounded-md bg-sky-500 px-4 py-2 text-center text-sm font-medium tracking-wide text-white transition hover:opacity-75 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-500 active:opacity-100 active:outline-offset-0">Registrar {{ $name }}</button>
+    <button x-on:click="infoModalIsOpen = true" type="button" class="w-36 border border-[#5A6ACF] whitespace-nowrap rounded-md bg-[#5A6ACF] px-4 py-2 text-center text-sm font-medium tracking-wide text-white transition hover:opacity-75 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#5A6ACF] active:opacity-100 active:outline-offset-0">Registrar {{ $name }}</button>
     <div x-cloak x-show="infoModalIsOpen" x-transition.opacity.duration.200ms x-trap.inert.noscroll="infoModalIsOpen" x-on:keydown.esc.window="infoModalIsOpen = false" x-on:click.self="infoModalIsOpen = false" class="fixed inset-0 z-30 flex items-end justify-center bg-black/20 p-4 pb-8 backdrop-blur-md sm:items-center lg:p-8" role="dialog" aria-modal="true" aria-labelledby="infoModalTitle">
         <!-- Modal Dialog -->
         <div x-show="infoModalIsOpen" x-transition:enter="transition ease-out duration-200 delay-100 motion-reduce:transition-opacity" x-transition:enter-start="opacity-0 scale-50" x-transition:enter-end="opacity-100 scale-100" class="flex max-w-lg flex-col gap-4 overflow-hidden rounded-sm border border-neutral-300 bg-white text-neutral-600 dark:border-neutral-700 dark:bg-neutral-900 dark:text-neutral-300">
@@ -21,7 +21,7 @@
                 {{ $slot }}
             </div>
             <!-- Dialog Footer -->
-            
+
         </div>
     </div>
 </div>

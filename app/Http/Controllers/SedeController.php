@@ -15,8 +15,9 @@ class SedeController extends Controller
      */
     public function index()
     {
+        $Sede = Sede::all();
 
-        return view('sede.SedeIndex');
+        return view('sede.SedeIndex', compact('Sede'));
     }
 
     /**
@@ -43,11 +44,15 @@ class SedeController extends Controller
         if ($request->hasFile('image')) {
             $file = $request->file('image');
             $filename = time() . '_' . $file->getClientOriginalName();
-            $file->storeAs('public/sedes', $filename); // Guardar en storage/app/public/sedes
+
+            // Mover a la carpeta correcta
+            $file->move(storage_path('app/public/sedes'), $filename);
+
             $Sede->image = $filename;
         } else {
-            return back()->withErrors(['image' => 'Error al subir la imagen',]);
+            return back()->withErrors(['image' => 'Error al subir la imagen']);
         }
+
         // dd($Sede);
         $Sede->save();
 
