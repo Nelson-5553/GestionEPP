@@ -29,8 +29,17 @@ class SedeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $Sede = new sede();
+
+        $Sede->name = $request->name;
+        $Sede->direction = $request->direction;
+        $Sede->description = $request->description;
+
+        $Sede->save();
+
+        return redirect()->route('sede.index')->with('info', 'La sede fue creada con éxito');
     }
+
 
     /**
      * Display the specified resource.

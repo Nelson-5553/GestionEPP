@@ -17,4 +17,7 @@ Route::middleware([
     })->name('dashboard');
 });
 
+// Rurtas de sedes
+
 Route::get('sede', [SedeController::class, 'index'])->name('sede.index');
+Route::post('sede', [SedeController::class, 'store'])->name('sede.store');

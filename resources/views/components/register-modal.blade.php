@@ -21,9 +21,7 @@
                 {{ $slot }}
             </div>
             <!-- Dialog Footer -->
-            <div class="flex items-center justify-center border-neutral-300 p-4 dark:border-neutral-700">
-                <button x-on:click="infoModalIsOpen = false" type="button" class="w-full whitespace-nowrap rounded-md border border-sky-500 bg-sky-500 px-4 py-2 text-center text-sm font-semibold tracking-wide text-white transition hover:opacity-75 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-500 active:opacity-100 active:outline-offset-0">Registrar</button>
-            </div>
+            
         </div>
     </div>
 </div>
