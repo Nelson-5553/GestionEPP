@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Sede;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+
+use function Laravel\Prompts\error;
 
 class SedeController extends Controller
 {
@@ -29,15 +32,27 @@ class SedeController extends Controller
      */
     public function store(Request $request)
     {
-        $Sede = new sede();
 
+
+        $Sede = new Sede();
         $Sede->name = $request->name;
         $Sede->direction = $request->direction;
         $Sede->description = $request->description;
 
+        // Manejo correcto de la imagen
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $filename = time() . '_' . $file->getClientOriginalName();
+            $file->storeAs('public/sedes', $filename); // Guardar en storage/app/public/sedes
+            $Sede->image = $filename;
+        } else {
+            return back()->withErrors(['image' => 'Error al subir la imagen',]);
+        }
+        // dd($Sede);
         $Sede->save();
 
-        return redirect()->route('sede.index')->with('info', 'La sede fue creada con éxito');
+        return redirect()->route('sede.index')->with('success', 'La sede fue creada con éxito');
+
     }
 
 
