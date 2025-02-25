@@ -1,10 +1,10 @@
 <x-app-layout>
-    <div class=" max-w-7xl mx-auto py-12 sm:px-6 lg:px-8">
-        <p class="text-xl font-bold text-gray-900 dark:text-gray-200 -ml-7">
+    <div class=" max-w-7xl mx-auto py-12 px-6 sm:px-6 lg:px-8">
+        <p class="text-xl font-bold text-gray-900 dark:text-gray-200 md:-ml-7 ml-0">
             Gestion Salud Sedes
         </p>
         <div
-            class="flex flex-row justify-between items-center w-auto h-24 mt-8 p-5 bg-[#F1F2F7] dark:bg-neutral-800 rounded-md">
+        class="flex flex-col sm:flex-row justify-between items-center w-auto h-auto mt-8 p-5 bg-[#F1F2F7] dark:bg-neutral-800 rounded-md">
             <x-search-input />
             <x-register-modal name=sede>
                 <form action="{{ route('sede.store') }}" method="POST" enctype="multipart/form-data" class="p-6 w-96">
@@ -57,14 +57,23 @@
                         <p class="mt-1 text-[#5A6ACF] dark:text-white">{{ $sede->direction }}</p>
                         <div class="flex justify-end mt-1 space-x-3">
                             <a href=""
-                                class="px-4 py-2 bg-sky-500 text-white rounded-md hover:bg-sky-600">Ver</a>
-                            <a href=""
-                                class="px-4 py-2 bg-yellow-500 text-white rounded-md hover:bg-yellow-600">Editar</a>
-                            <form action="" method="POST" class="inline">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit"
-                                    class="px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600">Eliminar</button>
+                            class="text-green-500 hover:text-green-600">
+                             <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 shrink-0" viewBox="0 0 24 24">
+                                 <path fill="currentColor" d="M12 9a3 3 0 0 1 3 3a3 3 0 0 1-3 3a3 3 0 0 1-3-3a3 3 0 0 1 3-3m0-4.5c5 0 9.27 3.11 11 7.5c-1.73 4.39-6 7.5-11 7.5S2.73 16.39 1 12c1.73-4.39 6-7.5 11-7.5M3.18 12a9.821 9.821 0 0 0 17.64 0a9.821 9.821 0 0 0-17.64 0"/>
+                             </svg>
+                         </a>
+
+                         <a href=""
+                            class="text-blue-500 hover:text-blue-600">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 shrink-0" viewBox="0 0 32 32"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m30 7l-5-5L5 22l-2 7l7-2Zm-9-1l5 5ZM5 22l5 5Z"/></svg>
+                         </a>
+
+                         <form action="{{ route("sede.destroy", $sede)}}" method="POST" class="inline">
+                             @csrf
+                             @method('DELETE')
+                             <button type="submit" class="text-red-500 hover:text-red-600">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 shrink-0" viewBox="0 0 32 32"><path fill="currentColor" d="M15 4c-.523 0-1.059.184-1.438.563C13.184 4.94 13 5.476 13 6v1H7v2h1v16c0 1.645 1.355 3 3 3h12c1.645 0 3-1.355 3-3V9h1V7h-6V6c0-.523-.184-1.059-.563-1.438C20.06 4.184 19.523 4 19 4zm0 2h4v1h-4zm-5 3h14v16c0 .555-.445 1-1 1H11c-.555 0-1-.445-1-1zm2 3v11h2V12zm4 0v11h2V12zm4 0v11h2V12z"/></svg>
+                             </button>
                             </form>
                         </div>
                     </div>

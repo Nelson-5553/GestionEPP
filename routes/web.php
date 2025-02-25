@@ -21,3 +21,4 @@ Route::middleware([
 
 Route::get('sede', [SedeController::class, 'index'])->name('sede.index');
 Route::post('sede', [SedeController::class, 'store'])->name('sede.store');
+Route::delete('sede/{sede}', [SedeController::class, 'destroy'])->name('sede.destroy');

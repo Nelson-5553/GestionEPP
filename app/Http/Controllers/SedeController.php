@@ -90,6 +90,8 @@ class SedeController extends Controller
      */
     public function destroy(Sede $sede)
     {
-        //
+        $sede->delete();
+
+        return redirect()->route('sede.index')->with('success', 'La sede fue eliminada con éxito');
     }
 }
