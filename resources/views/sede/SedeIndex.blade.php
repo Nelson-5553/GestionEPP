@@ -1,11 +1,12 @@
 <x-app-layout>
     <div class=" max-w-7xl mx-auto py-12 px-6 sm:px-6 lg:px-8">
-        <p class="text-xl font-bold text-gray-900 dark:text-gray-200 md:-ml-7 ml-0">
+        <p class="text-xl font-bold text-gray-900 dark:text-gray-200 md:-ml-5 ml-0">
             Gestion Salud Sedes
         </p>
         <div
         class="flex flex-col sm:flex-row justify-between items-center w-auto h-auto mt-8 p-5 bg-[#F1F2F7] dark:bg-neutral-800 rounded-md">
             <x-search-input />
+
             <x-register-modal name=sede>
                 <form action="{{ route('sede.store') }}" method="POST" enctype="multipart/form-data" class="p-6 w-96">
                     @csrf
@@ -46,7 +47,7 @@
         {{-- mensaje de error --}}
         <x-error-menssage />
 
-        <div class="grid grid-cols-1 gap-4 mt-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
+        <div class="grid grid-cols-1 gap-4 mt-8 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3">
 
             @foreach ($Sede as $sede)
                 <div class="bg-white dark:bg-neutral-800 shadow-lg rounded-lg overflow-hidden">
@@ -71,9 +72,10 @@
                          <form action="{{ route("sede.destroy", $sede)}}" method="POST" class="inline">
                              @csrf
                              @method('DELETE')
-                             <button type="submit" class="text-red-500 hover:text-red-600">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 shrink-0" viewBox="0 0 32 32"><path fill="currentColor" d="M15 4c-.523 0-1.059.184-1.438.563C13.184 4.94 13 5.476 13 6v1H7v2h1v16c0 1.645 1.355 3 3 3h12c1.645 0 3-1.355 3-3V9h1V7h-6V6c0-.523-.184-1.059-.563-1.438C20.06 4.184 19.523 4 19 4zm0 2h4v1h-4zm-5 3h14v16c0 .555-.445 1-1 1H11c-.555 0-1-.445-1-1zm2 3v11h2V12zm4 0v11h2V12zm4 0v11h2V12z"/></svg>
-                             </button>
+                             <x-delete-modal name="sede">
+                                <h3 id="dangerModalTitle" class="mb-2 font-semibold tracking-wide text-neutral-900 dark:text-white">Eliminar sede</h3>
+                <p>Estas a punto de eliminar esta sede <br> ¿estas seguro que la quieres eliminar?</p>
+                             </x-delete-modal>
                             </form>
                         </div>
                     </div>
