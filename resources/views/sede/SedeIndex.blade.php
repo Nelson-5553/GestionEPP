@@ -74,7 +74,7 @@
                              @method('DELETE')
                              <x-delete-modal name="sede">
                                 <h3 id="dangerModalTitle" class="mb-2 font-semibold tracking-wide text-neutral-900 dark:text-white">Eliminar sede</h3>
-                <p>Estas a punto de eliminar esta sede <br> ¿estas seguro que la quieres eliminar?</p>
+                <p>Estas a punto de eliminar esta sede  ¿estas seguro que la quieres eliminar?</p>
                              </x-delete-modal>
                             </form>
                         </div>

@@ -21,7 +21,7 @@ class UserSeeder extends Seeder
             'password' => Hash::make('password123'), // Puedes usar cualquier contraseña que desees
             'current_team_id' => null,
             'profile_photo_path' => null,
-        ]);
+        ])->assignRole('admin');
 
         // Crear más usuarios de ejemplo si lo necesitas
         User::create([
@@ -31,6 +31,6 @@ class UserSeeder extends Seeder
             'password' => Hash::make('password123'),
             'current_team_id' => null,
             'profile_photo_path' => "profile-photos/mQvI2GJ77yxXE98zVvHU1fCJVGyDdmQhoUoAYJ7O.jpg",
-        ]);
+        ])->assignRole('user');
     }
 }

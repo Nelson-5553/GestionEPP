@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Sede;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
+// use Illuminate\Support\Facades\Validator;
 
 use function Laravel\Prompts\error;
 
@@ -16,7 +17,6 @@ class SedeController extends Controller
     public function index()
     {
         $Sede = Sede::all();
-
         return view('sede.SedeIndex', compact('Sede'));
     }
 
