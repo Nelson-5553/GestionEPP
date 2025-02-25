@@ -11,15 +11,18 @@
                     @csrf
                     <label class="block text-gray-700 dark:text-neutral-50 text-left font-medium">Nombre de Sede</label>
                     <input type="text" name="name"
-                        class="w-full p-2 border border-gray-300 dark:border-gray-700 dark:bg-gray-900 rounded-md mb-3 focus:outline-none focus:ring-2 focus:ring-purple-500" placeholder="Nombre de sede">
+                        class="w-full p-2 border border-gray-300 dark:border-gray-700 dark:bg-gray-900 rounded-md mb-3 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                        placeholder="Nombre de sede">
 
                     <label class="block text-gray-700 text-left dark:text-neutral-50 font-medium">Dirección</label>
                     <input type="text" name="direction"
-                        class="w-full p-2 border border-gray-300 dark:border-gray-700 dark:bg-gray-900 rounded-md mb-3 focus:outline-none focus:ring-2 focus:ring-purple-500" placeholder="Dirección">
+                        class="w-full p-2 border border-gray-300 dark:border-gray-700 dark:bg-gray-900 rounded-md mb-3 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                        placeholder="Dirección">
 
                     <label class="block text-gray-700 text-left dark:text-neutral-50 font-medium">Descripción</label>
                     <textarea name="description"
-                        class="w-full h-32 p-2 border border-gray-300 dark:border-gray-700 dark:bg-gray-900 rounded-md mb-3 focus:outline-none focus:ring-2 focus:ring-purple-500" placeholder="Algo que añadir..."></textarea>
+                        class="w-full h-32 p-2 border border-gray-300 dark:border-gray-700 dark:bg-gray-900 rounded-md mb-3 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                        placeholder="Algo que añadir..."></textarea>
 
                     <div class="mb-3">
                         <!-- Input oculto -->
@@ -38,48 +41,37 @@
                 </form>
             </x-register-modal>
         </div>
-     @if (session('success'))
-        <div class="p-4 mt-4 text-sm text-green-700 bg-green-100 rounded-lg" role="alert">
-            {{ session('success') }}
-        </div>
-    @endif
-    @if ($errors->any())
-    <div class="p-4 mt-4 text-sm text-red-700 bg-red-100 rounded-lg" role="alert">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-    @endif
+        {{-- nensaje de exito --}}
+        <x-success-menssage />
+        {{-- mensaje de error --}}
+        <x-error-menssage />
 
-    <div class="grid grid-cols-1 gap-4 mt-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
+        <div class="grid grid-cols-1 gap-4 mt-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
 
-        @foreach ( $Sede as $sede )
-            <div class="bg-white dark:bg-neutral-800 shadow-lg rounded-lg overflow-hidden">
-                <img class="w-full h-56 object-cover object-center" src="{{ asset('storage/sedes/' . $sede->image) }}" alt="avatar">
-                <div class="px-4 py-2">
-                    <h1 class="text-2xl font-bold text-[#5A6ACF] dark:text-white">{{ $sede->name }}</h1>
-                    <p class="mt-1 text-[#5A6ACF] dark:text-white">{{ $sede->direction }}</p>
-                    <div class="flex justify-end mt-1 space-x-3">
-                        <a href=""
-                            class="px-4 py-2 bg-sky-500 text-white rounded-md hover:bg-sky-600">Ver</a>
-                        <a href=""
-                            class="px-4 py-2 bg-yellow-500 text-white rounded-md hover:bg-yellow-600">Editar</a>
-                        <form action="" method="POST" class="inline">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit"
-                                class="px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600">Eliminar</button>
-                        </form>
+            @foreach ($Sede as $sede)
+                <div class="bg-white dark:bg-neutral-800 shadow-lg rounded-lg overflow-hidden">
+                    <img class="w-full h-56 object-cover object-center"
+                        src="{{ asset('storage/sedes/' . $sede->image) }}" alt="avatar">
+                    <div class="px-4 py-2">
+                        <h1 class="text-2xl font-bold text-[#5A6ACF] dark:text-white">{{ $sede->name }}</h1>
+                        <p class="mt-1 text-[#5A6ACF] dark:text-white">{{ $sede->direction }}</p>
+                        <div class="flex justify-end mt-1 space-x-3">
+                            <a href=""
+                                class="px-4 py-2 bg-sky-500 text-white rounded-md hover:bg-sky-600">Ver</a>
+                            <a href=""
+                                class="px-4 py-2 bg-yellow-500 text-white rounded-md hover:bg-yellow-600">Editar</a>
+                            <form action="" method="POST" class="inline">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit"
+                                    class="px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600">Eliminar</button>
+                            </form>
+                        </div>
                     </div>
+
                 </div>
-
-            </div>
-
-
-        @endforeach
-    </div>
+            @endforeach
+        </div>
 
     </div>
 
