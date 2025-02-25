@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Sede;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 // use Illuminate\Support\Facades\Validator;
 
 use function Laravel\Prompts\error;
@@ -16,6 +17,7 @@ class SedeController extends Controller
      */
     public function index()
     {
+        Gate::authorize('ver sede');
         $Sede = Sede::all();
         return view('sede.SedeIndex', compact('Sede'));
     }
@@ -34,7 +36,7 @@ class SedeController extends Controller
     public function store(Request $request)
     {
 
-
+        Gate::authorize('crear sede');
         $Sede = new Sede();
         $Sede->name = $request->name;
         $Sede->direction = $request->direction;
@@ -90,6 +92,7 @@ class SedeController extends Controller
      */
     public function destroy(Sede $sede)
     {
+        Gate::authorize('eliminar sede');
         $sede->delete();
 
         return redirect()->route('sede.index')->with('success', 'La sede fue eliminada con éxito');
