@@ -9,17 +9,17 @@
             <x-register-modal name=sede>
                 <form action="{{ route('sede.store') }}" method="POST" enctype="multipart/form-data" class="p-6 w-96">
                     @csrf
-                    <label class="block text-gray-700 text-left font-medium">Nombre de Sede</label>
+                    <label class="block text-gray-700 dark:text-neutral-50 text-left font-medium">Nombre de Sede</label>
                     <input type="text" name="name"
-                        class="w-full p-2 border border-gray-300 rounded-md mb-3 focus:outline-none focus:ring-2 focus:ring-purple-500">
+                        class="w-full p-2 border border-gray-300 dark:border-gray-700 dark:bg-gray-900 rounded-md mb-3 focus:outline-none focus:ring-2 focus:ring-purple-500" placeholder="Nombre de sede">
 
-                    <label class="block text-gray-700 text-left font-medium">Dirección</label>
+                    <label class="block text-gray-700 text-left dark:text-neutral-50 font-medium">Dirección</label>
                     <input type="text" name="direction"
-                        class="w-full p-2 border border-gray-300 rounded-md mb-3 focus:outline-none focus:ring-2 focus:ring-purple-500">
+                        class="w-full p-2 border border-gray-300 dark:border-gray-700 dark:bg-gray-900 rounded-md mb-3 focus:outline-none focus:ring-2 focus:ring-purple-500" placeholder="Dirección">
 
-                    <label class="block text-gray-700 text-left font-medium">Descripción</label>
+                    <label class="block text-gray-700 text-left dark:text-neutral-50 font-medium">Descripción</label>
                     <textarea name="description"
-                        class="w-full h-32 p-2 border border-gray-300 rounded-md mb-3 focus:outline-none focus:ring-2 focus:ring-purple-500"></textarea>
+                        class="w-full h-32 p-2 border border-gray-300 dark:border-gray-700 dark:bg-gray-900 rounded-md mb-3 focus:outline-none focus:ring-2 focus:ring-purple-500" placeholder="Algo que añadir..."></textarea>
 
                     <div class="mb-3">
                         <!-- Input oculto -->
@@ -61,8 +61,8 @@
                 <div class="px-4 py-2">
                     <h1 class="text-2xl font-bold text-[#5A6ACF] dark:text-white">{{ $sede->name }}</h1>
                     <p class="mt-1 text-[#5A6ACF] dark:text-white">{{ $sede->direction }}</p>
-                    <div class="mt-3">
-                        {{-- <a href=""
+                    <div class="flex justify-end mt-1 space-x-3">
+                        <a href=""
                             class="px-4 py-2 bg-sky-500 text-white rounded-md hover:bg-sky-600">Ver</a>
                         <a href=""
                             class="px-4 py-2 bg-yellow-500 text-white rounded-md hover:bg-yellow-600">Editar</a>
@@ -71,19 +71,13 @@
                             @method('DELETE')
                             <button type="submit"
                                 class="px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600">Eliminar</button>
-                        </form> --}}
+                        </form>
                     </div>
                 </div>
 
             </div>
 
-    {{-- <tr>
-        <td class="p-4">{{$sede->id}}</td>
-            <td class="p-4">{{$sede->name}}</td>
-            <td class="p-4">{{$sede->direction}}</td>
-            <img src="{{ asset('storage/sedes/' . $sede->image) }}" alt="Imagen de la sede">
-            <td class="p-4"><button type="button" class="whitespace-nowrap rounded-sm bg-transparent p-0.5 font-semibold text-black outline-black hover:opacity-75 focus-visible:outline-2 focus-visible:outline-offset-2 active:opacity-100 active:outline-offset-0 dark:text-white dark:outline-white">Edit</button></td>
-        </tr> --}}
+
         @endforeach
     </div>
 
