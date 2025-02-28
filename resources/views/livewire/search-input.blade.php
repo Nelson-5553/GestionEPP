@@ -5,14 +5,18 @@
     placeholder="Buscar área..."> --}}
 
      <!-- Paginación -->
+
+     <span class="text-left text-2xl font-bold mt-4 text-black dark:text-white">
+        Areas
+    </span>
      <div class="mb-4 mt-4">
         {{ $areas->links() }}
     </div>
     <!-- Tabla -->
-    <div class="overflow-hidden w-full overflow-x-auto rounded-sm border border-neutral-300 dark:border-neutral-700 mt-4">
+    <div class="overflow-hidden w-full overflow-x-auto rounded-md border border-neutral-300 dark:border-neutral-700 mt-4">
         <table class="w-full text-left text-sm text-neutral-600 dark:text-neutral-300">
             <thead
-                class="border-b border-neutral-300 bg-neutral-50 text-sm text-neutral-900 dark:border-neutral-700 dark:bg-neutral-900 dark:text-white">
+                class="border-b border-[#5A6ACF] bg-[#5A6ACF] text-sm text-white">
                 <tr>
                     <th scope="col" class="p-4">Nombre</th>
                     <th scope="col" class="p-4">Sede</th>
@@ -22,7 +26,7 @@
             </thead>
             <tbody class="divide-y divide-neutral-300 dark:divide-neutral-700">
                 @foreach ($areas as $area)
-                    <tr>
+                    <tr class="bg-white dark:bg-neutral-800">
                         <td class="p-4">{{ $area->name }}</td>
                         <td class="p-4">{{ $area->sede->name }}</td>
                         <td class="p-4">{{ $area->description }}</td>

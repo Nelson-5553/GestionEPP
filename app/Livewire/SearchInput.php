@@ -28,7 +28,7 @@ class SearchInput extends Component
             })
             ->orWhere('description', 'LIKE', '%' . $this->search . '%')
             ->with('sede')
-            ->paginate(3);
+            ->paginate(5);
 
         return view('livewire.search-input', compact('areas'));
     }
