@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Sede;
-use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\SedeRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 // use Illuminate\Support\Facades\Validator;
@@ -33,10 +33,10 @@ class SedeController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(SedeRequest $request)
     {
 
-        Gate::authorize('crear sede');
+        // Gate::authorize('crear sede');
         $Sede = new Sede();
         $Sede->name = $request->name;
         $Sede->direction = $request->direction;
