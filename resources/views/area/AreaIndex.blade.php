@@ -28,7 +28,7 @@
                         @if ($sedes->isEmpty())
                             <option value="">No hay sedes disponibles</option>
                         @else
-                        <option value="" disabled selected hidden>Selecciona una categoría</option>
+                        <option value="" disabled selected hidden>Selecciona una sede</option>
                             @foreach ($sedes as $sede)
                                 <option value="{{ $sede->id }}">{{ $sede->name }}</option>
                             @endforeach
@@ -56,7 +56,7 @@
         <x-error-menssage />
 
         <div class="flex flex-row mt-8">
-
+{{--
             <div
                 class="overflow-hidden w-full overflow-x-auto rounded-sm border border-neutral-300 dark:border-neutral-700">
                 <table class="w-full text-left text-sm text-neutral-600 dark:text-neutral-300">
@@ -84,10 +84,10 @@
                         @endforeach
                     </tbody>
                 </table>
-            </div>
+            </div> --}}
 
         </div>
-        {{-- @livewire('search-input') --}}
+        @livewire('search-input')
     </div>
 
 </x-app-layout>
