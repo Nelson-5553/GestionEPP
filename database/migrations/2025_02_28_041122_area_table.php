@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create("areas", function (Blueprint $table) {
             $table->bigIncrements("id");
             $table->string("name");
-            $table->integer("sede_id");
+            $table->foreignId("sede_id")->constrained()->onDelete('cascade');
             $table->text("description");
             $table->timestamps();
         });

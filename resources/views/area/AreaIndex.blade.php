@@ -25,11 +25,11 @@
                     </svg>
                     <select id="sede_id" name="sede_id"
                         class="w-full appearance-none border border-gray-300 dark:border-gray-700 dark:bg-gray-900 rounded-md mb-3 focus:outline-none focus:ring-2 focus:ring-purple-500">
-                        @if ($Sede->isEmpty())
+                        @if ($sedes->isEmpty())
                             <option value="">No hay sedes disponibles</option>
                         @else
                         <option value="" disabled selected hidden>Selecciona una categoría</option>
-                            @foreach ($Sede as $sede)
+                            @foreach ($sedes as $sede)
                                 <option value="{{ $sede->id }}">{{ $sede->name }}</option>
                             @endforeach
                         @endif
@@ -63,43 +63,31 @@
                     <thead
                         class="border-b border-neutral-300 bg-neutral-50 text-sm text-neutral-900 dark:border-neutral-700 dark:bg-neutral-900 dark:text-white">
                         <tr>
-                            <th scope="col" class="p-4">CustomerID</th>
-                            <th scope="col" class="p-4">Name</th>
-                            <th scope="col" class="p-4">Email</th>
-                            <th scope="col" class="p-4">Membership</th>
+                            <th scope="col" class="p-4">Nombre</th>
+                            <th scope="col" class="p-4">Sede</th>
+                            <th scope="col" class="p-4">Descripcion</th>
+                            <th scope="col" class="p-4">action</th>
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-neutral-300 dark:divide-neutral-700">
+                        @foreach ( $areas as $area)
+
                         <tr>
-                            <td class="p-4">2335</td>
-                            <td class="p-4">Alice Brown</td>
-                            <td class="p-4">alice.brown@gmail.com</td>
+                            <td class="p-4">{{$area->name}}</td>
+                            <td class="p-4">{{$area->sede->name}}</td>
+                            <td class="p-4">{{$area->description}}</td>
                             <td class="p-4"><button type="button"
-                                    class="whitespace-nowrap rounded-sm bg-transparent p-0.5 font-semibold text-black outline-black hover:opacity-75 focus-visible:outline-2 focus-visible:outline-offset-2 active:opacity-100 active:outline-offset-0 dark:text-white dark:outline-white">Edit</button>
+                                class="whitespace-nowrap rounded-sm bg-transparent p-0.5 font-semibold text-black outline-black hover:opacity-75 focus-visible:outline-2 focus-visible:outline-offset-2 active:opacity-100 active:outline-offset-0 dark:text-white dark:outline-white">Edit</button>
                             </td>
                         </tr>
-                        <tr>
-                            <td class="p-4">2338</td>
-                            <td class="p-4">Bob Johnson</td>
-                            <td class="p-4">johnson.bob@outlook.com</td>
-                            <td class="p-4"><button type="button"
-                                    class="whitespace-nowrap rounded-sm bg-transparent p-0.5 font-semibold text-black outline-black hover:opacity-75 focus-visible:outline-2 focus-visible:outline-offset-2 active:opacity-100 active:outline-offset-0 dark:text-white dark:outline-white">Edit</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="p-4">2342</td>
-                            <td class="p-4">Sarah Adams</td>
-                            <td class="p-4">s.adams@gmail.com</td>
-                            <td class="p-4"><button type="button"
-                                    class="whitespace-nowrap rounded-sm bg-transparent p-0.5 font-semibold text-black outline-black hover:opacity-75 focus-visible:outline-2 focus-visible:outline-offset-2 active:opacity-100 active:outline-offset-0 dark:text-white dark:outline-white">Edit</button>
-                            </td>
-                        </tr>
+
+                        @endforeach
                     </tbody>
                 </table>
             </div>
 
         </div>
-
+        {{-- @livewire('search-input') --}}
     </div>
 
 </x-app-layout>

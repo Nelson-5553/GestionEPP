@@ -14,8 +14,9 @@ class AreaController extends Controller
      */
     public function index()
     {
-        $Sede = Sede::all();
-        return view('area.AreaIndex', compact('Sede'));
+        $areas = Area::with('sede')->get();
+        $sedes = Sede::all();
+        return view('area.AreaIndex', compact('areas', 'sedes'));
     }
 
     /**
