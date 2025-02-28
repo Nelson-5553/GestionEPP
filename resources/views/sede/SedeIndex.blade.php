@@ -55,7 +55,7 @@
                         src="{{ asset('storage/sedes/' . $sede->image) }}" alt="avatar">
                     <div class="px-4 py-2">
                         <h1 class="text-2xl font-bold text-[#5A6ACF] dark:text-white">{{ $sede->name }}</h1>
-                        <p class="mt-1 text-[#5A6ACF] dark:text-white">{{ $sede->direction }}</p>
+                        <p class="mt-1 text-[#5A6ACF] dark:text-white truncate">{{ $sede->direction }}</p>
                         <div class="flex justify-end mt-1 space-x-3">
                             <a href=""
                             class="text-green-500 hover:text-green-600">
