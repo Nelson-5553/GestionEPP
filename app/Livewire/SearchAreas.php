@@ -7,7 +7,7 @@ use Livewire\Component;
 use Livewire\WithPagination;
 use Livewire\Attributes\On;
 
-class SearchInput extends Component
+class SearchAreas extends Component
 {
     use WithPagination;
 
@@ -30,7 +30,7 @@ class SearchInput extends Component
             ->with('sede')
             ->paginate(5);
 
-        return view('livewire.search-input', compact('areas'));
+        return view('livewire.search-areas', compact('areas'));
     }
 }
 

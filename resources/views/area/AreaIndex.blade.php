@@ -5,7 +5,7 @@
         </p>
         <div
             class="flex flex-col sm:flex-row justify-between items-center w-auto h-auto mt-8 p-5 bg-[#F1F2F7] dark:bg-neutral-800 rounded-md">
-            <x-search-input />
+            <x-search-areas />
 
             <x-register-modal name=area>
                 <form action="{{route('area.store')}}" method="POST" enctype="multipart/form-data" class="p-6 w-96">
@@ -56,7 +56,7 @@
         <x-error-menssage />
 
         <div class="flex flex-row mt-4 bg-gray-200 dark:bg-gray-800 p-6 rounded-lg">
-            @livewire('search-input')
+            @livewire('search-areas')
         </div>
 
     </div>
