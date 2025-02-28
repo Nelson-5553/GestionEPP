@@ -28,3 +28,4 @@ Route::delete('sede/{sede}', [SedeController::class, 'destroy'])->name('sede.des
 
 Route::get('area', [AreaController::class, 'index'])->name('area.index');
 Route::post('area', [AreaController::class, 'store'])->name('area.store');
+Route::delete('area/{area}',[AreaController::class, 'destroy'])->name('area.destroy');

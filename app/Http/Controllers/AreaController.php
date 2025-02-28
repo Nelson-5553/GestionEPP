@@ -71,8 +71,9 @@ class AreaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Area $area)
     {
-        //
+        $area->delete();
+        return redirect()->route('area.index')->with('success', 'La area fue eliminada con éxito');
     }
 }
