@@ -27,3 +27,4 @@ Route::delete('sede/{sede}', [SedeController::class, 'destroy'])->name('sede.des
 // Rutas de area
 
 Route::get('area', [AreaController::class, 'index'])->name('area.index');
+Route::post('area', [AreaController::class, 'store'])->name('area.store');

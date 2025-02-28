@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Area;
+use App\Models\Sede;
 use Illuminate\Http\Request;
+use PhpParser\Node\Stmt\Return_;
 
 class AreaController extends Controller
 {
@@ -11,7 +14,8 @@ class AreaController extends Controller
      */
     public function index()
     {
-        return view('area.AreaIndex');
+        $Sede = Sede::all();
+        return view('area.AreaIndex', compact('Sede'));
     }
 
     /**
@@ -27,7 +31,16 @@ class AreaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $Area = new Area();
+
+        $Area->name = $request->name;
+        $Area->sede_id = $request->sede_id;
+        $Area->description = $request->description;
+
+        $Area->save();
+
+        return redirect()->route('area.index')->with('success', 'La area fue creada con éxito');
+
     }
 
     /**
