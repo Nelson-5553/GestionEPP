@@ -49,7 +49,8 @@ class AreaController extends Controller
      */
     public function show(Area $area)
     {
-        //
+        $area->load('Sede');
+        return view('area.AreaShow', compact('area'));
     }
 
     /**

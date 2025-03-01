@@ -27,5 +27,6 @@ Route::delete('sede/{sede}', [SedeController::class, 'destroy'])->name('sede.des
 // Rutas de area
 
 Route::get('area', [AreaController::class, 'index'])->name('area.index');
+Route::get('area/{area}',[AreaController::class, 'show'])->name('area.show');
 Route::post('area', [AreaController::class, 'store'])->name('area.store');
 Route::delete('area/{area}',[AreaController::class, 'destroy'])->name('area.destroy');
