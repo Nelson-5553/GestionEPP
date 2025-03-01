@@ -68,7 +68,7 @@ class SedeController extends Controller
      */
     public function show(Sede $sede)
     {
-        //
+        return view('sede.SedeShow', compact('sede'));
     }
 
     /**

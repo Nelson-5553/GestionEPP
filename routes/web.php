@@ -21,6 +21,7 @@ Route::middleware([
 // Rurtas de sedes
 
 Route::get('sede', [SedeController::class, 'index'])->name('sede.index');
+Route::get('sede/{sede}', [SedeController::class, 'show'])->name('sede.show');
 Route::post('sede', [SedeController::class, 'store'])->name('sede.store');
 Route::delete('sede/{sede}', [SedeController::class, 'destroy'])->name('sede.destroy');
 

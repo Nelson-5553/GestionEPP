@@ -57,7 +57,7 @@
                         <h1 class="text-2xl font-bold text-[#5A6ACF] dark:text-white">{{ $sede->name }}</h1>
                         <p class="mt-1 text-[#5A6ACF] dark:text-white truncate">{{ $sede->direction }}</p>
                         <div class="flex justify-end mt-1 space-x-3">
-                            <a href=""
+                            <a href="{{ route('sede.show', $sede) }}"
                             class="text-green-500 hover:text-green-600">
                              <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 shrink-0" viewBox="0 0 24 24">
                                  <path fill="currentColor" d="M12 9a3 3 0 0 1 3 3a3 3 0 0 1-3 3a3 3 0 0 1-3-3a3 3 0 0 1 3-3m0-4.5c5 0 9.27 3.11 11 7.5c-1.73 4.39-6 7.5-11 7.5S2.73 16.39 1 12c1.73-4.39 6-7.5 11-7.5M3.18 12a9.821 9.821 0 0 0 17.64 0a9.821 9.821 0 0 0-17.64 0"/>
