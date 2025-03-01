@@ -68,6 +68,7 @@ class SedeController extends Controller
      */
     public function show(Sede $sede)
     {
+        Gate::authorize('ver sede detalle');
         return view('sede.SedeShow', compact('sede'));
     }
 

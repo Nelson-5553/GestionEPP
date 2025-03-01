@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Http\FormRequest;
 
 class AreaRequest extends FormRequest
@@ -11,7 +12,7 @@ class AreaRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return true; //cambiar por usuario que puedan autorizarce
+        return Gate::allows('crear area'); //cambiar por usuario que puedan autorizarce por permiso
     }
 
     /**

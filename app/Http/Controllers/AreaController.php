@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\AreaRequest;
 use App\Models\Area;
 use App\Models\Sede;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
 use PhpParser\Node\Stmt\Return_;
 
@@ -15,6 +16,7 @@ class AreaController extends Controller
      */
     public function index()
     {
+        Gate::authorize('ver area');
         $areas = Area::with('sede')->get();
         $sedes = Sede::all();
         return view('area.AreaIndex', compact('areas', 'sedes'));
@@ -33,6 +35,7 @@ class AreaController extends Controller
      */
     public function store(AreaRequest $request)
     {
+        // Gate::authorize('crear area');
         $Area = new Area();
 
         $Area->name = $request->name;
@@ -50,6 +53,7 @@ class AreaController extends Controller
      */
     public function show(Area $area)
     {
+        Gate::authorize('ver area detalle');
         $area->load('Sede');
         return view('area.AreaShow', compact('area'));
     }
@@ -75,6 +79,7 @@ class AreaController extends Controller
      */
     public function destroy(Area $area)
     {
+        Gate::authorize('eliminar area');
         $area->delete();
         return redirect()->route('area.index')->with('success', 'La area fue eliminada con éxito');
     }
