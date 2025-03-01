@@ -17,9 +17,9 @@ class AreaController extends Controller
     public function index()
     {
         Gate::authorize('ver area');
-        $areas = Area::with('sede')->get();
+        // $areas = Area::with('sede')->get();
         $sedes = Sede::all();
-        return view('area.AreaIndex', compact('areas', 'sedes'));
+        return view('area.AreaIndex', compact('sedes'));
     }
 
     /**
