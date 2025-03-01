@@ -37,3 +37,4 @@ Route::delete('area/{area}',[AreaController::class, 'destroy'])->name('area.dest
 
 Route::get('epp', [EppController::class, 'index'])->name('epp.index');
 Route::post('epp', [EppController::class, 'store'])->name('epp.store');
+Route::delete('epp/{epp}', [EppController::class, 'destroy'])->name('epp.destroy');

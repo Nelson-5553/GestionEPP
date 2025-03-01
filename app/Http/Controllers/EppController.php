@@ -82,6 +82,8 @@ class EppController extends Controller
      */
     public function destroy(Epp $epp)
     {
-        //
+        $epp->delete();
+
+        return redirect()->route('epp.index')->with('success', 'Epp eliminada correctamente');
     }
 }

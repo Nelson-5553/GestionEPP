@@ -2,12 +2,14 @@
 
 namespace App\Livewire;
 
+use App\Models\Epp;
 use Livewire\Component;
 
 class SearchEpp extends Component
 {
     public function render()
     {
-        return view('livewire.search-epp');
+        $epps =  Epp::all();
+        return view('livewire.search-epp', compact('epps'));
     }
 }
