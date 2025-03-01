@@ -20,13 +20,19 @@
                 <tr>
                     <th scope="col" class="p-4">Nombre</th>
                     <th scope="col" class="p-4">Sede</th>
-                    <th scope="col" class="p-4">Descripción</th>
+                    <th scope="col" class="p-4" >Descripción</th>
                     <th scope="col" class="p-4">Acción</th>
+
                 </tr>
             </thead>
             <tbody class="divide-y divide-neutral-300 dark:divide-neutral-700">
+                @if ($areas->isEmpty())
+                <tr>
+                    <td colspan="4" class="p-4 text-center text-gray-500 dark:text-gray-400">No hay áreas relacionadas.</td>
+                </tr>
+                @else
                 @foreach ($areas as $area)
-                    <tr class="bg-white dark:bg-neutral-800">
+                    <tr class="bg-white dark:bg-neutral-900">
                         <td class="p-2">{{ $area->name }}</td>
                         <td class="p-2">{{ $area->sede->name }}</td>
                         <td class="p-2 truncate">{{ $area->description }}</td>
@@ -56,6 +62,7 @@
                         </td>
                     </tr>
                 @endforeach
+                @endif
             </tbody>
         </table>
     </div>

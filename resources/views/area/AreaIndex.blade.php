@@ -55,7 +55,7 @@
         {{-- mensaje de error --}}
         <x-error-menssage />
 
-        <div class="flex flex-row mt-4 bg-gray-200 dark:bg-gray-800 p-6 rounded-lg">
+        <div class="flex flex-row mt-4 bg-[#F1F2F7] dark:bg-neutral-800 p-6 rounded-lg">
             @livewire('search-areas')
         </div>
 
