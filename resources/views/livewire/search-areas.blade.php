@@ -20,7 +20,7 @@
                 <tr>
                     <th scope="col" class="p-4">Nombre</th>
                     <th scope="col" class="p-4">Sede</th>
-                    <th scope="col" class="p-4" >Descripción</th>
+                    <th scope="col" class="p-4 col-span-2" >Descripción</th>
                     <th scope="col" class="p-4">Acción</th>
 
                 </tr>
@@ -35,7 +35,7 @@
                     <tr class="bg-white dark:bg-neutral-900">
                         <td class="p-2">{{ $area->name }}</td>
                         <td class="p-2">{{ $area->sede->name }}</td>
-                        <td class="p-2 truncate">{{ $area->description }}</td>
+                        <td class="p-2 truncate col-span-2">{{ $area->description }}</td>
                         <td class="p-2">
                             <div class="flex justify-center mt-1 space-x-3">
                                 <a href="{{route('area.show', $area )}}"
