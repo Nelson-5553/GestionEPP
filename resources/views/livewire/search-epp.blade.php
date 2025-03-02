@@ -1,9 +1,9 @@
 
-        <div class="grid grid-cols-1 gap-4 mt-8 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4">
+        <div class="grid grid-cols-1 gap-12 mt-8 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4">
 
             @foreach ( $epps as $epp )
 
-            <div class="bg-white dark:bg-neutral-800 shadow-lg rounded-lg overflow-hidden">
+            <div class="bg-white dark:bg-neutral-800 shadow-xl rounded-lg overflow-hidden">
                 <img class="w-full h-56 object-cover object-center"
                 src="{{ asset('storage/epp/' . $epp->image) }}" alt="avatar">
                     <div class="px-4 py-2">
