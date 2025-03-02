@@ -5,7 +5,7 @@
         </p>
         <div
         class="flex flex-col sm:flex-row justify-between items-center w-auto h-auto mt-8 p-5 bg-[#F1F2F7] dark:bg-neutral-800 rounded-md">
-            {{-- <x-search-input /> --}}
+            <x-search-epp />
 
             <x-register-modal name=Epp>
                 <form action="{{ route('epp.store') }}" method="POST" enctype="multipart/form-data" class="p-6 w-96">

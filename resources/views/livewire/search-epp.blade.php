@@ -25,7 +25,7 @@
                         <form action="{{ route('epp.destroy', $epp)}}" method="POST" class="inline">
                             @csrf
                             @method('DELETE')
-                            <x-delete-modal name="sede">
+                            <x-delete-modal name="epp">
                                 <h3 id="dangerModalTitle" class="mb-2 font-semibold tracking-wide text-neutral-900 dark:text-white">Eliminar Epp</h3>
                                 <p>Estas a punto de eliminar esta epp  ¿estas seguro que la quieres eliminar?</p>
                             </x-delete-modal>
