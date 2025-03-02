@@ -3,6 +3,7 @@
 use App\Http\Controllers\AreaController;
 use App\Http\Controllers\EppController;
 use App\Http\Controllers\SedeController;
+use App\Http\Controllers\SolicitudController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -39,3 +40,6 @@ Route::get('epp', [EppController::class, 'index'])->name('epp.index');
 Route::get('epp/{epp}', [EppController::class, 'show'])->name('epp.show');
 Route::post('epp', [EppController::class, 'store'])->name('epp.store');
 Route::delete('epp/{epp}', [EppController::class, 'destroy'])->name('epp.destroy');
+
+//Rutas de solicitud
+Route::get('solicitud', [SolicitudController::class, 'index'])->name('solicitud.index');

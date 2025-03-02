@@ -71,7 +71,7 @@
                 </x-nav-link>
                 <x-nav-link
                     class="flex items-center rounded-sm gap-2 px-2 py-1.5 text-sm font-medium text-neutral-600 underline-offset-2 hover:bg-black/5 hover:text-[#5A6ACF] focus-visible:underline focus:outline-hidden dark:text-neutral-300 dark:hover:bg-white/5 dark:hover:text-[#5A6ACF]"
-                    href="{{ route('dashboard') }}" :active="request()->routeIs('')">
+                    href="{{ route('solicitud.index') }}" :active="request()->routeIs('solicitud.index')">
                     <svg xmlns="http://www.w3.org/2000/svg" class="size-5 shrink-0" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="4"><path stroke-linecap="round" d="M40.04 22v20h-32V22"/><path fill="currentColor" d="M5.842 13.777C4.312 17.737 7.263 22 11.51 22c3.314 0 6.019-2.686 6.019-6a6 6 0 0 0 6 6h1.018a6 6 0 0 0 6-6c0 3.314 2.706 6 6.02 6c4.248 0 7.201-4.265 5.67-8.228L39.234 6H8.845z"/></g></svg>
                     <span>Solicitar</span>
                 </x-nav-link>
