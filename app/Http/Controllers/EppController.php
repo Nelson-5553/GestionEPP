@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\EppRequest;
 use App\Models\Epp;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class EppController extends Controller
 {
@@ -13,6 +14,7 @@ class EppController extends Controller
      */
     public function index()
     {
+        Gate::authorize('ver epp');
         return view('epp.EppIndex');
     }
 
@@ -29,6 +31,7 @@ class EppController extends Controller
      */
     public function store(EppRequest $request)
     {
+
         $Epp = new Epp();
 
         $Epp->name = $request->name;
@@ -59,6 +62,7 @@ class EppController extends Controller
      */
     public function show(Epp $epp)
     {
+        Gate::authorize('ver epp detalle');
          return view('epp.EppShow' , compact('epp'));
     }
 
@@ -83,8 +87,8 @@ class EppController extends Controller
      */
     public function destroy(Epp $epp)
     {
+        Gate::authorize('eliminar epp');
         $epp->delete();
-
         return redirect()->route('epp.index')->with('success', 'Epp eliminada correctamente');
     }
 }

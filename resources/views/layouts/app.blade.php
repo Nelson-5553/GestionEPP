@@ -89,6 +89,7 @@
                     {{-- <span class="sr-only">active</span> --}}
                 </x-nav-link>
 
+                @can('ver epp')
                 <x-nav-link
                     class="flex items-center rounded-sm gap-2 px-2 py-1.5 text-sm font-medium text-neutral-600 underline-offset-2 hover:bg-black/5 hover:text-[#5A6ACF] focus-visible:underline focus:outline-hidden dark:text-neutral-300 dark:hover:bg-white/5 dark:hover:text-[#5A6ACF]"
                     href="{{ route('epp.index') }}" :active="request()->routeIs('epp.index')">
@@ -98,6 +99,7 @@
                     </svg>
                     <span>EPP</span>
                 </x-nav-link>
+                @endcan
                 <p class="prose dark:prose-invert text-[#5A6ACF] font-bold">Otros</p>
 
                 @can('ver sede')

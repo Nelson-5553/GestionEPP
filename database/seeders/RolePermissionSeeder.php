@@ -14,6 +14,7 @@ class RolePermissionSeeder extends Seeder
      */
     public function run()
     {
+        // Crear roles y asignar permisos
 
        $admin=Role::create(['name' => 'admin']);
        $user=Role::create(['name' => 'user']);
@@ -25,6 +26,7 @@ class RolePermissionSeeder extends Seeder
         Permission::create(['name' => 'eliminar sede'])->assignRole([$admin]);
         Permission::create(['name' => 'ver sede'])->assignRole([$admin]);
         Permission::create(['name' => 'ver sede detalle'])->assignRole([$admin]);
+
         // Crear permisos  para area
         Permission::create(['name' => 'crear area'])->assignRole([$admin]);
         Permission::create(['name' => 'editar area'])->assignRole([$admin]);
@@ -32,8 +34,14 @@ class RolePermissionSeeder extends Seeder
         Permission::create(['name' => 'ver area'])->assignRole([$admin]);
         Permission::create(['name' => 'ver area detalle'])->assignRole([$admin]);
 
+        // Crear permisos  para area
+        Permission::create(['name' => 'crear epp'])->assignRole([$admin]);
+        Permission::create(['name' => 'editar epp'])->assignRole([$admin]);
+        Permission::create(['name' => 'eliminar epp'])->assignRole([$admin]);
+        Permission::create(['name' => 'ver epp'])->assignRole([$admin]);
+        Permission::create(['name' => 'ver epp detalle'])->assignRole([$admin]);
+
         Permission::create(['name' => 'ver dashboard'])->assignRole([$admin, $user]);
-        // Crear roles y asignar permisos
 
 
 

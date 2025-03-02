@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Gate;
 
 class EppRequest extends FormRequest
 {
@@ -11,7 +12,7 @@ class EppRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return true; //cambiar por permisos
+        return Gate::allows('crear epp'); //cambiar por permisos
     }
 
     /**
