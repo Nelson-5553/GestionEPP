@@ -59,7 +59,7 @@ class EppController extends Controller
      */
     public function show(Epp $epp)
     {
-        //
+         return view('epp.EppShow' , compact('epp'));
     }
 
     /**
