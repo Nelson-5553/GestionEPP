@@ -15,7 +15,9 @@
         {{-- mensaje de error --}}
         <x-error-menssage />
 
-        <div class="grid grid-cols-1 gap-4 mt-8 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4">
+        @livewire('search-solicitud')
+
+        {{-- <div class="grid grid-cols-1 gap-4 mt-8 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4">
 
 
             <div class="flex flex-col justify-between aspect-video rounded-lg bg-blue-500 text-blue-800 dark:bg-blue-700 dark:text-blue-200 font-bold text-2xl p-6">
@@ -62,12 +64,12 @@
                             <td class="p-4">{{$solicitud->epp->name}}</td>
                             <td class="p-4"><span class="font-bold">{{$solicitud->sede->name}}</span> <br> {{$solicitud->area->name}}</td>
                             <td class="p-4"><span class="font-bold">{{$solicitud->cantidad}}</td>
-                            <td class="p-4"><span class="inline-flex overflow-hidden rounded-sm border border-green-500 px-1 py-0.5 text-xs font-medium text-green-500 bg-green-500/10">Active</span></td>
+                            <td class="p-4"><span class="inline-flex overflow-hidden rounded-sm border border-yellow-500 px-1 py-0.5 text-xs font-medium text-yellow-500 bg-yellow-500/10">{{$solicitud->state}}</span></td>
                             <td class="p-4"><button type="button" class="whitespace-nowrap rounded-sm bg-transparent p-0.5 font-semibold text-black outline-black hover:opacity-75 focus-visible:outline-2 focus-visible:outline-offset-2 active:opacity-100 active:outline-offset-0 dark:text-white dark:outline-white">Edit</button></td>
                         </tr>
                         @endforeach
                     </tbody>
-                </table>
+                </table> --}}
 
             {{-- <ul>
                 @foreach ($solicitudes as $solicitud)

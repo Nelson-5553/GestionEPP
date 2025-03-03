@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreignId("sede_id")->constrained();
             $table->foreignId("area_id")->constrained();
             $table->text("cantidad");
-            $table->string("state")->nullable();
+            $table->string("state")->default('Pendiente');
             $table->integer("aprobado_por_id")->nullable();
             $table->timestamps();
         });
