@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Epp;
 use App\Models\Solicitud;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class SolicitudController extends Controller
 {
@@ -75,6 +76,7 @@ class SolicitudController extends Controller
         // Actualizar el estado en la base de datos
         $solicitud->update([
             'state' => $request->state,
+            'aprobado_por_id' => Auth::id(),
         ]);
 
         // Redirigir con un mensaje de éxito

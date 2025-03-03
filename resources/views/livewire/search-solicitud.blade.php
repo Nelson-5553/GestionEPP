@@ -7,7 +7,7 @@
 
         <div wire:click="setEstado('Aprobada')" class="cursor-pointer flex flex-col justify-between aspect-video rounded-lg bg-green-500 text-green-800 dark:bg-green-700 dark:text-green-200 font-bold text-2xl p-4 lg:p-6">
             Aprobadas
-            <p>{{ \App\Models\Solicitud::where('state', 'Aprobada')->count() }}</p>
+            <p>{{ \App\Models\Solicitud::where('state', 'Aprobado')->count() }}</p>
         </div>
 
         <div wire:click="setEstado('Rechazado')" class="cursor-pointer flex flex-col justify-between aspect-video rounded-lg bg-red-500 text-red-800 dark:bg-red-700 dark:text-red-200 font-bold text-2xl p-4 lg:p-6">
