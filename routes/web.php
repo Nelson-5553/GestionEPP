@@ -43,5 +43,7 @@ Route::delete('epp/{epp}', [EppController::class, 'destroy'])->name('epp.destroy
 
 //Rutas de solicitud
 Route::get('solicitud', [SolicitudController::class, 'index'])->name('solicitud.index');
-Route::post('solicitud', [SolicitudController::class, 'store'])->name('solicitud.store');
 Route::get('solicitud/create', [SolicitudController::class, 'create'])->name('solicitud.create');
+Route::get('solicitud/{solicitud}', [SolicitudController::class, 'show'])->name('solicitud.show');
+Route::patch('solicitud/{solicitud}', [SolicitudController::class, 'update'])->name('solicitud.update');
+Route::post('solicitud', [SolicitudController::class, 'store'])->name('solicitud.store');

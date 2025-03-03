@@ -51,7 +51,7 @@ class SolicitudController extends Controller
      */
     public function show(Solicitud $solicitud)
     {
-        //
+        return view('solicitud.SolicitudShow', compact('solicitud'));
     }
 
     /**
@@ -67,7 +67,18 @@ class SolicitudController extends Controller
      */
     public function update(Request $request, Solicitud $solicitud)
     {
-        //
+        // Validar el estado recibido
+        $request->validate([
+            'state' => 'required|in:Pendiente,Aprobado,Rechazado',
+        ]);
+
+        // Actualizar el estado en la base de datos
+        $solicitud->update([
+            'state' => $request->state,
+        ]);
+
+        // Redirigir con un mensaje de éxito
+        return redirect()->route('solicitud.index')->with('success', 'Estado actualizado correctamente.');
     }
 
     /**
