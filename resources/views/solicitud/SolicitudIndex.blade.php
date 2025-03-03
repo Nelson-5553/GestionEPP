@@ -1,46 +1,14 @@
 <x-app-layout>
     <div class=" max-w-7xl mx-auto py-12 px-6 sm:px-6 lg:px-8">
         <p class="text-xl font-bold text-gray-900 dark:text-gray-200 md:-ml-5 ml-0">
-            Gestion Salud Sedes
+            Gestion Salud Solicitudes
         </p>
         <div
         class="flex flex-col sm:flex-row justify-between items-center w-auto h-auto mt-8 p-5 bg-[#F1F2F7] dark:bg-neutral-800 rounded-md">
             {{-- <x-search-input /> --}}
 
-            <x-register-modal name="solicitud">
-                <form action="" method="POST" enctype="multipart/form-data" class="p-6 w-96">
-                    @csrf
-                    <label class="block text-gray-700 dark:text-neutral-50 text-left font-medium">Nombre de Sede</label>
-                    <input type="text" name="name"
-                        class="w-full p-2 border border-gray-300 dark:border-gray-700 dark:bg-gray-900 rounded-md mb-3 focus:outline-none focus:ring-2 focus:ring-purple-500"
-                        placeholder="Nombre de sede">
+            <x-button-create name="solicitud" route="{{route('solicitud.create')}}"/>
 
-                    <label class="block text-gray-700 text-left dark:text-neutral-50 font-medium">Dirección</label>
-                    <input type="text" name="direction"
-                        class="w-full p-2 border border-gray-300 dark:border-gray-700 dark:bg-gray-900 rounded-md mb-3 focus:outline-none focus:ring-2 focus:ring-purple-500"
-                        placeholder="Dirección">
-
-                    <label class="block text-gray-700 text-left dark:text-neutral-50 font-medium">Descripción</label>
-                    <textarea name="description"
-                        class="w-full h-32 p-2 border border-gray-300 dark:border-gray-700 dark:bg-gray-900 rounded-md mb-3 focus:outline-none focus:ring-2 focus:ring-purple-500"
-                        placeholder="Algo que añadir..."></textarea>
-
-                    <div class="mb-3">
-                        <!-- Input oculto -->
-                        <input type="file" id="fileUpload" name="image" accept="image/*" class="hidden">
-
-                        <!-- Botón para activar el input -->
-                        <label for="fileUpload"
-                            class="cursor-pointer bg-[#5A6ACF] text-white px-4 py-2 rounded-md hover:bg-[#5A6ACF]0">
-                            ⬆️ Subir foto
-                        </label>
-                    </div>
-                    <div class="flex items-center justify-center border-neutral-300 p-4 dark:border-neutral-700">
-                        <button type="submit"
-                            class="w-full whitespace-nowrap rounded-md border border-[#5A6ACF] bg-[#5A6ACF] px-4 py-2 text-center text-sm font-semibold tracking-wide text-white transition hover:opacity-75 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#5A6ACF] active:opacity-100 active:outline-offset-0">Registrar</button>
-                    </div>
-                </form>
-            </x-register-modal>
         </div>
         {{-- nensaje de exito --}}
         <x-success-menssage />
