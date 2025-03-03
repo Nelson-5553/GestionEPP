@@ -5,7 +5,8 @@
         </p>
 
         <div class="mt-8 bg-[#F1F2F7] dark:bg-neutral-800 p-6 rounded-lg">
-            <form action="" method="POST">
+            <form action="{{route('solicitud.store')}}" method="POST">
+                @method('POST')
                 @csrf
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">

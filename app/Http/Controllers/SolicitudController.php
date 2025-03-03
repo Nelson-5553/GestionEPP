@@ -30,7 +30,19 @@ class SolicitudController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $solicitud = new Solicitud();
+
+        $solicitud->user_id = $request->user_id;
+        $solicitud->epp_id = $request->epp_id;
+        $solicitud->sede_id = $request->sede_id;
+        $solicitud->area_id = $request->area_id;
+        $solicitud->cantidad = $request->cantidad;
+
+        // dd($solicitud);
+        $solicitud->save();
+
+        return redirect()->route('solicitud.index')->with('success', 'solicitud enviada');
+
     }
 
     /**
