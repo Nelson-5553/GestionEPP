@@ -6,5 +6,27 @@ use Illuminate\Database\Eloquent\Model;
 
 class Solicitud extends Model
 {
-    //
+    public function user() {
+        return $this->belongsTo(User::class); // (1 a 1)
+    }
+
+    // Una solicitud pertenece a un EPP
+    public function epp() {
+        return $this->belongsTo(Epp::class); // (1 a 1)
+    }
+
+    // Una solicitud pertenece a una sede
+    public function sede() {
+        return $this->belongsTo(Sede::class); // (1 a 1)
+    }
+
+    // Una solicitud pertenece a un área
+    public function area() {
+        return $this->belongsTo(Area::class); // (1 a 1)
+    }
+
+    // Una solicitud puede ser aprobada por un usuario (gerente o supervisor)
+    public function aprobadoPor() {
+        return $this->belongsTo(User::class, 'aprobado_por_id'); // (1 a 1)
+    }
 }

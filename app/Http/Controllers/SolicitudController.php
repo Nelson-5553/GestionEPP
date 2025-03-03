@@ -13,7 +13,8 @@ class SolicitudController extends Controller
      */
     public function index()
     {
-        return view('solicitud.SolicitudIndex');
+        $solicitudes = Solicitud::all();
+        return view('solicitud.SolicitudIndex', compact('solicitudes'));
     }
 
     /**

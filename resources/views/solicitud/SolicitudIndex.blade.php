@@ -35,6 +35,15 @@
                 <p>34</p>
             </div>
 
+            <ul>
+                @foreach ($solicitudes as $solicitud)
+
+                <li>
+                    {{$solicitud->epp->name}}
+                </li>
+                @endforeach
+            </ul>
+
 
     </div>
 

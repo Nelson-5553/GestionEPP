@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create("solicituds", function (Blueprint $table) {
             $table->bigIncrements("id");
-            $table->integer("user_id");
-            $table->integer("epp_id");
-            $table->integer("sede_id");
-            $table->integer("area_id");
+            $table->foreignId("user_id")->constrained();
+            $table->foreignId("epp_id")->constrained();
+            $table->foreignId("sede_id")->constrained();
+            $table->foreignId("area_id")->constrained();
             $table->text("cantidad");
             $table->string("state")->nullable();
             $table->integer("aprobado_por_id")->nullable();
