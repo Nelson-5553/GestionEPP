@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Epp;
 use App\Models\Solicitud;
 use Illuminate\Http\Request;
 
@@ -20,7 +21,8 @@ class SolicitudController extends Controller
      */
     public function create()
     {
-        return view('solicitud.SolicitudCreate');
+        $epps = Epp::whereNotNull('name')->whereNotNull('id')->get();
+        return view('solicitud.SolicitudCreate', compact('epps'));
     }
 
     /**
