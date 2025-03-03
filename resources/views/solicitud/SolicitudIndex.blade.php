@@ -50,22 +50,23 @@
         <div class="grid grid-cols-1 gap-4 mt-8 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4">
 
 
-            <div class="flex flex-col justify-between aspect-video rounded-lg bg-blue-500 text-blue-800 font-bold text-2xl p-6">
+            <div class="flex flex-col justify-between aspect-video rounded-lg bg-blue-500 text-blue-800 dark:bg-blue-700 dark:text-blue-200 font-bold text-2xl p-6">
                 Total
                 <p>12</p>
             </div>
-            <div class="flex flex-col justify-between aspect-video rounded-lg bg-green-500 text-green-800 font-bold text-2xl p-6">
+            <div class="flex flex-col justify-between aspect-video rounded-lg bg-green-500 text-green-800 dark:bg-green-700 dark:text-green-200 font-bold text-2xl p-6">
                 Aprobadas
                 <p>12</p>
             </div>
-            <div class="flex flex-col justify-between aspect-video rounded-lg bg-red-500 text-red-800 font-bold text-2xl p-6">
+            <div class="flex flex-col justify-between aspect-video rounded-lg bg-red-500 text-red-800 dark:bg-red-700 dark:text-red-200 font-bold text-2xl p-6">
                 Rechazadas
                 <p>0</p>
             </div>
-            <div class="flex flex-col justify-between aspect-video rounded-lg bg-yellow-500 text-yellow-800 font-bold text-2xl p-6">
+            <div class="flex flex-col justify-between aspect-video rounded-lg bg-yellow-500 text-yellow-800 dark:bg-yellow-700 dark:text-yellow-200 font-bold text-2xl p-6">
                 Pendientes
                 <p>34</p>
             </div>
+
 
     </div>
 
