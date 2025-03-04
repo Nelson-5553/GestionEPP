@@ -27,6 +27,9 @@
                 </div>
                 <div class="text-gray-900 dark:text-gray-200">
                     <p class="font-semibold">Estado:</p>
+                    @if ($solicitud->state === 'Aprobado')
+                    <p>Ya la solicitud a sido aprobada</p>
+                @else
                     <form action="{{ route('solicitud.update', $solicitud->id) }}" method="POST">
                         @method('PATCH')
                         @csrf
@@ -40,6 +43,7 @@
                             Actualizar
                         </button>
                     </form>
+                    @endif
 
                 </div>
             </div>

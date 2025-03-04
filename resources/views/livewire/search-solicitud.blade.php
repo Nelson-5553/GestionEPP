@@ -1,5 +1,5 @@
 <div>
-    <<div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-8">
         <div wire:click="setEstado(null)" class="cursor-pointer flex flex-col justify-between aspect-video rounded-lg bg-blue-500 text-blue-800 dark:bg-blue-700 dark:text-blue-200 font-bold text-2xl p-4 lg:p-6">
             Total
             <p>{{ \App\Models\Solicitud::count() }}</p>
