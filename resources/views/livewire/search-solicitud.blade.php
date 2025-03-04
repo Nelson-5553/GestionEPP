@@ -1,21 +1,21 @@
 <div>
     <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-8">
-        <div wire:click="setEstado(null)" class="cursor-pointer flex flex-col justify-between aspect-video rounded-lg bg-blue-500 text-blue-800 dark:bg-blue-700 dark:text-blue-200 font-bold text-2xl p-4 lg:p-6">
+        <div wire:click="setEstado(null)" class="cursor-pointer flex flex-col justify-between aspect-video rounded-lg bg-blue-500 text-blue-800 dark:bg-blue-700 dark:text-blue-200 font-bold text-2xl p-4 lg:p-6 hover:scale-105 transition-transform ease-in-out duration-300">
             Total
             <p>{{ \App\Models\Solicitud::count() }}</p>
         </div>
 
-        <div wire:click="setEstado('Aprobada')" class="cursor-pointer flex flex-col justify-between aspect-video rounded-lg bg-green-500 text-green-800 dark:bg-green-700 dark:text-green-200 font-bold text-2xl p-4 lg:p-6">
+        <div wire:click="setEstado('Aprobada')" class="cursor-pointer flex flex-col justify-between aspect-video rounded-lg bg-green-500 text-green-800 dark:bg-green-700 dark:text-green-200 font-bold text-2xl p-4 lg:p-6 hover:scale-105 transition-transform ease-in-out duration-300">
             Aprobadas
             <p>{{ \App\Models\Solicitud::where('state', 'Aprobado')->count() }}</p>
         </div>
 
-        <div wire:click="setEstado('Rechazado')" class="cursor-pointer flex flex-col justify-between aspect-video rounded-lg bg-red-500 text-red-800 dark:bg-red-700 dark:text-red-200 font-bold text-2xl p-4 lg:p-6">
+        <div wire:click="setEstado('Rechazado')" class="cursor-pointer flex flex-col justify-between aspect-video rounded-lg bg-red-500 text-red-800 dark:bg-red-700 dark:text-red-200 font-bold text-2xl p-4 lg:p-6 hover:scale-105 transition-transform ease-in-out duration-300">
             Rechazadas
             <p>{{ \App\Models\Solicitud::where('state', 'Rechazado')->count() }}</p>
         </div>
 
-        <div wire:click="setEstado('Pendiente')" class="cursor-pointer flex flex-col justify-between aspect-video rounded-lg bg-yellow-500 text-yellow-800 dark:bg-yellow-700 dark:text-yellow-200 font-bold text-2xl p-4 lg:p-6">
+        <div wire:click="setEstado('Pendiente')" class="cursor-pointer flex flex-col justify-between aspect-video rounded-lg bg-yellow-500 text-yellow-800 dark:bg-yellow-700 dark:text-yellow-200 font-bold text-2xl p-4 lg:p-6 hover:scale-105 transition-transform ease-in-out duration-300">
             Pendientes
             <p>{{ \App\Models\Solicitud::where('state', 'Pendiente')->count() }}</p>
         </div>
