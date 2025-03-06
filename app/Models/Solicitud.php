@@ -9,7 +9,7 @@ class Solicitud extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['state'];
+    protected $fillable = ['state', 'aprobado_por_id'];
 
     public function user() {
         return $this->belongsTo(User::class); // (1 a 1)

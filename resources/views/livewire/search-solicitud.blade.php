@@ -5,7 +5,7 @@
             <p>{{ \App\Models\Solicitud::count() }}</p>
         </div>
 
-        <div wire:click="setEstado('Aprobada')" class="cursor-pointer flex flex-col justify-between aspect-video rounded-lg bg-green-500 text-green-800 dark:bg-green-700 dark:text-green-200 font-bold text-2xl p-4 lg:p-6 hover:scale-105 transition-transform ease-in-out duration-300">
+        <div wire:click="setEstado('Aprobado')" class="cursor-pointer flex flex-col justify-between aspect-video rounded-lg bg-green-500 text-green-800 dark:bg-green-700 dark:text-green-200 font-bold text-2xl p-4 lg:p-6 hover:scale-105 transition-transform ease-in-out duration-300">
             Aprobadas
             <p>{{ \App\Models\Solicitud::where('state', 'Aprobado')->count() }}</p>
         </div>
