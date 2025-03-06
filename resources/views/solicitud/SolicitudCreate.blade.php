@@ -33,32 +33,16 @@
                         </select>
                     </div>
 
-                    <div>
-                        <label class="block text-gray-900 dark:text-gray-200 font-semibold">Cantidad</label>
-                        <input type="number" name="cantidad"
-                        class="w-full mt-1 p-2 border rounded-lg dark:bg-neutral-700 dark:text-gray-200" required>
-                    </div>
 
                 </div>
-                    @livewire('filtrar-areas')
+                @livewire('filtrar-areas')
 
-                    {{-- <div>
-                        <label class="block text-gray-900 dark:text-gray-200 font-semibold">Estado</label>
-                        <select name="state" class="w-full mt-1 p-2 border rounded-lg dark:bg-neutral-700 dark:text-gray-200">
-                            <option value="pendiente">Pendiente</option>
-                            <option value="aprobado">Aprobado</option>
-                            <option value="rechazado">Rechazado</option>
-                        </select>
-                    </div>
+                <div class="mt-4">
+                    <label class="block text-gray-900 dark:text-gray-200 font-semibold">Cantidad</label>
+                    <input type="number" name="cantidad"
+                    class="w-full mt-1 p-2 border rounded-lg dark:bg-neutral-700 dark:text-gray-200" required>
+                </div>
 
-                    <div>
-                        <label class="block text-gray-900 dark:text-gray-200 font-semibold">Aprobado por</label>
-                        <select name="aprobado_por_id" class="w-full mt-1 p-2 border rounded-lg dark:bg-neutral-700 dark:text-gray-200">
-                            @foreach ($users as $user)
-                                <option value="{{ $user->id }}">{{ $user->name }}</option>
-                            @endforeach
-                        </select>
-                    </div> --}}
                 </div>
 
                 <div class="mt-6">
