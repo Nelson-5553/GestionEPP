@@ -6,6 +6,7 @@ use App\Models\Epp;
 use App\Models\Solicitud;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class SolicitudController extends Controller
 {
@@ -23,6 +24,7 @@ class SolicitudController extends Controller
      */
     public function create()
     {
+
         $epps = Epp::whereNotNull('name')->whereNotNull('id')->get();
         return view('solicitud.SolicitudCreate', compact('epps'));
     }
@@ -32,6 +34,8 @@ class SolicitudController extends Controller
      */
     public function store(Request $request)
     {
+
+
         $solicitud = new Solicitud();
 
         $solicitud->user_id = $request->user_id;
@@ -52,6 +56,7 @@ class SolicitudController extends Controller
      */
     public function show(Solicitud $solicitud)
     {
+        Gate::authorize('ver solicitud detalle');
         return view('solicitud.SolicitudShow', compact('solicitud'));
     }
 
@@ -69,6 +74,8 @@ class SolicitudController extends Controller
     public function update(Request $request, Solicitud $solicitud)
     {
         // Validar el estado recibido
+        Gate::authorize('editar detalle');
+
         $request->validate([
             'state' => 'required|in:Pendiente,Aprobado,Rechazado',
         ]);

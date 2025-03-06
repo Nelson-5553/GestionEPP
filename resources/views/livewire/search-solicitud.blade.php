@@ -1,4 +1,5 @@
 <div>
+    @role('admin')
     <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-8">
         <div wire:click="setEstado(null)" class="cursor-pointer flex flex-col justify-between aspect-video rounded-lg bg-blue-500 text-blue-800 dark:bg-blue-700 dark:text-blue-200 font-bold text-2xl p-4 lg:p-6 hover:scale-105 transition-transform ease-in-out duration-300">
             Total
@@ -20,6 +21,7 @@
             <p>{{ \App\Models\Solicitud::where('state', 'Pendiente')->count() }}</p>
         </div>
     </div>
+    @endrole
 
     <div class="mt-6">
     {{ $solicitudes->links() }}
@@ -34,7 +36,9 @@
                         <th scope="col" class="p-4">Sede/Area</th>
                         <th scope="col" class="p-4">Cantidad</th>
                         <th scope="col" class="p-4">Estado</th>
+                        @can('ver solicitud detalle')
                         <th scope="col" class="p-4">Accion</th>
+                        @endcan
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-neutral-300 dark:divide-neutral-700">
@@ -64,7 +68,9 @@
                                     {{ ucfirst($solicitud->state) }}
                                 </span>
                             </td>
-                        <td class="p-4"><a href="{{ route('solicitud.show', $solicitud) }}" class="whitespace-nowrap rounded-sm bg-transparent p-0.5 font-semibold text-black outline-black hover:opacity-75 focus-visible:outline-2 focus-visible:outline-offset-2 active:opacity-100 active:outline-offset-0 dark:text-white dark:outline-white">Revisar</a></td>
+                            @can('ver solicitud detalle')
+                            <td class="p-4"><a href="{{ route('solicitud.show', $solicitud) }}" class="whitespace-nowrap rounded-sm bg-transparent p-0.5 font-semibold text-black outline-black hover:opacity-75 focus-visible:outline-2 focus-visible:outline-offset-2 active:opacity-100 active:outline-offset-0 dark:text-white dark:outline-white">Revisar</a></td>
+                            @endcan
                     </tr>
                     @endforeach
                 </tbody>

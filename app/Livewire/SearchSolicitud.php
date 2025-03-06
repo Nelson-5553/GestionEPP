@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\Solicitud;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -19,10 +20,15 @@ class SearchSolicitud extends Component
 
     public function render()
     {
-        $solicitudes = Solicitud::when($this->estadoFiltro, function ($query) {
+        $user = Auth::user();
+
+        $solicitudes = Solicitud::when(!$user->hasRole('Admin'), function ($query) use ($user) {
+            $query->where('user_id', $user->id);
+        })->when($this->estadoFiltro, function ($query) {
             $query->where('state', $this->estadoFiltro);
         })->paginate(10);
 
         return view('livewire.search-solicitud', compact('solicitudes'));
     }
 }
+

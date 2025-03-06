@@ -34,12 +34,20 @@ class RolePermissionSeeder extends Seeder
         Permission::create(['name' => 'ver area'])->assignRole([$admin]);
         Permission::create(['name' => 'ver area detalle'])->assignRole([$admin]);
 
-        // Crear permisos  para area
+        // Crear permisos  para epp
         Permission::create(['name' => 'crear epp'])->assignRole([$admin]);
         Permission::create(['name' => 'editar epp'])->assignRole([$admin]);
         Permission::create(['name' => 'eliminar epp'])->assignRole([$admin]);
         Permission::create(['name' => 'ver epp'])->assignRole([$admin]);
         Permission::create(['name' => 'ver epp detalle'])->assignRole([$admin]);
+
+        //
+        Permission::create(['name' => 'crear solicitud']);
+        Permission::create(['name' => 'guardar solicitud']);
+        Permission::create(['name' => 'editar solicitud'])->assignRole([$admin]);
+        Permission::create(['name' => 'eliminar solicitud'])->assignRole([$admin]);
+        Permission::create(['name' => 'ver solicitud']);
+        Permission::create(['name' => 'ver solicitud detalle'])->assignRole([$admin]);
 
         Permission::create(['name' => 'ver dashboard'])->assignRole([$admin, $user]);
 
