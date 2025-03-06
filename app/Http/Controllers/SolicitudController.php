@@ -74,7 +74,7 @@ class SolicitudController extends Controller
     public function update(Request $request, Solicitud $solicitud)
     {
         // Validar el estado recibido
-        Gate::authorize('editar detalle');
+        Gate::authorize('editar solicitud');
 
         $request->validate([
             'state' => 'required|in:Pendiente,Aprobado,Rechazado',

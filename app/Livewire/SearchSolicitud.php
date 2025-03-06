@@ -22,7 +22,7 @@ class SearchSolicitud extends Component
     {
         $user = Auth::user();
 
-        $solicitudes = Solicitud::when(!$user->hasRole('Admin'), function ($query) use ($user) {
+        $solicitudes = Solicitud::when(!$user->hasRole('admin'), function ($query) use ($user) {
             $query->where('user_id', $user->id);
         })->when($this->estadoFiltro, function ($query) {
             $query->where('state', $this->estadoFiltro);
