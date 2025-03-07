@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('entregas', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('solicitud_id');
+            $table->foreignId('solicitud_id')->constrained()->onDelete('cascade');
+            $table->string("state")->nullable();
             $table->date('start_date_labor')->nullable();
             $table->date('end_date_labor')->nullable();
             $table->text('observations')->nullable();

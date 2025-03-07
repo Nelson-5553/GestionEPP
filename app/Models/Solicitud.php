@@ -34,4 +34,8 @@ class Solicitud extends Model
     public function aprobadoPor() {
         return $this->belongsTo(User::class, 'aprobado_por_id'); // (1 a 1)
     }
+
+    public function entregas() {
+        return $this->hasMany(Entrega::class);
+    }
 }
