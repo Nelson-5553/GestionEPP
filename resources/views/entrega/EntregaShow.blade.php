@@ -5,6 +5,9 @@
         </p>
 
         <div class="mt-8 bg-[#F1F2F7] dark:bg-neutral-800 p-6 rounded-lg">
+
+            <h1 class="text-xl font-bold text-gray-900 dark:text-gray-200">Informacion</h1>
+            <br>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div class="text-gray-900 dark:text-gray-200">
                     <p class="font-semibold">Usuario:</p>
@@ -27,8 +30,35 @@
                     <p class="text-gray-700 dark:text-gray-300">{{ ucfirst($entrega->state) }}</p>
                 </div>
             </div>
+            <br>
+            <h1 class="text-xl font-bold text-gray-900 dark:text-gray-200">Confirmar entrega</h1>
+            <br>
+            <x-error-menssage />
+        <form action="{{route('entrega.update', $entrega)}}" method="POST">
+            @csrf
+            @method('PATCH')
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-3">
+                <div>
+                    <label class="block text-gray-900 dark:text-gray-200 font-semibold">Inicio de turno</label>
+                    <input name="start_time_labor" type="time" class="w-full mt-1 p-2 border rounded-lg dark:bg-neutral-700 dark:text-gray-200"/>
 
-            
+                </div>
+                <div>
+                    <label class="block text-gray-900 dark:text-gray-200 font-semibold">Fin de turno</label>
+                    <input name="end_time_labor" type="time" class="w-full mt-1 p-2 border rounded-lg dark:bg-neutral-700 dark:text-gray-200"/>
+                </div>
+                <div class="col-span-2">
+                    <label class="block text-gray-900 dark:text-gray-200 font-semibold">Observación</label>
+                    <textarea name="observations" class="w-full mt-1 p-2 border rounded-lg dark:bg-neutral-700 dark:text-gray-200" rows="4" placeholder="Colocar alguna observacion del Epp (Opcional)"></textarea>
+                </div>
+                <div>
+                    <button type="submit" class="w-full mt-1 p-2 border rounded-lg bg-blue-600 text-white hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600">
+                        Entregar EPP
+                    </button>
+                </div>
+            </form>
+            </div>
+
 
             <div class="flex justify-end mt-6 gap-4">
                 {{-- Botón de edición --}}

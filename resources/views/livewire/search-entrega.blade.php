@@ -31,8 +31,8 @@
                         @php
                             $colores = [
                                 'Pendiente' => 'border-yellow-500 text-yellow-500 bg-yellow-500/10',
-                                'Aprobado' => 'border-green-500 text-green-500 bg-green-500/10',
-                                'Rechazado' => 'border-red-500 text-red-500 bg-red-500/10',
+                                'Entregado' => 'border-green-500 text-green-500 bg-green-500/10',
+                                'Cancelado' => 'border-red-500 text-red-500 bg-red-500/10',
                             ];
                             $clase = $colores[$entrega->state] ?? 'border-gray-500 text-gray-500 bg-gray-500/10';
                         @endphp

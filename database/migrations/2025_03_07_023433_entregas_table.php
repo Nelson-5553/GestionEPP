@@ -15,8 +15,8 @@ return new class extends Migration
             $table->bigIncrements('id');
             $table->foreignId('solicitud_id')->constrained()->onDelete('cascade');
             $table->string("state")->default('Pendiente');
-            $table->date('start_date_labor')->nullable();
-            $table->date('end_date_labor')->nullable();
+            $table->time('start_time_labor')->nullable();
+            $table->time('end_time_labor')->nullable();
             $table->text('observations')->nullable();
             $table->timestamps();
         });

@@ -52,9 +52,28 @@ class EntregaController extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request, Entrega $entrega)
-    {
-        //
-    }
+{
+    // dd($request);
+    $request->validate([
+        'state' => 'in:Pendiente,Entregado,Cancelado',
+        'start_time_labor' => 'required',
+        'end_time_labor' => 'required',
+        'observations' => 'max:255'
+    ]);
+
+    // Actualizar la entrega en la base de datos
+
+    // dd($entrega);
+    $entrega->update([
+        'state' => 'Entregado',
+        'start_time_labor' => $request->start_time_labor,
+        'end_time_labor' => $request->end_time_labor,
+        'observations' => $request->observations
+    ]);
+
+    return redirect()->route('entrega.index')->with('success', 'EPP Entregado');
+}
+
 
     /**
      * Remove the specified resource from storage.

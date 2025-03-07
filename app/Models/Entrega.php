@@ -12,8 +12,8 @@ class Entrega extends Model
     protected $fillable = [
         'solicitud_id',
         'state',
-        'start_date_labor',
-        'end_date_labor',
+        'start_time_labor',
+        'end_time_labor',
         'observations',
     ];
 
