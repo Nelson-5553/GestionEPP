@@ -9,7 +9,7 @@ class Sede extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'direction', 'description', 'image'];
 
     public function areas()
     {

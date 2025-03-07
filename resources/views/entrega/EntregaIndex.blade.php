@@ -29,9 +29,9 @@
                             <th scope="col" class="p-4">Sede/Area</th>
                             <th scope="col" class="p-4">Cantidad</th>
                             <th scope="col" class="p-4">Estado</th>
-                            @can('ver solicitud detalle')
+                            {{-- @can('ver solicitud detalle') --}}
                             <th scope="col" class="p-4">Accion</th>
-                            @endcan
+                            {{-- @endcan --}}
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-neutral-300 dark:divide-neutral-700">
@@ -48,7 +48,7 @@
                             <td class="p-4">{{$entrega->solicitud->epp->name}}</td>
                             <td class="p-4"><span class="font-bold">{{$entrega->solicitud->sede->name}}</span> <br>{{$entrega->solicitud->area->name}} </td>
                             <td class="p-4"><span class="font-bold">{{$entrega->solicitud->cantidad}}</td>
-                                {{-- <td class="p-4">
+                                <td class="p-4">
                                     @php
                                         $colores = [
                                             'Pendiente' => 'border-yellow-500 text-yellow-500 bg-yellow-500/10',
@@ -58,12 +58,12 @@
                                         $clase = $colores[$entrega->state] ?? 'border-gray-500 text-gray-500 bg-gray-500/10';
                                     @endphp
                                     <span class="inline-flex overflow-hidden rounded-sm border px-1 py-0.5 text-xs font-medium {{ $clase }}">
-                                        {{ ucfirst($entrega->state) }}
+                                        {{ ucfirst($entrega->state) ?: 'No hay estado' }}
                                     </span>
-                                </td> --}}
-                                {{-- @can('ver solicitud detalle')
-                                <td class="p-4"><a href="{{ route('solicitud.show', $solicitud) }}" class="whitespace-nowrap rounded-sm bg-transparent p-0.5 font-semibold text-black outline-black hover:opacity-75 focus-visible:outline-2 focus-visible:outline-offset-2 active:opacity-100 active:outline-offset-0 dark:text-white dark:outline-white">Revisar</a></td>
-                                @endcan --}}
+                                </td>
+                                {{-- @can('ver solicitud detalle') --}}
+                                <td class="p-4"><a href="" class="whitespace-nowrap rounded-sm bg-transparent p-0.5 font-semibold text-black outline-black hover:opacity-75 focus-visible:outline-2 focus-visible:outline-offset-2 active:opacity-100 active:outline-offset-0 dark:text-white dark:outline-white">Revisar</a></td>
+                                {{-- @endcan --}}
                         </tr>
                         @endforeach
                     </tbody>
