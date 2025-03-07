@@ -51,4 +51,5 @@ Route::post('solicitud', [SolicitudController::class, 'store'])->name('solicitud
 
 //Rutas de Entrega
 Route::get('entrega', [EntregaController::class, 'index'])->name('entrega.index');
+Route::get('entrega/{entrega}', [EntregaController::class, 'show'])->name('entrega.show');
 

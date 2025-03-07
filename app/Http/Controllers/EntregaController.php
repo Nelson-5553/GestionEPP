@@ -37,7 +37,7 @@ class EntregaController extends Controller
      */
     public function show(Entrega $entrega)
     {
-        //
+        return view('entrega.EntregaShow', compact('entrega'));
     }
 
     /**
