@@ -12,8 +12,8 @@ class EntregaController extends Controller
      */
     public function index()
     {
-        $entregas = Entrega::all();
-        return view('entrega.EntregaIndex', compact('entregas'));
+
+        return view('entrega.EntregaIndex');
     }
 
     /**
