@@ -4,6 +4,7 @@ use App\Http\Controllers\AreaController;
 use App\Http\Controllers\EppController;
 use App\Http\Controllers\SedeController;
 use App\Http\Controllers\SolicitudController;
+use App\Http\Controllers\EntregaController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -47,3 +48,7 @@ Route::get('solicitud/create', [SolicitudController::class, 'create'])->name('so
 Route::get('solicitud/{solicitud}', [SolicitudController::class, 'show'])->name('solicitud.show');
 Route::patch('solicitud/{solicitud}', [SolicitudController::class, 'update'])->name('solicitud.update');
 Route::post('solicitud', [SolicitudController::class, 'store'])->name('solicitud.store');
+
+//Rutas de Entrega
+Route::get('entrega', [EntregaController::class, 'index'])->name('entrega.index');
+

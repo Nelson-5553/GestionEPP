@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Epp;
 use App\Models\Solicitud;
+use App\Models\Entrega;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
@@ -88,10 +89,13 @@ class SolicitudController extends Controller
 
         if ($request->state === 'Aprobado'){
 
-            dd($solicitud);
+            // Crear un registro en entrega
+            // dd($solicitud->id);
+            Entrega::create([
+                'solicitud_id' => $solicitud->id, // Guardar el ID de la solicitud
+            ]);
         }
 
-        // Crear un registro en entrega
 
         // Redirigir con un mensaje de éxito
         return redirect()->route('solicitud.index')->with('success', 'Estado actualizado correctamente.');

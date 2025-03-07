@@ -1,7 +1,7 @@
 <x-app-layout>
     <div class="max-w-7xl mx-auto py-12 px-6 lg:px-8">
         <p class="text-xl font-bold text-gray-900 dark:text-gray-200 md:-ml-5">
-            Gestión Salud Áreas
+            Gestión Salud Solicitud
         </p>
 
         <div class="mt-8 bg-[#F1F2F7] dark:bg-neutral-800 p-6 rounded-lg">
