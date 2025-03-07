@@ -86,6 +86,13 @@ class SolicitudController extends Controller
             'aprobado_por_id' => Auth::id(),
         ]);
 
+        if ($request->state === 'Aprobado'){
+
+            dd($solicitud);
+        }
+
+        // Crear un registro en entrega
+
         // Redirigir con un mensaje de éxito
         return redirect()->route('solicitud.index')->with('success', 'Estado actualizado correctamente.');
     }

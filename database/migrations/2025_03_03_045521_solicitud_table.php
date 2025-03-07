@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create("solicituds", function (Blueprint $table) {
             $table->bigIncrements("id");
             $table->foreignId("user_id")->constrained();
-            $table->foreignId("epp_id")->constrained();
-            $table->foreignId("sede_id")->constrained();
-            $table->foreignId("area_id")->constrained();
+            $table->foreignId("epp_id")->constrained()->onDelete("cascade");
+            $table->foreignId("sede_id")->constrained()->onDelete("cascade");
+            $table->foreignId("area_id")->constrained()->onDelete("cascade");
             $table->text("cantidad");
             $table->string("state")->default('Pendiente');
             $table->integer("aprobado_por_id")->nullable();
