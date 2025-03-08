@@ -25,7 +25,8 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             SedeSeeder::class,
             AreaSeeder::class,
-            EppSeeder::class
+            EppSeeder::class,
+            SolicitudSeeder::class
         ]);
 
     }

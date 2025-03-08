@@ -9,7 +9,8 @@ class Solicitud extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['state', 'aprobado_por_id'];
+    protected $fillable = ['user_id', 'epp_id', 'sede_id', 'area_id', 'cantidad', 'state', 'aprobado_por_id'];
+
 
     public function user() {
         return $this->belongsTo(User::class); // (1 a 1)
