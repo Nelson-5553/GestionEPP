@@ -19,11 +19,11 @@
                 </div>
                 <div class="text-gray-900 dark:text-gray-200">
                     <p class="font-semibold">Epp:</p>
-                    <p class="text-gray-700 dark:text-gray-300">{{ $entrega->solicitud->epp->name ?? 'No hay descripción disponible' }}</p>
+                    <p class="text-gray-700 dark:text-gray-300">{{ $entrega->solicitud->epp->name ?? 'No hay EPP disponible' }}</p>
                 </div>
                 <div class="text-gray-900 dark:text-gray-200">
                     <p class="font-semibold">Cantidad:</p>
-                    <p class="text-gray-700 dark:text-gray-300">{{ $entrega->solicitud->cantidad ?? 'No hay descripción disponible' }}</p>
+                    <p class="text-gray-700 dark:text-gray-300">{{ $entrega->solicitud->cantidad ?? 'No hay Cantidad disponible' }}</p>
                 </div>
                 <div class="text-gray-900 dark:text-gray-200">
                     <p class="font-semibold">Estado:</p>
@@ -34,30 +34,49 @@
             <h1 class="text-xl font-bold text-gray-900 dark:text-gray-200">Confirmar entrega</h1>
             <br>
             <x-error-menssage />
-        <form action="{{route('entrega.update', $entrega)}}" method="POST">
-            @csrf
-            @method('PATCH')
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-3">
-                <div>
-                    <label class="block text-gray-900 dark:text-gray-200 font-semibold">Inicio de turno</label>
-                    <input name="start_time_labor" type="time" class="w-full mt-1 p-2 border rounded-lg dark:bg-neutral-700 dark:text-gray-200"/>
 
-                </div>
-                <div>
-                    <label class="block text-gray-900 dark:text-gray-200 font-semibold">Fin de turno</label>
-                    <input name="end_time_labor" type="time" class="w-full mt-1 p-2 border rounded-lg dark:bg-neutral-700 dark:text-gray-200"/>
-                </div>
-                <div class="col-span-2">
-                    <label class="block text-gray-900 dark:text-gray-200 font-semibold">Observación</label>
-                    <textarea name="observations" class="w-full mt-1 p-2 border rounded-lg dark:bg-neutral-700 dark:text-gray-200" rows="4" placeholder="Colocar alguna observacion del Epp (Opcional)"></textarea>
-                </div>
-                <div>
-                    <button type="submit" class="w-full mt-1 p-2 border rounded-lg bg-blue-600 text-white hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600">
-                        Entregar EPP
-                    </button>
-                </div>
-            </form>
+    @if ($entrega->state === 'Entregado')
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div class="text-gray-900 dark:text-gray-200">
+            <p class="font-semibold">Inicio de turno:</p>
+            <p class="text-gray-700 dark:text-gray-300">{{$entrega->start_time_labor}}</p>
+        </div>
+        <div class="text-gray-900 dark:text-gray-200">
+            <p class="font-semibold">Fin de turno:</p>
+            <p class="text-gray-700 dark:text-gray-300">{{ $entrega->end_time_labor}}</p>
+        </div>
+        <div class="text-gray-900 dark:text-gray-200">
+            <p class="font-semibold">Observacion:</p>
+            <p class="text-gray-700 dark:text-gray-300">{{ $entrega->observations ?? 'No hay descripción disponible' }}</p>
+        </div>
+
+    </div>
+    @else
+    <form action="{{route('entrega.update', $entrega)}}" method="POST">
+        @csrf
+        @method('PATCH')
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-3">
+            <div>
+                <label class="block text-gray-900 dark:text-gray-200 font-semibold">Inicio de turno</label>
+                <input name="start_time_labor" type="time" class="w-full mt-1 p-2 border rounded-lg dark:bg-neutral-700 dark:text-gray-200"/>
+
             </div>
+            <div>
+                <label class="block text-gray-900 dark:text-gray-200 font-semibold">Fin de turno</label>
+                <input name="end_time_labor" type="time" class="w-full mt-1 p-2 border rounded-lg dark:bg-neutral-700 dark:text-gray-200"/>
+            </div>
+            <div class="col-span-2">
+                <label class="block text-gray-900 dark:text-gray-200 font-semibold">Observación</label>
+                <textarea name="observations" class="w-full mt-1 p-2 border rounded-lg dark:bg-neutral-700 dark:text-gray-200" rows="4" placeholder="Colocar alguna observacion del Epp (Opcional)"></textarea>
+            </div>
+            <div>
+                <button type="submit" class="w-full mt-1 p-2 border rounded-lg bg-blue-600 text-white hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600">
+                    Entregar EPP
+                </button>
+            </div>
+        </form>
+    </div>
+    @endif
 
 
             <div class="flex justify-end mt-6 gap-4">

@@ -1,7 +1,10 @@
-<div class="overflow-hidden w-full overflow-x-auto rounded-lg border border-neutral-300 dark:border-neutral-700 mt-12">
-   {{ $entregas->links() }}
-    <table class="w-full text-left text-sm text-neutral-600 dark:text-neutral-300">
-        <thead class="border-b border-neutral-300 bg-neutral-50 text-sm text-neutral-900 dark:border-neutral-700 dark:bg-neutral-900 dark:text-white">
+<div class="mt-6">
+
+    {{ $entregas->links() }}
+
+    <div class="overflow-hidden w-full overflow-x-auto rounded-lg border border-neutral-300 dark:border-neutral-700 mt-6">
+        <table class="w-full text-left text-sm text-neutral-600 dark:text-neutral-300">
+            <thead class="border-b border-neutral-300 bg-neutral-50 text-sm text-neutral-900 dark:border-neutral-700 dark:bg-neutral-900 dark:text-white">
             <tr>
                 <th scope="col" class="p-4">User</th>
                 <th scope="col" class="p-4">Epp</th>
@@ -47,4 +50,6 @@
             @endforeach
         </tbody>
     </table>
+</div>
+
 </div>
