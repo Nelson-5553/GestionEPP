@@ -5,7 +5,7 @@
         </p>
         <div
         class="flex flex-col sm:flex-row justify-between items-center w-auto h-auto mt-8 p-5 bg-[#F1F2F7] dark:bg-neutral-800 rounded-md">
-            {{-- <x-search-input /> --}}
+            <x-search-solicitud />
 
             <x-button-create name="solicitud" route="{{route('solicitud.create')}}"/>
 
