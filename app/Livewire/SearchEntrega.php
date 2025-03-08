@@ -26,29 +26,36 @@ class SearchEntrega extends Component
         $user = Auth::user();
 
         $entregas = Entrega::query()
+            // Filtra por usuario si no es admin, usando la relación solicitud
             ->when(!$user->hasRole('admin'), function ($query) use ($user) {
-                $query->where('user_id', $user->id);
+                $query->whereHas('solicitud', function ($query) use ($user) {
+                    $query->where('user_id', $user->id);
+                });
             })
-            ->where('state', 'LIKE', '%' . $this->search . '%')
-            ->orWhereHas('solicitud.user', function ($query) {
-                $query->where('name', 'LIKE', '%' . $this->search . '%')
-                      ->orWhere('card', 'LIKE', '%' . $this->search . '%');
-            })
-            ->orWhereHas('solicitud.epp', function ($query) {
-                $query->where('name', 'LIKE', '%' . $this->search . '%');
-            })
-            ->orWhereHas('solicitud.sede', function ($query) {
-                $query->where('name', 'LIKE', '%' . $this->search . '%');
-            })
-            ->orWhereHas('solicitud.area', function ($query) {
-                $query->where('name', 'LIKE', '%' . $this->search . '%');
-            })
-            ->orWhereHas('solicitud', function ($query) {
-                $query->where('cantidad', 'LIKE', '%' . $this->search . '%');
+
+            // Agrupar condiciones de búsqueda
+            ->where(function ($query) {
+                $query->whereHas('solicitud.user', function ($query) {
+                    $query->where('name', 'LIKE', '%' . $this->search . '%')
+                          ->orWhere('card', 'LIKE', '%' . $this->search . '%');
+                })
+                ->orWhereHas('solicitud.epp', function ($query) {
+                    $query->where('name', 'LIKE', '%' . $this->search . '%');
+                })
+                ->orWhereHas('solicitud.sede', function ($query) {
+                    $query->where('name', 'LIKE', '%' . $this->search . '%');
+                })
+                ->orWhereHas('solicitud.area', function ($query) {
+                    $query->where('name', 'LIKE', '%' . $this->search . '%');
+                })
+                ->orWhereHas('solicitud', function ($query) {
+                    $query->where('cantidad', 'LIKE', '%' . $this->search . '%');
+                });
             })
             ->paginate(5);
 
         return view('livewire.search-entrega', compact('entregas'));
+
     }
 
 }
