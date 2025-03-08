@@ -8,6 +8,8 @@ use App\Models\Entrega;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\DB;
+
 
 class SolicitudController extends Controller
 {
@@ -76,29 +78,61 @@ class SolicitudController extends Controller
     {
         // Validar el estado recibido
         Gate::authorize('editar solicitud');
-
         $request->validate([
             'state' => 'required|in:Pendiente,Aprobado,Rechazado',
         ]);
 
-        // Actualizar el estado en la base de datos
-        $solicitud->update([
-            'state' => $request->state,
-            'aprobado_por_id' => Auth::id(),
-        ]);
+        try {
+            // Iniciar transacción para asegurar consistencia de datos
+            DB::beginTransaction();
 
-        if ($request->state === 'Aprobado'){
-
-            // Crear un registro en entrega
-            // dd($solicitud->id);
-            Entrega::create([
-                'solicitud_id' => $solicitud->id, // Guardar el ID de la solicitud
+            // Actualizar el estado en la base de datos
+            $solicitud->update([
+                'state' => $request->state,
+                'aprobado_por_id' => Auth::id(),
             ]);
+
+            if ($request->state === 'Aprobado') {
+                // Bloquear la fila del EPP para evitar condiciones de carrera
+                $epp = Epp::lockForUpdate()->findOrFail($solicitud->epp_id);
+
+                if ($epp->cantidad >= $solicitud->cantidad) {
+                    // Actualizar la cantidad disponible
+                    $epp->update([
+                        'cantidad' => $epp->cantidad - $solicitud->cantidad
+                    ]);
+
+                    // Crear el registro de entrega
+                    Entrega::create([
+                        'solicitud_id' => $solicitud->id,
+                    ]);
+                } else {
+                    // Finalizar transacción antes de redireccionar con error
+                    DB::commit();
+                    return redirect()->route('solicitud.index')
+                        ->withErrors('Epp no disponible. Cantidad solicitada: ' .
+                            $solicitud->cantidad . ', Cantidad disponible: ' . $epp->cantidad);
+                }
+            }
+
+            // Confirmar todas las operaciones
+            DB::commit();
+
+            // Redirigir con un mensaje de éxito
+            return redirect()->route('solicitud.index')
+                ->with('success', 'Estado actualizado correctamente.');
+
+        } catch (\Exception $e) {
+            // Revertir todos los cambios en caso de error
+            DB::rollBack();
+
+            // Registrar el error para futuras investigaciones
+            \Log::error('Error al actualizar solicitud: ' . $e->getMessage());
+
+            // Redirigir con mensaje de error
+            return redirect()->route('solicitud.index')->withErrors(['Error al procesar la solicitud: ' . $e->getMessage()]);
+
         }
-
-
-        // Redirigir con un mensaje de éxito
-        return redirect()->route('solicitud.index')->with('success', 'Estado actualizado correctamente.');
     }
 
     /**
