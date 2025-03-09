@@ -1,13 +1,4 @@
-{{-- @foreach ($sede->areas as $areas)
-    <li class="flex justify-center">
-        <span class="inline-flex overflow-hidden rounded-md border border-purple-500 bg-white text-xs font-medium text-purple-500 dark:border-purple-500 dark:bg-neutral-950 dark:text-purple-500 transition-colors hover:bg-purple-500 hover:text-white px-4 py-2">
-            {{$areas->name}}
-        </span>
-    </li>
-@endforeach
-<p class="text-gray-700 dark:text-gray-300">{{$sede->direction}}</p>
-<p class="text-gray-700 dark:text-gray-300">{{$sede->description}}</p>
-<p class="text-gray-700 dark:text-gray-300">{{$sede->name}}</p> --}}
+
 <x-app-layout>
     <div class="max-w-7xl mx-auto py-12 px-6 lg:px-8">
         <p class="text-xl font-bold text-gray-900 dark:text-gray-200 md:-ml-5">
