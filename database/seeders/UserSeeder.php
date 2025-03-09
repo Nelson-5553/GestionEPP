@@ -22,9 +22,8 @@ class UserSeeder extends Seeder
             'current_team_id' => null,
             'profile_photo_path' => null,
             'card'=>'1014567890'
-        ])->assignRole('admin');
+        ])->assignRole('supervisor');
 
-        // Crear más usuarios de ejemplo si lo necesitas
         User::create([
             'name' => 'Jane doe',
             'email' => 'jane.doe@example.com',
@@ -34,5 +33,15 @@ class UserSeeder extends Seeder
             'profile_photo_path' => null,
             'card'=> '1023456789'
         ])->assignRole('user');
+
+        User::create([
+            'name' => 'Super Admin',
+            'email' => 'superadmin@example.com',
+            'email_verified_at' => now(),
+            'password' => Hash::make('password123'),
+            'current_team_id' => null,
+            'profile_photo_path' => null,
+            'card'=> '1234567891'
+        ])->assignRole('admin');
     }
 }

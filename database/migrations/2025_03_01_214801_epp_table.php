@@ -17,7 +17,7 @@ return new class extends Migration
             $table->integer("cantidad");
             $table->string("unity");
             $table->string("image");
-            $table->text("description");
+            $table->text("description")->nullable();
             $table->timestamps();
         });
     }

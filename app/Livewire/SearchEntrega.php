@@ -27,7 +27,7 @@ class SearchEntrega extends Component
 
         $entregas = Entrega::query()
             // Filtra por usuario si no es admin, usando la relación solicitud
-            ->when(!$user->hasRole('admin'), function ($query) use ($user) {
+            ->when(!$user->hasAnyRole('admin' , 'supervisor'), function ($query) use ($user) {
                 $query->whereHas('solicitud', function ($query) use ($user) {
                     $query->where('user_id', $user->id);
                 });
