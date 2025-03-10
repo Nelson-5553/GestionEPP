@@ -44,7 +44,9 @@ Route::middleware(['auth'])->group(function () {
     Route::middleware(['auth'])->group(function () {
     Route::get('epp', [EppController::class, 'index'])->name('epp.index');
     Route::get('epp/{epp}', [EppController::class, 'show'])->name('epp.show');
+    Route::get('epp/edit/{epp}', [EppController::class, 'edit'])->name('epp.edit');
     Route::post('epp', [EppController::class, 'store'])->name('epp.store');
+    Route::put('epp/{epp}', [EppController::class, 'update'])->name('epp.update');
     Route::delete('epp/{epp}', [EppController::class, 'destroy'])->name('epp.destroy');
 });
 

@@ -71,7 +71,7 @@ class EppController extends Controller
      */
     public function edit(Epp $epp)
     {
-        //
+        return view('epp.EppEdit' , compact('epp'));
     }
 
     /**
@@ -79,7 +79,17 @@ class EppController extends Controller
      */
     public function update(Request $request, Epp $epp)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'cantidad' => 'required',
+            'unity'=>'required',
+            'description' => 'max:255',
+        ]);
+
+        $epp->update($request->all());
+
+        return redirect()->route('epp.index')
+        ->with('success', 'Sede actualizada correctamente.');
     }
 
     /**
