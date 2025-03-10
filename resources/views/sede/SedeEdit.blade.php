@@ -4,6 +4,8 @@
             Editar Información de la Sede
         </p>
 
+        <x-error-menssage />
+
         <div class="mt-8 bg-[#F1F2F7] dark:bg-neutral-800 p-6 rounded-lg w-auto">
             <form method="POST" action="{{route('sede.update', $sede->id)}}">
                 @csrf
@@ -18,7 +20,7 @@
                             <label for="name" class="block text-gray-900 dark:text-gray-200 font-semibold">Nombre</label>
                         </div>
                         <input type="text" id="name" name="name" value="{{ $sede->name }}"
-                            class="w-full mt-1 p-2 border rounded-lg bg-white dark:bg-neutral-700 text-gray-900 dark:text-gray-200" required>
+                            class="w-full mt-1 p-2 border rounded-lg bg-white dark:bg-neutral-700 text-gray-900 dark:text-gray-200" >
                     </div>
 
                     <div>
@@ -29,7 +31,7 @@
                             <label for="direction" class="block text-gray-900 dark:text-gray-200 font-semibold">Dirección</label>
                         </div>
                         <input type="text" id="direction" name="direction" value="{{ $sede->direction }}"
-                            class="w-full mt-1 p-2 border rounded-lg bg-white dark:bg-neutral-700 text-gray-900 dark:text-gray-200" required>
+                            class="w-full mt-1 p-2 border rounded-lg bg-white dark:bg-neutral-700 text-gray-900 dark:text-gray-200" >
                     </div>
 
                     <div>
@@ -41,7 +43,7 @@
                             <label for="description" class="block text-gray-900 dark:text-gray-200 font-semibold">Descripción</label>
                         </div>
                         <textarea id="description" name="description" rows="3"
-                            class="w-full mt-1 p-2 border rounded-lg bg-white dark:bg-neutral-700 text-gray-900 dark:text-gray-200" required>{{ $sede->description }}</textarea>
+                            class="w-full mt-1 p-2 border rounded-lg bg-white dark:bg-neutral-700 text-gray-900 dark:text-gray-200" >{{ $sede->description }}</textarea>
                     </div>
                 </div>
 
