@@ -19,7 +19,7 @@ class SolicitudSeeder extends Seeder
 
         for ($i = 0; $i < 20; $i++) {
             $solicitudes[] = [
-                'user_id' => rand(1, 2), // IDs de usuario aleatorios entre 1 y 2
+                'user_id' => rand(1, 20), // IDs de usuario aleatorios entre 1 y 2
                 'epp_id' => rand(1, 8), // IDs de EPP aleatorios entre 1 y 8
                 'sede_id' => rand(1, 3), // IDs de sede aleatorios entre 1 y 3
                 'area_id' => rand(1, 25), // IDs de área aleatorios entre 1 y 25
