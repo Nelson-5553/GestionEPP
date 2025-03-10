@@ -32,10 +32,12 @@ Route::middleware(['auth'])->group(function () {
 });
 
 // Rutas de area
-    Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth'])->group(function () {
     Route::get('area', [AreaController::class, 'index'])->name('area.index');
     Route::get('area/{area}',[AreaController::class, 'show'])->name('area.show');
+    Route::get('area/edit/{area}', [AreaController::class, 'edit'])->name('area.edit');
     Route::post('area', [AreaController::class, 'store'])->name('area.store');
+    Route::put('area/{area}', [AreaController::class, 'update'])->name('area.update');
     Route::delete('area/{area}',[AreaController::class, 'destroy'])->name('area.destroy');
 });
 // Rutas de Epp

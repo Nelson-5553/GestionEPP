@@ -61,17 +61,28 @@ class AreaController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Area $area)
     {
-        //
+        $sedes = Sede::select('id', 'name')->get();
+        return view('area.AreaEdit', compact('area', 'sedes'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Area $area)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'sede_id' => 'required',
+            'description' => 'max:255',
+        ]);
+
+        $area->update($request->all());
+
+        return redirect()->route('area.index')
+        ->with('success', 'Sede actualizada correctamente.');
+
     }
 
     /**
