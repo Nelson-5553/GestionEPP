@@ -60,7 +60,7 @@ class RolePermissionSeeder extends Seeder
         Permission::create(['name' => 'editar entrega'])->assignRole([$supervisor]);
         Permission::create(['name' => 'actualizar entrega'])->assignRole([$supervisor]);
         Permission::create(['name' => 'eliminar entrega'])->assignRole([$supervisor]);
-        Permission::create(['name' => 'ver entrega'])->assignRole([$supervisor]);
+        Permission::create(['name' => 'ver entrega'])->assignRole([$supervisor, $user]);
         Permission::create(['name' => 'ver entrega detalle'])->assignRole([$supervisor, $user]);
 
         Permission::create(['name' => 'ver dashboard'])->assignRole([$admin, $user, $supervisor]);

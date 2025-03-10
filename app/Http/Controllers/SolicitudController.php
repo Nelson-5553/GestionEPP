@@ -19,6 +19,7 @@ class SolicitudController extends Controller
     public function index()
     {
         // $solicitudes = Solicitud::all();
+        Gate::authorize('ver solicitud');
         return view('solicitud.SolicitudIndex' );
     }
 
@@ -27,7 +28,7 @@ class SolicitudController extends Controller
      */
     public function create()
     {
-
+        Gate::authorize('crear solicitud');
         $epps = Epp::whereNotNull('name')->whereNotNull('id')->get();
         return view('solicitud.SolicitudCreate', compact('epps'));
     }
@@ -37,7 +38,7 @@ class SolicitudController extends Controller
      */
     public function store(Request $request)
     {
-
+        Gate::authorize('guardar solicitud');
 
         $solicitud = new Solicitud();
 
@@ -76,6 +77,7 @@ class SolicitudController extends Controller
      */
     public function update(Request $request, Solicitud $solicitud)
     {
+        Gate::authorize('actualizar entrega');
         // Validar el estado recibido
         Gate::authorize('editar solicitud');
         $request->validate([

@@ -71,6 +71,7 @@ class EppController extends Controller
      */
     public function edit(Epp $epp)
     {
+        Gate::authorize('editar epp');
         return view('epp.EppEdit' , compact('epp'));
     }
 
@@ -79,6 +80,7 @@ class EppController extends Controller
      */
     public function update(Request $request, Epp $epp)
     {
+        Gate::authorize('actualizar epp');
         $request->validate([
             'name' => 'required',
             'cantidad' => 'required',
@@ -89,7 +91,7 @@ class EppController extends Controller
         $epp->update($request->all());
 
         return redirect()->route('epp.index')
-        ->with('success', 'Sede actualizada correctamente.');
+        ->with('success', 'Epp actualizada correctamente.');
     }
 
     /**

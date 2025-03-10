@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Gate;
 use App\Models\Entrega;
 use Illuminate\Http\Request;
 
@@ -12,7 +13,7 @@ class EntregaController extends Controller
      */
     public function index()
     {
-
+        Gate::authorize('ver entrega');
         return view('entrega.EntregaIndex');
     }
 
@@ -37,6 +38,7 @@ class EntregaController extends Controller
      */
     public function show(Entrega $entrega)
     {
+        Gate::authorize('ver entrega detalle');
         return view('entrega.EntregaShow', compact('entrega'));
     }
 
@@ -53,6 +55,7 @@ class EntregaController extends Controller
      */
     public function update(Request $request, Entrega $entrega)
 {
+    Gate::authorize('actualizar entrega');
     // dd($request);
     $request->validate([
         'state' => 'in:Pendiente,Entregado,Cancelado',

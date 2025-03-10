@@ -77,6 +77,7 @@ class SedeController extends Controller
      */
     public function edit(Sede $sede)
     {
+        Gate::authorize('editar sede');
         return view('sede.SedeEdit', compact('sede'));
     }
 
@@ -85,6 +86,7 @@ class SedeController extends Controller
      */
     public function update(Request $request, Sede $sede)
     {
+        Gate::authorize('actualizar sede');
         $request->validate([
             'name' => 'required',
             'direction' => 'required',

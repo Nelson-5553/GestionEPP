@@ -35,7 +35,7 @@ class AreaController extends Controller
      */
     public function store(AreaRequest $request)
     {
-        // Gate::authorize('crear area');
+      
         $Area = new Area();
 
         $Area->name = $request->name;
@@ -63,6 +63,7 @@ class AreaController extends Controller
      */
     public function edit(Area $area)
     {
+        Gate::authorize('editar area');
         $sedes = Sede::select('id', 'name')->get();
         return view('area.AreaEdit', compact('area', 'sedes'));
     }
@@ -72,6 +73,7 @@ class AreaController extends Controller
      */
     public function update(Request $request, Area $area)
     {
+        Gate::authorize('actualizar area');
         $request->validate([
             'name' => 'required',
             'sede_id' => 'required',
