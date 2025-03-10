@@ -77,7 +77,7 @@ class SedeController extends Controller
      */
     public function edit(Sede $sede)
     {
-        //
+        return view('sede.SedeEdit', compact('sede'));
     }
 
     /**
@@ -85,7 +85,17 @@ class SedeController extends Controller
      */
     public function update(Request $request, Sede $sede)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'direction' => 'required',
+            'description' => 'max:255',
+        ]);
+
+        $sede->update($request->all());
+
+        return redirect()->route('sede.index')
+        ->with('success', 'Sede actualizada correctamente.');
+
     }
 
     /**

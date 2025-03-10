@@ -24,8 +24,10 @@ Route::middleware([
 // Rurtas de sedes
 Route::middleware(['auth'])->group(function () {
     Route::get('sede', [SedeController::class, 'index'])->name('sede.index');
+    Route::get('sede/edit/{sede}', [SedeController::class, 'edit'])->name('sede.edit');
     Route::get('sede/{sede}', [SedeController::class, 'show'])->name('sede.show');
     Route::post('sede', [SedeController::class, 'store'])->name('sede.store');
+    Route::put('sede/{sede}', [SedeController::class, 'update'])->name('sede.update');
     Route::delete('sede/{sede}', [SedeController::class, 'destroy'])->name('sede.destroy');
 });
 
