@@ -5,6 +5,7 @@ use App\Http\Controllers\EppController;
 use App\Http\Controllers\SedeController;
 use App\Http\Controllers\SolicitudController;
 use App\Http\Controllers\EntregaController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -66,5 +67,13 @@ Route::middleware(['auth'])->group(function () {
     Route::get('entrega', [EntregaController::class, 'index'])->name('entrega.index');
     Route::get('entrega/{entrega}', [EntregaController::class, 'show'])->name('entrega.show');
     Route::patch('entrega/{entrega}', [EntregaController::class, 'update'])->name('entrega.update');
+
+});
+
+Route::middleware(['auth'])->group(function () {
+//Rutas de Usuarios
+    Route::get('user', [UserController::class, 'index'])->name('user.index');
+    // Route::get('entrega/{entrega}', [EntregaController::class, 'show'])->name('entrega.show');
+    // Route::patch('entrega/{entrega}', [EntregaController::class, 'update'])->name('entrega.update');
 
 });
