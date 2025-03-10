@@ -8,6 +8,7 @@
                     <th scope="col" class="p-4">ID</th>
                     <th scope="col" class="p-4">Nombre</th>
                     <th scope="col" class="p-4">Correo</th>
+                    <th scope="col" class="p-4">Role</th>
                     <th scope="col" class="p-4">Revisar</th>
                 </tr>
             </thead>
@@ -18,6 +19,9 @@
                         <td class="p-4">{{$user->id}}</td>
                         <td class="p-4"><span class="font-bold text-md">{{$user->name}}</span> <br> {{$user->card}}</td>
                         <td class="p-4">{{$user->email}}</td>
+                        @foreach ($user->roles as $role)
+                        <td class="p-4">{{$role->name}}</td>
+                    @endforeach
                         <td class="p-4"><button type="button" class="whitespace-nowrap rounded-sm bg-transparent p-0.5 font-semibold text-black outline-black hover:opacity-75 focus-visible:outline-2 focus-visible:outline-offset-2 active:opacity-100 active:outline-offset-0 dark:text-white dark:outline-white">Edit</button></td>
                     </tr>
                     @endforeach

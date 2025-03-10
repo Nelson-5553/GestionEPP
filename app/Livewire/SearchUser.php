@@ -25,6 +25,9 @@ class SearchUser extends Component
         $users = User::where('name', 'LIKE', '%' . $this->search . '%')
         ->orWhere('card', 'LIKE', '%' . $this->search . '%')
         ->orWhere('email', 'LIKE', '%' . $this->search . '%')
+        ->orWhereHas('roles', function ($query) {
+            $query->where('name', 'LIKE', '%' . $this->search . '%');
+        })
         ->paginate(10);
         return view('livewire.search-user', compact('users'));
     }
