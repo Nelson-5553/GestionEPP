@@ -6,6 +6,7 @@ use App\Http\Controllers\SedeController;
 use App\Http\Controllers\SolicitudController;
 use App\Http\Controllers\EntregaController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\RoleController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -77,6 +78,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('user/edit/{user}', [UserController::class, 'edit'])->name('user.edit');
     Route::patch('user/edit/{user}', [UserController::class, 'update'])->name('user.update');
 
-    // Route::patch('entrega/{entrega}', [EntregaController::class, 'update'])->name('entrega.update');
-
 });
+
+Route::get('role', [RoleController::class, 'index'])->name('role.index');
