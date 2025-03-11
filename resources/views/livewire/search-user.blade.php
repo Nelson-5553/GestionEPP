@@ -22,7 +22,7 @@
                         @foreach ($user->roles as $role)
                         <td class="p-4">{{$role->name}}</td>
                     @endforeach
-                        <td class="p-4"><button type="button" class="whitespace-nowrap rounded-sm bg-transparent p-0.5 font-semibold text-black outline-black hover:opacity-75 focus-visible:outline-2 focus-visible:outline-offset-2 active:opacity-100 active:outline-offset-0 dark:text-white dark:outline-white">Edit</button></td>
+                        <td class="p-4"><a  href="{{ route('user.show', $user)}}" class="whitespace-nowrap rounded-sm bg-transparent p-0.5 font-semibold text-black outline-black hover:opacity-75 focus-visible:outline-2 focus-visible:outline-offset-2 active:opacity-100 active:outline-offset-0 dark:text-white dark:outline-white">Edit</a></td>
                     </tr>
                     @endforeach
 

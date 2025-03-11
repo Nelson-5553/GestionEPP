@@ -73,7 +73,7 @@ Route::middleware(['auth'])->group(function () {
 Route::middleware(['auth'])->group(function () {
 //Rutas de Usuarios
     Route::get('user', [UserController::class, 'index'])->name('user.index');
-    // Route::get('entrega/{entrega}', [EntregaController::class, 'show'])->name('entrega.show');
+    Route::get('user/{user}', [UserController::class, 'show'])->name('user.show');
     // Route::patch('entrega/{entrega}', [EntregaController::class, 'update'])->name('entrega.update');
 
 });
