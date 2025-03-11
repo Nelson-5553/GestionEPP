@@ -123,7 +123,10 @@
                                 {{ __('Profile') }}
                             </x-dropdown-link>
                             <x-dropdown-link href="{{ route('user.index') }}">
-                                {{ __('Users') }}
+                                {{ __('Usuarios') }}
+                            </x-dropdown-link>
+                            <x-dropdown-link href="{{ url('/telescope') }}">
+                                {{ __('telescope') }}
                             </x-dropdown-link>
 
                             @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
@@ -187,6 +190,14 @@
                 <!-- Account Management -->
                 <x-responsive-nav-link href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')">
                     {{ __('Profile') }}
+                </x-responsive-nav-link>
+                <!-- User list -->
+                <x-responsive-nav-link href="{{ route('user.index') }}" :active="request()->routeIs('user.index')">
+                    {{ __('Usuarios') }}
+                </x-responsive-nav-link>
+                <!-- Telescope -->
+                <x-responsive-nav-link href="{{ url('/telescope') }}">
+                    {{ __('Telescope') }}
                 </x-responsive-nav-link>
 
                 @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
