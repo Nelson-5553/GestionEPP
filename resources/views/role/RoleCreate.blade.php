@@ -1,20 +1,26 @@
 <x-app-layout>
     <div class="max-w-7xl mx-auto py-12 px-6 lg:px-8">
         <p class="text-xl font-bold text-gray-900 dark:text-gray-200 md:-ml-5">
-            Gestión Salud Solicitud
+            Gestión Salud Roles
         </p>
 
+         {{-- mensaje de error --}}
+         <x-error-menssage />
+
         <div class="mt-8 bg-[#F1F2F7] dark:bg-neutral-800 p-6 rounded-lg">
-            <form action="" method="POST">
+            <form action="{{route('role.store')}}" method="POST">
                 @method('POST')
                 @csrf
 
 
                 <div class="mt-4">
                     <label class="block text-gray-900 dark:text-gray-200 font-semibold">Nombre de Rol</label>
-                    <input type="number" name="role"
+                    <input type="text" name="name"
                     class="w-full mt-1 p-2 border rounded-lg dark:bg-neutral-700 dark:text-gray-200" required>
                 </div>
+                <p class="text-lg font-bold text-gray-900 dark:text-gray-200 mt-4">
+                   Lista de permisos
+                </p>
 
                 <div class="grid grid-cols-3 md:grid-cols-4 gap-4 mt-6">
                     @foreach ($permissions as $permission)

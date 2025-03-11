@@ -30,10 +30,24 @@ class RoleController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Role $role)
+    public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|unique:roles,name',
+            'permissions' => 'array' // Aseguramos que 'permissions' es un array
+        ]);
+
+        // Crear el rol
+        $role = Role::create(['name' => $request->name]);
+
+        // Sincronizar los permisos con el rol
+        if ($request->has('permissions')) {
+            $role->permissions()->sync($request->permissions);
+        }
+
+        return redirect()->route('role.index')->with('success', 'Rol creado correctamente');
     }
+
 
     /**
      * Display the specified resource.
