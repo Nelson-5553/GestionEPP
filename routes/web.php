@@ -81,3 +81,4 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::get('role', [RoleController::class, 'index'])->name('role.index');
+Route::get('role/create', [RoleController::class, 'create'])->name('role.create');
