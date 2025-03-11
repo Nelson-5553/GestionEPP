@@ -1316,7 +1316,7 @@
                                 </button>
                                 <!-- Video -->
                                 <video x-ref="video" class="w-full max-w-7xl rounded-md aspect-video" controls>
-                                    <track default kind="captions" srclang="en" src="path to your .vtt file" />
+                                    <track default kind="captions" srclang="en" src="" />
                                     <source src="https://penguinui.s3.amazonaws.com/component-assets/peng.webm"
                                         type="video/webm">
                                     <source src="https://penguinui.s3.amazonaws.com/component-assets/peng.mp4"
