@@ -122,12 +122,16 @@
                             <x-dropdown-link href="{{ route('profile.show') }}">
                                 {{ __('Profile') }}
                             </x-dropdown-link>
+                            @can('ver usuario')
                             <x-dropdown-link href="{{ route('user.index') }}">
                                 {{ __('Usuarios') }}
                             </x-dropdown-link>
+                            @endcan
+                            @can('ver telescope')
                             <x-dropdown-link href="{{ url('/telescope') }}">
                                 {{ __('telescope') }}
                             </x-dropdown-link>
+                            @endcan
 
                             @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
                                 <x-dropdown-link href="{{ route('api-tokens.index') }}">
@@ -192,13 +196,17 @@
                     {{ __('Profile') }}
                 </x-responsive-nav-link>
                 <!-- User list -->
+                @can('ver usuario')
                 <x-responsive-nav-link href="{{ route('user.index') }}" :active="request()->routeIs('user.index')">
                     {{ __('Usuarios') }}
                 </x-responsive-nav-link>
+                @endcan
                 <!-- Telescope -->
+                @can('ver telescope')
                 <x-responsive-nav-link href="{{ url('/telescope') }}">
                     {{ __('Telescope') }}
                 </x-responsive-nav-link>
+                @endcan
 
                 @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
                     <x-responsive-nav-link href="{{ route('api-tokens.index') }}" :active="request()->routeIs('api-tokens.index')">

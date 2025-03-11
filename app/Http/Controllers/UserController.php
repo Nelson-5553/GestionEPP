@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Spatie\Permission\Models\Role;
+use Illuminate\Support\Facades\Gate;
 
 
 
@@ -15,6 +16,7 @@ class UserController extends Controller
      */
     public function index()
     {
+        Gate::authorize('ver usuario');
         return view('user.UserIndex');
     }
 
@@ -23,7 +25,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        Gate::authorize('crear usuario');
     }
 
     /**
@@ -31,7 +33,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Gate::authorize('guardar usuario');
     }
 
     /**
@@ -39,6 +41,7 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
+        Gate::authorize('ver usuario detalle');
         return view('user.UserShow', compact('user'));
     }
 
@@ -47,6 +50,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
+        Gate::authorize('editar usuario');
         $roles = Role::all();
         return view('user.UserEdit', compact('user', 'roles'));
 
@@ -57,6 +61,7 @@ class UserController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        Gate::authorize('actualizar usuario');
         // Validar que el rol enviado existe en la tabla de roles
         $request->validate([
             'role' => 'required|exists:roles,id',
@@ -83,6 +88,6 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Gate::authorize('eliminar usuario');
     }
 }
