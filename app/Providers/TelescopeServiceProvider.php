@@ -9,12 +9,18 @@ use Laravel\Telescope\TelescopeApplicationServiceProvider;
 
 class TelescopeServiceProvider extends TelescopeApplicationServiceProvider
 {
+    public function boot()
+    {
+        parent::boot(); // Asegura que el `boot()` del padre se ejecute correctamente
+        $this->gate();  // ← Llamamos a la función `gate()`
+    }
     /**
      * Register any application services.
      */
     public function register(): void
     {
         // Telescope::night();
+
 
         $this->hideSensitiveRequestDetails();
 
@@ -53,12 +59,28 @@ class TelescopeServiceProvider extends TelescopeApplicationServiceProvider
      *
      * This gate determines who can access Telescope in non-local environments.
      */
-    protected function gate(): void
+    protected function gate()
     {
+        Telescope::auth(function ($request) {
+            // Verificamos que el usuario esté autenticado
+            if (!$request->user()) {
+                return false;
+            }
+
+            // Verificamos si el email está en la lista autorizada
+            return in_array($request->user()->email, [
+                'superadmin@example.com',
+                // Puedes añadir más emails aquí
+            ]);
+        });
+
+        // También mantenemos la definición en Gate
         Gate::define('viewTelescope', function ($user) {
             return in_array($user->email, [
-                //
+                'superadmin@example.com',
+                // Los mismos emails que arriba
             ]);
         });
     }
+
 }
