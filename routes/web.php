@@ -74,6 +74,9 @@ Route::middleware(['auth'])->group(function () {
 //Rutas de Usuarios
     Route::get('user', [UserController::class, 'index'])->name('user.index');
     Route::get('user/{user}', [UserController::class, 'show'])->name('user.show');
+    Route::get('user/edit/{user}', [UserController::class, 'edit'])->name('user.edit');
+    Route::patch('user/edit/{user}', [UserController::class, 'update'])->name('user.update');
+
     // Route::patch('entrega/{entrega}', [EntregaController::class, 'update'])->name('entrega.update');
 
 });

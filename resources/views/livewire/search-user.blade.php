@@ -12,7 +12,7 @@
                     <th scope="col" class="p-4">Revisar</th>
                 </tr>
             </thead>
-            <tbody class="divide-y bg-[#F1F2F7] dark:bg-neutral-800  divide-neutral-300 dark:divide-neutral-700">
+            <tbody class="divide-y bg-[#ffffff] dark:bg-neutral-800  divide-neutral-300 dark:divide-neutral-700">
                 @foreach ($users as $user)
                     <tr>
 
@@ -22,7 +22,7 @@
                         @foreach ($user->roles as $role)
                         <td class="p-4">{{$role->name}}</td>
                     @endforeach
-                        <td class="p-4"><a  href="{{ route('user.show', $user)}}" class="whitespace-nowrap rounded-sm bg-transparent p-0.5 font-semibold text-black outline-black hover:opacity-75 focus-visible:outline-2 focus-visible:outline-offset-2 active:opacity-100 active:outline-offset-0 dark:text-white dark:outline-white">Edit</a></td>
+                        <td class="p-4"><a  href="{{ route('user.show', $user)}}" class="whitespace-nowrap rounded-sm bg-transparent p-0.5 font-semibold text-black outline-black hover:opacity-75 focus-visible:outline-2 focus-visible:outline-offset-2 active:opacity-100 active:outline-offset-0 dark:text-white dark:outline-white">Revisar</a></td>
                     </tr>
                     @endforeach
 

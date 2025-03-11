@@ -3,10 +3,6 @@
         <p class="text-2xl font-bold text-gray-900 dark:text-gray-200 md:-ml-5 border-b-2 border-gray-300 dark:border-gray-700 pb-2">
             Gestión Salud Usuarios
         </p>
-{{-- nensaje de exito --}}
-<x-success-menssage />
-{{-- mensaje de error --}}
-<x-error-menssage />
 
         <div class="mt-8 bg-white dark:bg-neutral-800 shadow-lg rounded-xl p-6">
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -43,19 +39,27 @@
 
                         <p class="text-lg font-semibold text-gray-900 dark:text-gray-200">Rol:</p>
                     </div>
-                    <p class="text-gray-700 dark:text-gray-400 bg-gray-100 dark:bg-gray-700 rounded-md p-2">
-                        @foreach ($user->roles as $role)
-                        <td class="p-4">{{$role->name}}</td>
-                    @endforeach
-                    </p>
+                <form action="{{route('user.update', $user->id)}}" method="POST">
+                    @csrf
+                    @method('PATCH')
+                    <select name="role" class="text-gray-700 dark:text-gray-400 bg-gray-100 dark:bg-gray-700 rounded-md p-2 w-full">
+                        @foreach ($roles as $role)
+                        <option value="{{ $role->id }}"
+                            @if($user->roles->contains('id', $role->id)) selected @endif>
+                            {{ $role->name }}
+                        </option>
+                        @endforeach
+                    </select>
+
                 </div>
             </div>
             <div class="flex justify-start mt-6 gap-3">
 
-                <a href="{{ route('user.edit', $user)}}" class="whitespace-nowrap rounded-lg bg-neutral-900 border border-neutral-900 px-4 py-2 text-base font-medium tracking-wide text-white transition hover:opacity-75 text-center focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 active:opacity-100 active:outline-offset-0 disabled:opacity-75 disabled:cursor-not-allowed dark:bg-neutral-50 dark:border-neutral-50 dark:text-neutral-900 dark:focus-visible:outline-neutral-50">
-                    Editar Rol
-                </a>
+                <button type="submit" class="whitespace-nowrap rounded-lg bg-neutral-900 border border-neutral-900 px-4 py-2 text-base font-medium tracking-wide text-white transition hover:opacity-75 text-center focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 active:opacity-100 active:outline-offset-0 disabled:opacity-75 disabled:cursor-not-allowed dark:bg-neutral-50 dark:border-neutral-50 dark:text-neutral-900 dark:focus-visible:outline-neutral-50">
+                    Actualizar Rol
+                </button>
 
+            </form>
 
 
                 {{-- <a href="" class="text-blue-500 hover:text-blue-600 transition-colors">

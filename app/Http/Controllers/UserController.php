@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Spatie\Permission\Models\Role;
+
+
 
 class UserController extends Controller
 {
@@ -42,9 +45,11 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(User $user)
     {
-        //
+        $roles = Role::all();
+        return view('user.UserEdit', compact('user', 'roles'));
+
     }
 
     /**
@@ -52,8 +57,26 @@ class UserController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        // Validar que el rol enviado existe en la tabla de roles
+        $request->validate([
+            'role' => 'required|exists:roles,id',
+        ]);
+
+        // Encontrar el usuario por ID
+        $user = User::findOrFail($id);
+
+        // Obtener el rol seleccionado
+        $roleId = $request->input('role');
+
+        // Obtener el nombre del rol basado en su ID
+        $roleName = Role::findOrFail($roleId)->name;
+
+        // Sincronizar el rol del usuario (elimina el anterior y asigna el nuevo)
+        $user->syncRoles([$roleName]);
+
+        return redirect()->route('user.index')->with('success', 'Rol actualizado correctamente');
     }
+
 
     /**
      * Remove the specified resource from storage.
