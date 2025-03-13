@@ -34,7 +34,7 @@
                                     <td class="p-4">{{$role->id}}</td>
                                     <td class="p-4">{{$role->name}}</td>
 
-                                    <td class="p-4"><a  href="" class="whitespace-nowrap rounded-sm bg-transparent p-0.5 font-semibold text-black outline-black hover:opacity-75 focus-visible:outline-2 focus-visible:outline-offset-2 active:opacity-100 active:outline-offset-0 dark:text-white dark:outline-white">Revisar</a></td>
+                                    <td class="p-4"><a  href="{{route('role.show', $role)}}" class="whitespace-nowrap rounded-sm bg-transparent p-0.5 font-semibold text-black outline-black hover:opacity-75 focus-visible:outline-2 focus-visible:outline-offset-2 active:opacity-100 active:outline-offset-0 dark:text-white dark:outline-white">Revisar</a></td>
                                 </tr>
                                 @endforeach
 
