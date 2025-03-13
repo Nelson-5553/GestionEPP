@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
+use Illuminate\Support\Facades\Gate;
+
 
 class RoleController extends Controller
 {
@@ -13,6 +15,7 @@ class RoleController extends Controller
      */
     public function index()
     {
+        Gate::authorize('ver role');
         $roles = Role::all();
         return view('role.RoleIndex', compact('roles'));
     }
@@ -22,7 +25,7 @@ class RoleController extends Controller
      */
     public function create()
     {
-
+        Gate::authorize('crear role');
         $permissions = Permission::all();
         return view('role.RoleCreate', compact('permissions'));
     }
@@ -32,6 +35,7 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
+        Gate::authorize('guardar role');
         $request->validate([
             'name' => 'required|unique:roles,name',
             'permissions' => 'array' // Aseguramos que 'permissions' es un array
@@ -54,6 +58,7 @@ class RoleController extends Controller
      */
     public function show(Role $role)
     {
+        Gate::authorize('ver role detalle');
         $role->load('permissions');
     return view('role.RoleShow', compact('role'));
     }
@@ -63,7 +68,7 @@ class RoleController extends Controller
      */
     public function edit(Role $role)
     {
-        //
+        Gate::authorize('editar role');
     }
 
     /**
@@ -71,7 +76,7 @@ class RoleController extends Controller
      */
     public function update(Request $request, Role $role)
     {
-        //
+        Gate::authorize('actualizar role');
     }
 
     /**
@@ -79,6 +84,6 @@ class RoleController extends Controller
      */
     public function destroy(Role $role)
     {
-        //
+        Gate::authorize('eliminar role');
     }
 }

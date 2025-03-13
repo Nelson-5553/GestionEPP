@@ -127,11 +127,11 @@
                                 {{ __('Usuarios') }}
                             </x-dropdown-link>
                             @endcan
-
+                            @can('ver role')
                             <x-dropdown-link href="{{ route('role.index') }}">
                                 {{ __('Roles y permisos') }}
                             </x-dropdown-link>
-
+                            @endcan
                             @can('ver telescope')
                             <x-dropdown-link href="{{ url('/telescope') }}">
                                 {{ __('telescope') }}
@@ -207,7 +207,7 @@
                 </x-responsive-nav-link>
                 @endcan
                 <!-- Roles list -->
-                @can('ver usuario')
+                @can('ver role')
                 <x-responsive-nav-link href="{{ route('role.index') }}" :active="request()->routeIs('role.index')">
                     {{ __('Roles y permisos') }}
                 </x-responsive-nav-link>

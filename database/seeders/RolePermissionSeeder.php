@@ -72,6 +72,14 @@ class RolePermissionSeeder extends Seeder
         Permission::create(['name' => 'ver usuario']);
         Permission::create(['name' => 'ver usuario detalle']);
 
+ //Crear permisos para ventanas de roles
+        Permission::create(['name' => 'crear role']);
+        Permission::create(['name' => 'guardar role']);
+        Permission::create(['name' => 'editar role']);
+        Permission::create(['name' => 'actualizar role']);
+        Permission::create(['name' => 'eliminar role']);
+        Permission::create(['name' => 'ver role']);
+        Permission::create(['name' => 'ver role detalle']);
 
 
         Permission::create(['name' => 'ver telescope']);
