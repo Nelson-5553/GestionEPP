@@ -1328,7 +1328,7 @@
                     </div>
 
 
-                    <div class="grid grid-cols-3 grid-rows-1 w-full gap-4 mt-12">
+                    <div class="grid grid-cols-1 lg:grid-cols-3 w-full gap-4 mt-12">
                         <div class="bg-white p-6 rounded-xl shadow-md">
                             <div class="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mb-4 mx-auto">
                               <svg
