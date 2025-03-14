@@ -7,7 +7,18 @@
             d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
     </svg>
     <input type="text"
-        {{ $attributes->merge(['class' => 'w-full border border-neutral-300 rounded-md bg-white dark:bg-gray-900 px-2 py-1.5 pl-9 text-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black disabled:cursor-not-allowed disabled:opacity-75 dark:border-neutral-700 dark:bg-neutral-950/50 dark:focus-visible:outline-white']) }}
-        placeholder="Buscar..."
-        oninput="Livewire.dispatch('searchChangedEpp', { value: this.value })" />
+    {{ $attributes->merge(['class' => 'w-full border border-neutral-300 rounded-md bg-white dark:bg-gray-900 px-2 py-1.5 pl-9 text-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black disabled:cursor-not-allowed disabled:opacity-75 dark:border-neutral-700 dark:bg-neutral-950/50 dark:focus-visible:outline-white']) }}
+    placeholder="Buscar..."
+    oninput="debouncedSearch(this.value)" />
 </div>
+
+{{-- searchChangedEpp --}}
+<script>
+    let debounceTimer;
+    function debouncedSearch(value) {
+        clearTimeout(debounceTimer);
+        debounceTimer = setTimeout(() => {
+            Livewire.dispatch('searchChangedEpp', { value });
+        }, 400); // 400ms de espera
+    }
+</script>
