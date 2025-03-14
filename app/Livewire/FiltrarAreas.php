@@ -24,7 +24,7 @@ class FiltrarAreas extends Component
     public function render()
     {
         return view('livewire.filtrar-areas', [
-            'sedes' => Sede::all(),
+            'sedes' => Sede::select('id', 'name')->get(),
         ]);
     }
 }
