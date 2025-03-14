@@ -10,14 +10,13 @@
             $clase = $colores[$solicitud->state] ?? 'border-gray-500 text-gray-500 bg-gray-500/10';
         @endphp
 
-        <div
-            class="flex flex-row justify-between bg-[#f9f9fa] dark:bg-neutral-800 border-2 border-gray-300 dark:border-gray-600  w-full rounded-t-lg p-4 mt-8">
-            <h1 class="text-xl font-bold text-gray-900 dark:text-gray-200">Información de Solicitud</h1>
-            <span
-                class="w-fit inline-flex overflow-hidden rounded-full border bg-white text-xs font-medium dark:bg-neutral-950 {{ $clase }}">
-                <span class="px-3 py-2">{{ ucfirst($solicitud->state) }}</span>
-            </span>
-        </div>
+<div class="flex flex-col sm:flex-row sm:justify-between bg-[#f9f9fa] dark:bg-neutral-800 border-2 border-gray-300 dark:border-gray-600 w-full rounded-t-lg p-3 sm:p-4 mt-6 sm:mt-8">
+    <h1 class="text-lg sm:text-xl font-bold text-gray-900 dark:text-gray-200">Información de Solicitud</h1>
+    <span class="w-fit inline-flex overflow-hidden rounded-full border bg-white text-xs sm:text-sm font-medium dark:bg-neutral-950 {{ $clase }}">
+        <span class="px-2 py-1 sm:px-3 sm:py-2">{{ ucfirst($solicitud->state) }}</span>
+    </span>
+</div>
+
 
         <div class=" bg-[#f9f9fa] dark:bg-neutral-800 border border-gray-300 dark:border-gray-600 p-7 rounded-b-lg">
             <br>
