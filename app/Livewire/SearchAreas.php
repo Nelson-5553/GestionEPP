@@ -21,16 +21,27 @@ class SearchAreas extends Component
     }
 
     public function render()
-    {
-        $areas = Area::where('name', 'LIKE', '%' . $this->search . '%')
-            ->orWhereHas('sede', function ($query) {
-                $query->where('name', 'LIKE', '%' . $this->search . '%');
-            })
-            ->orWhere('description', 'LIKE', '%' . $this->search . '%')
-            ->with('sede')
-            ->paginate(5);
+{
+    $search = $this->search;
+    $query = Area::query();
 
-        return view('livewire.search-areas', compact('areas'));
+    if (!empty($search)) {
+        $query->where(function($q) use ($search) {
+            $q->where('name', 'LIKE', "%{$search}%")
+              ->orWhere('description', 'LIKE', "%{$search}%");
+        });
+
+        // Solo buscar en la relación si es necesario
+        if (strlen($search) > 2) {
+            $query->orWhereHas('sede', function ($q) use ($search) {
+                $q->where('name', 'LIKE', "%{$search}%");
+            });
+        }
     }
+
+    $areas = $query->with('sede')->paginate(5);
+
+    return view('livewire.search-areas', compact('areas'));
+}
 }
 
