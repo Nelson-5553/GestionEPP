@@ -7,6 +7,7 @@ use App\Http\Controllers\SolicitudController;
 use App\Http\Controllers\EntregaController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\StatisticsController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -78,4 +79,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('role/create', [RoleController::class, 'create'])->name('role.create');
     Route::get('role/{role}', [RoleController::class, 'show'])->name('role.show');
     Route::post('role', [RoleController::class, 'store'])->name('role.store');
+
+    //Rutas de Estadisticas
+
+    Route::get('staticts', [StatisticsController::class, 'index'])->name('dashboard.index');
+
 });
