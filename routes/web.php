@@ -75,7 +75,7 @@ Route::middleware(['auth'])->group(function () {
 
 //Rutas de Roles
     Route::get('role', [RoleController::class, 'index'])->name('role.index');
-    Route::get('role/{role}', [RoleController::class, 'show'])->name('role.show');
     Route::get('role/create', [RoleController::class, 'create'])->name('role.create');
+    Route::get('role/{role}', [RoleController::class, 'show'])->name('role.show');
     Route::post('role', [RoleController::class, 'store'])->name('role.store');
 });

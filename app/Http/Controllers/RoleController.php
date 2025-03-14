@@ -16,7 +16,7 @@ class RoleController extends Controller
     public function index()
     {
         Gate::authorize('ver role');
-        $roles = Role::all();
+        $roles = Role::select('name', 'id')->get();
         return view('role.RoleIndex', compact('roles'));
     }
 
@@ -26,7 +26,7 @@ class RoleController extends Controller
     public function create()
     {
         Gate::authorize('crear role');
-        $permissions = Permission::all();
+        $permissions = Permission::select('name', 'id')->get();
         return view('role.RoleCreate', compact('permissions'));
     }
 
