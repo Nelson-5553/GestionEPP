@@ -1,4 +1,5 @@
 import './bootstrap';
+import './chart';
 
 // modo oscuro del sistema
     document.addEventListener('DOMContentLoaded', function () {
