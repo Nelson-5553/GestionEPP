@@ -18,7 +18,7 @@ class AreaController extends Controller
     {
         Gate::authorize('ver area');
         // $areas = Area::with('sede')->get();
-        $sedes = Sede::all();
+        $sedes = Sede::select('id', 'name')->get();
         return view('area.AreaIndex', compact('sedes'));
     }
 
@@ -35,7 +35,7 @@ class AreaController extends Controller
      */
     public function store(AreaRequest $request)
     {
-      
+
         $Area = new Area();
 
         $Area->name = $request->name;
