@@ -1,7 +1,8 @@
 <x-guest-layout>
     <x-authentication-card>
         <x-slot name="logo">
-            <x-authentication-card-logo />
+            <span
+                            class="flex size-12 md:size-24 items-center justify-center overflow-hidden rounded-full bg-[#5A67BA] text-white text-xl md:text-6xl font-bold tracking-wider text-on-danger/80 ">G</span>
         </x-slot>
 
         <x-validation-errors class="mb-4" />
