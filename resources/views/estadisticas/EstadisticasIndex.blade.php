@@ -12,6 +12,6 @@
         </div>
 
         <a href="{{route('download.report')}}">Descargar pdf</a>
-
+        @livewire('table-pdf')
     </div>
 </x-app-layout>
