@@ -105,11 +105,11 @@
     </style>
 
 
-    {{-- <div class="ocultar">
+
         <br>
-    {{$entregas->links()}}
+    <x-search-tablepdf/>
     <br>
-    </div> --}}
+
 
     <div class="table-container">
     <table class="table">
