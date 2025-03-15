@@ -3,13 +3,15 @@
         <p class="text-xl font-bold text-gray-900 dark:text-gray-200 md:-ml-5 ml-0">
            Dashboard
         </p>
-        <div class="mt-5" id="chart" data-categories='@json($categories)'
-            data-solicitudes='@json($solicitudesData)' data-entregas='@json($entregasData)'>
-        </div>
         {{-- nensaje de exito --}}
         <x-success-menssage />
         {{-- mensaje de error --}}
         <x-error-menssage />
+        <div class="mt-5" id="chart" data-categories='@json($categories)'
+            data-solicitudes='@json($solicitudesData)' data-entregas='@json($entregasData)'>
+        </div>
+
+        <a href="{{route('download.report')}}">Descargar pdf</a>
 
     </div>
 </x-app-layout>

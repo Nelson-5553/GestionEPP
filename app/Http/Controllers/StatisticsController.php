@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use App\Models\Solicitud;
 use App\Models\Entrega;
+
 
 class StatisticsController extends Controller
 {
@@ -47,11 +49,24 @@ class StatisticsController extends Controller
     /**
      * Show the form for creating a new resource.
      */
+    public function downloadPDF()
+    {
+        $data = ['title' => 'Ejemplo de PDF en Laravel 11'];
+
+        // Cargar una vista Blade y pasarle datos
+        $pdf = Pdf::loadView('pdf.reporte', $data)->setPaper('a4', 'landscape');
+
+        // Descargar el PDF
+        return $pdf->download('reporte.pdf');
+    }
+    /**
+     * Show the form for creating a new resource.
+     */
+
     public function create()
     {
-        //
-    }
 
+    }
     /**
      * Store a newly created resource in storage.
      */

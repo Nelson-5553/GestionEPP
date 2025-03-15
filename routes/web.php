@@ -83,5 +83,6 @@ Route::middleware(['auth'])->group(function () {
     //Rutas de Estadisticas
 
     Route::get('staticts', [StatisticsController::class, 'index'])->name('dashboard.index');
+    Route::get('/descargar-pdf', [StatisticsController::class, 'downloadPDF'])->name('download.report');
 
 });
