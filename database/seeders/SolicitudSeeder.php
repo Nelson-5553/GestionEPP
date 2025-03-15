@@ -26,7 +26,7 @@ class SolicitudSeeder extends Seeder
                 'cantidad' => rand(1, 20), // Genera una cantidad aleatoria entre 1 y 20
                 'state' => 'Pendiente',
                 'aprobado_por_id' => null,
-                'created_at' => now(),
+                'created_at' => now()->subDays(rand(0, 365))->setTime(rand(0, 23), rand(0, 59), rand(0, 59)),
                 'updated_at' => now()
             ];
         }

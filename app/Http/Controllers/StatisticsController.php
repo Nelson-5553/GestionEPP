@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Solicitud;
+use App\Models\Entrega;
 
 class StatisticsController extends Controller
 {
@@ -11,7 +13,35 @@ class StatisticsController extends Controller
      */
     public function index()
     {
-        return view('estadisticas.EstadisticasIndex');
+
+        // Obtener solicitudes agrupadas por mes
+        $solicitudes = Solicitud::selectRaw('EXTRACT(MONTH FROM created_at) as mes, COUNT(*) as total')
+            ->groupBy('mes')
+            ->orderBy('mes')
+            ->get();
+
+        // Obtener entregas agrupadas por mes
+        $entregas = Entrega::selectRaw('EXTRACT(MONTH FROM created_at) as mes, COUNT(*) as total')
+            ->where('state', 'Entregado')
+            ->groupBy('mes')
+            ->orderBy('mes')
+            ->get();
+
+        // Obtener la lista de meses presentes en ambas consultas
+        $meses = $solicitudes->pluck('mes')->merge($entregas->pluck('mes'))->unique()->sort()->values();
+
+        // Convertir los números de mes a nombres (Ej: 1 -> 'Jan')
+        $categories = $meses->map(function ($mes) {
+            return date("M", mktime(0, 0, 0, $mes, 1));
+        });
+
+        // Formatear datos para el gráfico, asegurando que cada mes tenga valores
+        $solicitudesData = $meses->map(fn($mes) => $solicitudes->firstWhere('mes', $mes)->total ?? 0);
+        $entregasData = $meses->map(fn($mes) => $entregas->firstWhere('mes', $mes)->total ?? 0);
+
+        // Pasamos los datos a la vista Blade
+        return view('estadisticas.EstadisticasIndex', compact('categories', 'solicitudesData', 'entregasData'));
+
     }
 
     /**
