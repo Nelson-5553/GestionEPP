@@ -8,7 +8,7 @@
         {{-- mensaje de error --}}
         <x-error-menssage />
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-5 mt-12">
-        <div class="bg-white/80 backdrop-blur-sm rounded-lg" id="chart" data-categories='@json($categories)'
+        <div class="rounded-lg" id="chart" data-categories='@json($categories)'
             data-solicitudes='@json($solicitudesData)' data-entregas='@json($entregasData)'>
         </div>
         <div class="bg-white dark:bg-gray-800 text-gray-900 dark:text-white p-6 rounded-lg shadow-lg">
