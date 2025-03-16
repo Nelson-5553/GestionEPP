@@ -15,7 +15,8 @@ class StatisticsController extends Controller
      */
     public function index()
     {
-
+        //solicitudes recientes
+        $recentsolicitudes = Solicitud::select('user_id', 'sede_id', 'area_id', 'state', 'cantidad')->orderBy('updated_at', 'desc')->take(3)->get();
         // Obtener solicitudes agrupadas por mes
         $solicitudes = Solicitud::selectRaw('EXTRACT(MONTH FROM created_at) as mes, COUNT(*) as total')
             ->groupBy('mes')
@@ -42,7 +43,7 @@ class StatisticsController extends Controller
         $entregasData = $meses->map(fn($mes) => $entregas->firstWhere('mes', $mes)->total ?? 0);
 
         // Pasamos los datos a la vista Blade
-        return view('estadisticas.EstadisticasIndex', compact('categories', 'solicitudesData', 'entregasData'));
+        return view('estadisticas.EstadisticasIndex', compact('categories', 'solicitudesData', 'entregasData', 'recentsolicitudes'));
 
     }
 

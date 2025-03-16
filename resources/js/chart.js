@@ -55,13 +55,9 @@ document.addEventListener("DOMContentLoaded", function () {
         xaxis: {
             categories: categories
         },
-        yaxis: {
-            title: {
-                text: 'Cantidad'
-            }
-        },
+
         fill: {
-            opacity: 1
+            opacity: 10
         },
         tooltip: {
             y: {
