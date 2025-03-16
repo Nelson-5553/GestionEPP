@@ -8,6 +8,14 @@
     border: 1px solid #ccc;
     margin-top: 1.5rem;
 }
+      .dark  .table-container {
+    overflow: hidden;
+    width: 100%;
+    overflow-x: auto;
+    border-radius: 8px;
+    border: 1px solid #262626;
+    margin-top: 1.5rem;
+}
 
 .table {
     width: 100%;
@@ -29,6 +37,12 @@
 
 .table tbody tr {
     border-bottom: 1px solid #ccc;
+    background-color: #ffffff
+}
+
+.dark .table tbody tr {
+    border-bottom: 1px solid #262626;
+    background-color: #171717;
 }
 
 .user-info {
@@ -86,15 +100,19 @@
     opacity: 0.75;
 }
 
-.dark-mode .table {
+.dark .table {
     color: #ccc;
 }
 
-.dark-mode .user-name {
+.dark .user-name {
+    color: white;
+}
+.dark .user-card {
+    font-size: 12px;
     color: white;
 }
 
-.dark-mode .action-link {
+.dark .action-link {
     color: white;
 }
 
@@ -104,15 +122,8 @@
 
     </style>
 
-
-
-        <br>
-    <x-search-tablepdf/>
-    <br>
-
-
     <div class="table-container">
-    <table class="table">
+    <table class="table dark:tabledark">
         <thead>
             <tr>
                 <th>Usuario</th>
@@ -142,7 +153,7 @@
                     <span class="badge">{{$entrega->state}}</span>
                 </td>
                 <!-- Más datos según las columnas -->
-                <td><img src="[URL de la firma]" alt="Firma" style="width:100px; height:auto;"></td>
+                <td><img src="" alt="Firma" style="width:100px; height:auto;"></td>
             </tr>
             @endforeach
 
