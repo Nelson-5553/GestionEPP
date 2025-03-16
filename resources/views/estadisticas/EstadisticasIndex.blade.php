@@ -7,7 +7,7 @@
         <x-success-menssage />
         {{-- mensaje de error --}}
         <x-error-menssage />
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mt-12">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-5 mt-12">
         <div class="bg-white/80 backdrop-blur-sm rounded-lg" id="chart" data-categories='@json($categories)'
             data-solicitudes='@json($solicitudesData)' data-entregas='@json($entregasData)'>
         </div>
@@ -40,7 +40,7 @@
 
 
     </div>
-   <div class="flex flex-row justify-between items-center mt-5">
+   <div class="flex flex-col lg:flex-row justify-between items-center mt-5">
     <x-search-tablepdf/>
         <a href="{{route('download.report')}}" class="flex items-center w-44 bg-red-500 text-white text-md p-2 rounded-md gap-2">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
