@@ -42,7 +42,7 @@
                 </div>
             </div>
             <div class="flex justify-end mt-6 gap-3">
-                <a href="" class="text-blue-500 hover:text-blue-600 transition-colors">
+                <a href="{{route('area.edit', $area)}}" class="text-blue-500 hover:text-blue-600 transition-colors">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 shrink-0" viewBox="0 0 32 32">
                         <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m30 7l-5-5L5 22l-2 7l7-2Zm-9-1l5 5ZM5 22l5 5Z"/>
                     </svg>
