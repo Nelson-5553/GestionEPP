@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Barryvdh\DomPDF\Facade\Pdf;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Http\Request;
+use App\Exports\EntregasExport;
 use App\Models\Solicitud;
 use App\Models\Entrega;
 
@@ -59,6 +61,14 @@ class StatisticsController extends Controller
 
         // Descargar el PDF
         return $pdf->download('reporte.pdf');
+    }
+    /**
+     * Show the form for creating a new resource.
+     */
+
+    public function exportexcel()
+    {
+        return Excel::download(new EntregasExport, 'entregas.xlsx');
     }
     /**
      * Show the form for creating a new resource.
