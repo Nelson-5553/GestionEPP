@@ -84,6 +84,16 @@ class EntregasExport implements FromCollection, WithMapping, WithHeadings, WithS
                 // Ajustar automáticamente el ancho de las columnas
                 foreach (range('A', 'H') as $col) {
                     $sheet->getColumnDimension($col)->setAutoSize(true);
+
+                  // Aplicar bordes gruesos a la tabla completa
+                $sheet->getStyle('A1:H' . $sheet->getHighestRow())->applyFromArray([
+                'borders' => [
+                    'allBorders' => [
+                        'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM, // Bordes medianos
+                        'color' => ['rgb' => '000000'], // Negro
+                         ],
+                      ],
+                 ]);
                 }
             },
         ];
