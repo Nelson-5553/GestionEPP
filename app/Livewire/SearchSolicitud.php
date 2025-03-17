@@ -54,6 +54,7 @@ class SearchSolicitud extends Component
                 $query->where('name', 'LIKE', '%' . $this->search . '%');
             });
         })
+        ->orderBy('state', 'desc')
         ->paginate(5);
 
 
