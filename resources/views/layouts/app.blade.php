@@ -71,6 +71,7 @@
 
                       {{ __('Home') }}
                 </x-nav-link>
+                @can('ver dashboard')
                 <x-nav-link
                     class="flex items-center rounded-sm gap-2 px-2 py-1.5 text-sm font-medium text-neutral-600 underline-offset-2 hover:bg-black/5 hover:text-[#5A6ACF] focus-visible:underline focus:outline-hidden dark:text-neutral-300 dark:hover:bg-white/5 dark:hover:text-[#5A6ACF]"
                     href="{{ route('dashboard.index') }}" :active="request()->routeIs('dashboard.index')">
@@ -81,6 +82,7 @@
                     </svg>
                     {{ __('Dashboard') }}
                 </x-nav-link>
+                @endcan
                 @can('ver solicitud')
                 <x-nav-link
                     class="flex items-center rounded-sm gap-2 px-2 py-1.5 text-sm font-medium text-neutral-600 underline-offset-2 hover:bg-black/5 hover:text-[#5A6ACF] focus-visible:underline focus:outline-hidden dark:text-neutral-300 dark:hover:bg-white/5 dark:hover:text-[#5A6ACF]"

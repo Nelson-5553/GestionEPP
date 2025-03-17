@@ -83,7 +83,9 @@ class RolePermissionSeeder extends Seeder
 
 
         Permission::create(['name' => 'ver telescope']);
-        Permission::create(['name' => 'ver dashboard'])->assignRole([$admin, $user, $supervisor]);
+        Permission::create(['name' => 'ver dashboard'])->assignRole([$admin, $supervisor]);
+        Permission::create(['name' => 'descargar reportes pdf'])->assignRole([$admin, $supervisor]);
+        Permission::create(['name' => 'descargar reportes excel'])->assignRole([$admin, $supervisor]);
 
 
         $admin->givePermissionTo(Permission::all());

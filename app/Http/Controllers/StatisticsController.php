@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\Gate;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Http\Request;
 use App\Exports\EntregasExport;
@@ -17,6 +18,7 @@ class StatisticsController extends Controller
      */
     public function index()
     {
+        Gate::authorize('ver dashboard');
         //solicitudes recientes
         $recentsolicitudes = Solicitud::select('user_id', 'sede_id', 'area_id', 'state', 'cantidad')->orderBy('updated_at', 'desc')->take(3)->get();
         // Obtener solicitudes agrupadas por mes
@@ -54,6 +56,8 @@ class StatisticsController extends Controller
      */
     public function downloadPDF()
     {
+        Gate::authorize('descargar reportes pdf');
+
         $data = ['title' => 'Ejemplo de PDF en Laravel 11'];
 
         // Cargar una vista Blade y pasarle datos
@@ -68,6 +72,8 @@ class StatisticsController extends Controller
 
     public function exportexcel()
     {
+        Gate::authorize('descargar reportes pdf');
+        
         return Excel::download(new EntregasExport, 'entregas.xlsx');
     }
     /**
