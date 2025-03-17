@@ -12,7 +12,7 @@
 
 
                 <div class="mt-4">
-                   <h1 class="font-bold text-3xl">{{$role->name}}</h1>
+                   <h1 class="font-bold text-3xl text-neutral-800 dark:text-slate-100">{{$role->name}}</h1>
                 </div>
                 <p class="text-lg font-bold text-gray-900 dark:text-gray-200 mt-4">
                    Lista de permisos
