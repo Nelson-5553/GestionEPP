@@ -71,6 +71,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('user/{user}', [UserController::class, 'show'])->name('user.show');
     Route::get('user/edit/{user}', [UserController::class, 'edit'])->name('user.edit');
     Route::get('user/signature/{user}', [UserController::class, 'editsignature'])->name('user.signature');
+    Route::post('/update-signature/{user}', [UserController::class, 'updatesignature'])->name('user.update-signature');
     Route::patch('user/edit/{user}', [UserController::class, 'updaterole'])->name('user.update');
 
 

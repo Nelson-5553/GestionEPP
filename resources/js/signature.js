@@ -1,16 +1,15 @@
 document.addEventListener("DOMContentLoaded", function () {
     const canvas = document.getElementById("canvas");
     const ctx = canvas.getContext("2d");
+    // Función para ajustar tamaño
+    const resizeCanvas = () => {
+        canvas.width = canvas.offsetWidth; // Ajusta el tamaño real del dibujo
+        canvas.height = canvas.width * 0.5; // Proporcional para firmas
+    };
 
-   // Función para ajustar tamaño
-const resizeCanvas = () => {
-    canvas.width = canvas.offsetWidth; // Ajusta el tamaño real del dibujo
-    canvas.height = canvas.offsetHeight;
-};
-
-// Ajustar al cargar la página y al redimensionar
-window.addEventListener("load", resizeCanvas);
-window.addEventListener("resize", resizeCanvas);
+    // Ajustar al cargar la página y al redimensionar
+    window.addEventListener("load", resizeCanvas);
+    window.addEventListener("resize", resizeCanvas);
 
     let painting = false;
     let history = [], step = -1;
@@ -34,10 +33,14 @@ window.addEventListener("resize", resizeCanvas);
         ctx.lineWidth = document.getElementById("size").value;
         ctx.lineCap = "round";
         ctx.stroke();
-        saveState();
     };
 
-    const stopDrawing = () => (painting = false);
+    const stopDrawing = () => {
+        if (painting) {
+            painting = false;
+            saveState();
+        }
+    };
 
     document.getElementById("color").addEventListener("input", (e) => e.target.value);
     document.getElementById("size").addEventListener("input", (e) => e.target.value);
@@ -77,6 +80,60 @@ window.addEventListener("resize", resizeCanvas);
         link.href = canvas.toDataURL();
         link.click();
     });
+
+    // Botón para guardar en Laravel
+    document.querySelector(".whitespace-nowrap").addEventListener("click", saveToLaravel);
+
+    function saveToLaravel() {
+        // Verificar que haya contenido para guardar
+        const imageData = canvas.toDataURL('image/png');
+
+        // Generar nombre único para el archivo
+        const fileName = 'firma_' + Date.now() + '.png';
+
+        // Obtener el ID del usuario actual
+        // Puedes obtenerlo de algún elemento hidden en tu formulario o de una variable global
+        const userId = document.querySelector('input[name="user_id"]')?.value ||
+                      window.userId; // Asegúrate de que esta variable está definida en tu vista
+
+        if (!userId) {
+            alert('No se pudo identificar al usuario');
+            return;
+        }
+
+        // Crear objeto FormData para enviar al servidor
+        const formData = new FormData();
+        formData.append('signature', imageData);
+        formData.append('fileName', fileName);
+
+        // Opcional: Agregar token CSRF si lo usas en Laravel
+        const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');
+
+        // Enviar al servidor mediante fetch
+        fetch(`/update-signature/${userId}`, {
+            method: 'POST',
+            headers: {
+                'X-CSRF-TOKEN': csrfToken || '',
+                'Accept': 'application/json',
+            },
+            body: formData
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Error al guardar la firma');
+            }
+            return response.json();
+        })
+        .then(data => {
+            // Mostrar mensaje de éxito
+            alert('Firma guardada correctamente');
+            console.log('Firma guardada:', data);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Error al guardar la firma: ' + error.message);
+        });
+    }
 
     canvas.addEventListener("mousedown", startDrawing);
     canvas.addEventListener("mousemove", draw);

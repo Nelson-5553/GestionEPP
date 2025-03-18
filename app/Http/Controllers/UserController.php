@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Spatie\Permission\Models\Role;
+use Illuminate\Support\Facades\Storage; 
 use Illuminate\Support\Facades\Gate;
 
 
@@ -82,16 +83,45 @@ class UserController extends Controller
         return redirect()->route('user.index')->with('success', 'Rol actualizado correctamente');
     }
 
-    public function updatesignature(Request $request, string $id){
+    public function updatesignature(Request $request, string $id)
+    {
+        // Validar la solicitud
+        $request->validate([
+            'signature' => 'required|string',
+            'fileName' => 'required|string'
+        ]);
 
-        // $request->validate([
-        //     'signature' => 'required',
-        // ]);
-        // $sede->update($request->all());
+        try {
+            // Extraer los datos de la imagen base64
+            $image_parts = explode(";base64,", $request->signature);
+            $image_base64 = base64_decode($image_parts[1]);
 
-        // return redirect()->route('sede.index')
-        // ->with('success');
+            // Nombre del archivo
+            $fileName = $request->fileName;
+
+            // Guardar archivo en el storage
+            Storage::disk('public')->put('Signature/' . $fileName, $image_base64);
+
+            // Actualizar la columna signature del usuario existente
+            $user = User::findOrFail($id);
+            $user->signature = $fileName;
+            $user->save();
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Firma guardada correctamente',
+                'file_name' => $fileName,
+                'url' => Storage::url('Signature/' . $fileName)
+            ]);
+
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Error al guardar la firma: ' . $e->getMessage()
+            ], 500);
+        }
     }
+
     public function editsignature(User $user){
 
         return view('profile.SignatureEdit', compact('user'));
