@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Spatie\Permission\Models\Role;
-use Illuminate\Support\Facades\Storage; 
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Gate;
 
 
@@ -111,7 +111,8 @@ class UserController extends Controller
                 'success' => true,
                 'message' => 'Firma guardada correctamente',
                 'file_name' => $fileName,
-                'url' => Storage::url('Signature/' . $fileName)
+                'url' => Storage::url('Signature/' . $fileName),
+                'redirect' => route('profile.show')
             ]);
 
         } catch (\Exception $e) {
@@ -120,6 +121,7 @@ class UserController extends Controller
                 'message' => 'Error al guardar la firma: ' . $e->getMessage()
             ], 500);
         }
+        return redirect()->route('profile.show')->with('success');
     }
 
     public function editsignature(User $user){

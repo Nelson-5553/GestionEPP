@@ -128,6 +128,8 @@ document.addEventListener("DOMContentLoaded", function () {
             // Mostrar mensaje de éxito
             alert('Firma guardada correctamente');
             console.log('Firma guardada:', data);
+             // Redirigir a la página del perfil
+             window.location.href = "/user/profile";
         })
         .catch(error => {
             console.error('Error:', error);
