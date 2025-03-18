@@ -26,11 +26,16 @@
                             </p>
                         </div>
                     </div>
+                    @php
+                    $colores = [
+                        'Pendiente' => 'border-yellow-500 text-black bg-yellow-500',
+                        'Aprobado' => 'border-green-500 text-white bg-green-500',
+                        'Rechazado' => 'border-red-500 text-white bg-red-500',
+                    ];
+                    $clase = $colores[$solicitud->state] ?? 'border-gray-500 text-gray-500 bg-gray-500';
+                     @endphp
                     <span class="px-3 py-1 text-sm font-semibold rounded-full
-                        @if ($solicitud->state === 'Aprobado') bg-green-500 dark:bg-green-600 text-white @endif
-                        @if ($solicitud->state === 'Pendiente') bg-yellow-400 dark:bg-yellow-500 text-black @endif
-                        @if ($solicitud->state === 'Entregado') bg-blue-500 dark:bg-blue-600 text-white @endif
-                        @if ($solicitud->state === 'Rechazado') bg-red-500 dark:bg-red-600 text-white @endif">
+                      {{$clase}}">
                         {{ $solicitud->state }}
                     </span>
                 </div>

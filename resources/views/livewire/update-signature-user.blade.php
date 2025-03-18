@@ -11,7 +11,7 @@
 
         <x-slot name="form">
 
-            <h3 class="text-lg font-medium text-gray-900 dark:text-gray-100 col-span-3">
+            <h3 class="text-lg font-medium text-gray-900 dark:text-gray-100 col-span-4">
                 @if ($signature === null)
                           {{ __('No hay firma habilitada') }}
                 @else
@@ -26,9 +26,9 @@
                 {{ __('Saved.') }}
             </x-action-message>
 
-            <x-button class="dark:bg-indigo-600 dark:text-gray-200 dark:hover:bg-indigo-700">
-                {{ __('Save') }}
-            </x-button>
+            <a href="{{route('user.signature', auth()->user())}}" class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:opacity-50 transition ease-in-out duration-150">
+                Firmar
+            </a>
         </x-slot>
     </x-form-section>
 </div>

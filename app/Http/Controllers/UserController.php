@@ -59,7 +59,7 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function updaterole(Request $request, string $id)
     {
         Gate::authorize('actualizar usuario');
         // Validar que el rol enviado existe en la tabla de roles
@@ -82,6 +82,20 @@ class UserController extends Controller
         return redirect()->route('user.index')->with('success', 'Rol actualizado correctamente');
     }
 
+    public function updatesignature(Request $request, string $id){
+
+        // $request->validate([
+        //     'signature' => 'required',
+        // ]);
+        // $sede->update($request->all());
+
+        // return redirect()->route('sede.index')
+        // ->with('success');
+    }
+    public function editsignature(User $user){
+
+        return view('profile.SignatureEdit', compact('user'));
+    }
 
     /**
      * Remove the specified resource from storage.

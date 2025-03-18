@@ -70,7 +70,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('user', [UserController::class, 'index'])->name('user.index');
     Route::get('user/{user}', [UserController::class, 'show'])->name('user.show');
     Route::get('user/edit/{user}', [UserController::class, 'edit'])->name('user.edit');
-    Route::patch('user/edit/{user}', [UserController::class, 'update'])->name('user.update');
+    Route::get('user/signature/{user}', [UserController::class, 'editsignature'])->name('user.signature');
+    Route::patch('user/edit/{user}', [UserController::class, 'updaterole'])->name('user.update');
 
 
 
