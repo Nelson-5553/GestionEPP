@@ -1,5 +1,5 @@
 <div>
-    <div class="flex flex-col items-center justify-center p-4">
+    <div class="flex flex-col items-center justify-center p-4 md:mt-44">
       <!-- CSRF Token -->
       <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -44,8 +44,22 @@
         <canvas id="canvas" class="w-full h-auto rounded-xl border-2 border-gray-200 bg-white"></canvas>
       </div>
 
+      <div class="mt-8">
+
+      <x-register-modal name="Firma" >
+        <h3 class="mb-2 text-lg font-semibold tracking-wide text-neutral-900 dark:text-white">
+            Registrar Firma
+        </h3>
+        <p  class="text-sm text-neutral-700 dark:text-neutral-300">
+            Estás a punto de guardar tu firma. Asegúrate de que sea correcta, ya que esta será utilizada para futuros procesos.
+        </p>
+        <div class="flex items-center justify-center border-neutral-300 p-4 dark:border-neutral-700">
       <button type="button" class="whitespace-nowrap rounded-sm bg-sky-500 border border-sky-500 px-4 py-2 text-sm font-medium tracking-wide text-white transition hover:opacity-75 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-500 active:opacity-100 active:outline-offset-0 disabled:opacity-75 disabled:cursor-not-allowed dark:bg-sky-500 dark:border-sky-500 dark:text-white dark:focus-visible:outline-sky-500 mt-5">
         Guardar firma
       </button>
+      </div>
+      </x-register-modal>
+
+    </div>
     </div>
   </div>
