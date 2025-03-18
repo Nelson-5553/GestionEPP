@@ -153,7 +153,7 @@
                     <span class="badge">{{$entrega->state}}</span>
                 </td>
                 <!-- Más datos según las columnas -->
-                <td><img src="" alt="Firma" style="width:100px; height:auto;"></td>
+                <td><img src="{{ asset('storage/Signature/' . $entrega->solicitud->user->signature) }}" alt="Firma" style="width:100px; height:auto;"></td>
             </tr>
             @endforeach
 
