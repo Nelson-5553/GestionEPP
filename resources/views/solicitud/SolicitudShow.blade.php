@@ -92,21 +92,21 @@
 
                         <p class="font-semibold text-sm md:text-base">ACTUALIZAR ESTADO:</p>
                     </div>
-                    <div class="flex flex-row justify-center w-full bg-slate-300/50 dark:bg-slate-600/50 rounded-lg p-4 space-x-4">
-                        <div class="text-gray-900 dark:text-gray-200">
+                    <div class="flex flex-row justify-center w-full bg-slate-300/50 dark:bg-slate-600/50 rounded-lg p-4">
+                        <div class="text-gray-900 dark:text-gray-200 w-full">
                             @if ($solicitud->state === 'Aprobado')
-                                <p>Ya la solicitud ha sido aprobada</p>
+                                <p class="text-center">Ya la solicitud ha sido aprobada</p>
                             @else
-                                <form action="{{ route('solicitud.update', $solicitud->id) }}" method="POST" class="flex flex-col md:flex-row justify-center items-center w-full space-y-2 md:space-x-2">
+                                <form action="{{ route('solicitud.update', $solicitud->id) }}" method="POST" class="flex flex-col md:flex-row justify-center items-center w-full space-y-2 md:space-y-0 md:space-x-2">
                                     @method('PATCH')
                                     @csrf
-                                    <select name="state" id="state" class="w-full p-2 border border-gray-300 dark:border-gray-700 dark:bg-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500">
+                                    <select name="state" id="state" class="w-full md:w-auto flex-grow p-2 border border-gray-300 dark:border-gray-700 dark:bg-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500">
                                         <option value="" disabled>Seleccione un estado</option>
                                         <option value="Pendiente" @selected($solicitud->state == 'Pendiente')>Pendiente</option>
                                         <option value="Aprobado" @selected($solicitud->state == 'Aprobado')>Aprobado</option>
                                         <option value="Rechazado" @selected($solicitud->state == 'Rechazado')>Rechazado</option>
                                     </select>
-                                    <button type="submit" class=" w-full px-4 py-2 bg-purple-500 text-white rounded-md hover:bg-purple-600 transition">
+                                    <button type="submit" class="w-full md:w-auto px-4 py-2 bg-purple-500 text-white rounded-md hover:bg-purple-600 transition">
                                         Actualizar
                                     </button>
                                 </form>
