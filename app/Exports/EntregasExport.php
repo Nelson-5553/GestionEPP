@@ -9,6 +9,8 @@ use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\WithStyles;
 use Maatwebsite\Excel\Concerns\WithCustomStartCell;
 use Maatwebsite\Excel\Concerns\WithEvents;
+use PhpOffice\PhpSpreadsheet\Worksheet\Drawing;
+use PhpOffice\PhpSpreadsheet\Style\Alignment;
 use Maatwebsite\Excel\Events\AfterSheet;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 
@@ -32,7 +34,7 @@ class EntregasExport implements FromCollection, WithMapping, WithHeadings, WithS
             $entrega->solicitud->cantidad ?? 0,
             $entrega->state,
             $entrega->updated_at ? $entrega->updated_at->format('d/m/Y') : 'N/A',
-        ];
+              ];
     }
 
     public function startCell(): string
@@ -43,7 +45,7 @@ class EntregasExport implements FromCollection, WithMapping, WithHeadings, WithS
     public function headings(): array
     {
         return [
-            'Usuario', 'Identificación', 'EPP', 'Sede', 'Área', 'Cantidad', 'Estado', 'Fecha de Entrega'
+            'Usuario', 'Identificación', 'EPP', 'Sede', 'Área', 'Cantidad', 'Estado', 'Fecha de Entrega', 'Firma'
         ];
     }
 
@@ -72,7 +74,8 @@ class EntregasExport implements FromCollection, WithMapping, WithHeadings, WithS
                 $sheet = $event->sheet->getDelegate();
 
                 // Agregar el título en la fila 2
-                $sheet->mergeCells('A1:H2');
+                $sheet->getColumnDimension('I')->setWidth(60); // Ajusta el LARGO de la fila
+                $sheet->mergeCells('A1:I2');
                 $sheet->setCellValue('A2', 'Reporte de Entregas');
 
                 // Aplicar estilo al título
@@ -82,11 +85,11 @@ class EntregasExport implements FromCollection, WithMapping, WithHeadings, WithS
                 ]);
 
                 // Ajustar automáticamente el ancho de las columnas
-                foreach (range('A', 'H') as $col) {
+                foreach (range('A', 'I') as $col) {
                     $sheet->getColumnDimension($col)->setAutoSize(true);
 
                   // Aplicar bordes gruesos a la tabla completa
-                $sheet->getStyle('A1:H' . $sheet->getHighestRow())->applyFromArray([
+                $sheet->getStyle('A1:I' . $sheet->getHighestRow())->applyFromArray([
                 'borders' => [
                     'allBorders' => [
                         'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_MEDIUM, // Bordes medianos
@@ -94,6 +97,33 @@ class EntregasExport implements FromCollection, WithMapping, WithHeadings, WithS
                          ],
                       ],
                  ]);
+
+                }
+                foreach (range(4, $sheet->getHighestRow()) as $row) {
+                    $sheet->getRowDimension($row)->setRowHeight(60);// Ajusta el alto de la fila
+                }
+                $row = 4; // Empieza en la fila 4 (después del encabezado)
+                foreach ($this->collection() as $entrega) {
+                    if (!empty($entrega->solicitud->user->signature)) {
+                        $signaturePath = storage_path('app/public/Signature/' . $entrega->solicitud->user->signature);
+
+                        if (file_exists($signaturePath)) {
+                            $drawing = new Drawing();
+                            $drawing->setName('Firma');
+                            $drawing->setDescription('Firma del usuario');
+                            $drawing->setPath($signaturePath);
+                            $drawing->setOffsetX(15); // Ajustar la posición horizontal
+                            $drawing->setOffsetY(10); // Ajustar la posición vertical
+                            $drawing->setWidth(120); // Aumentar un poco el ancho
+                            $drawing->setHeight(60); // Aumentar un poco la altura
+                            $drawing->setResizeProportional(true); // Mantiene la relación de aspecto
+                            $drawing->setCoordinates('I' . $row);
+                            $drawing->setOffsetX(5);
+                            $drawing->setOffsetY(5);
+                            $drawing->setWorksheet($event->sheet->getDelegate());
+                        }
+                    }
+                    $row++;
                 }
             },
         ];
