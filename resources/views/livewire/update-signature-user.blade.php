@@ -10,7 +10,15 @@
         </x-slot>
 
         <x-slot name="form">
-           FUNCION EN PROGRESO
+
+            <h3 class="text-lg font-medium text-gray-900 dark:text-gray-100 col-span-3">
+                @if ($signature === null)
+                          {{ __('No hay firma habilitada') }}
+                @else
+                {{ __('La firma esta habilitada') }}
+                @endif
+            </h3>
+
         </x-slot>
 
         <x-slot name="actions">
