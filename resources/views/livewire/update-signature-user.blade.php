@@ -1,25 +1,26 @@
 <div>
 
-<div class="flex flex-col items-center justify-center">
+    <x-form-section submit="updatePassword">
+        <x-slot name="title">
+            <span class="dark:text-gray-200"> {{ __('Update Signature') }}</span>
+        </x-slot>
 
-    <div class="flex items-center gap-4 mb-4">
-        <label for="color" class="text-lg font-semibold">Color:</label>
-        <input type="color" id="color" value="#000000" class="w-10 h-10 p-1 border rounded">
+        <x-slot name="description">
+            <span class="dark:text-gray-200">{{ __('Update your digital signature to ensure a secure and professional identity in your documents. Make sure to use a clear and up-to-date signature to enhance the authenticity and validity of your records.') }}</span>
+        </x-slot>
 
-        <label for="size" class="text-lg font-semibold">Tamaño:</label>
-        <input type="range" id="size" min="1" max="10" value="3" class="w-40">
+        <x-slot name="form">
+           FUNCION EN PROGRESO
+        </x-slot>
 
-        <button id="clear" class="px-4 py-2 bg-red-500 text-white font-semibold rounded hover:bg-red-700">
-            Borrar
-        </button>
-    </div>
+        <x-slot name="actions">
+            <x-action-message class="me-3 dark:text-green-400" on="saved">
+                {{ __('Saved.') }}
+            </x-action-message>
 
-    <canvas id="canvas" width="600" height="400" class="border-2 border-black bg-white"></canvas>
-</div>
-
-
-        <script>
-
-        </script>
-
+            <x-button class="dark:bg-indigo-600 dark:text-gray-200 dark:hover:bg-indigo-700">
+                {{ __('Save') }}
+            </x-button>
+        </x-slot>
+    </x-form-section>
 </div>
