@@ -27,13 +27,16 @@
 
                     <div class="mb-3">
                         <!-- Input oculto -->
-                        <input type="file" id="fileUpload" name="image" accept="image/*" class="hidden">
+                        <div class="relative flex w-full max-w-sm flex-col gap-1">
+                            <label class="w-fit pl-0.5 text-sm text-[#5A6ACF] font-bold" for="fileInput">Subir foto</label>
+                            <input type="file" id="fileUpload" name="image" accept="image/*"
+                                class="w-full overflow-clip rounded-sm border border-[#5A6ACF] bg-[#5A6ACF]/10 text-sm text-[#5A6ACF]
+                                file:mr-4 file:border-none file:bg-[#5A6ACF]/20 file:px-4 file:py-2 file:font-medium file:text-[#5A6ACF]
+                                focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#5A6ACF]
+                                disabled:cursor-not-allowed disabled:opacity-75 dark:border-[#5A6ACF] dark:bg-[#5A6ACF]/20
+                                dark:text-[#5A6ACF] dark:file:bg-[#5A6ACF]/30 dark:file:text-white dark:focus-visible:outline-white" />
+                        </div>
 
-                        <!-- Botón para activar el input -->
-                        <label for="fileUpload"
-                            class="cursor-pointer bg-[#5A6ACF] text-white px-4 py-2 rounded-md hover:bg-[#5A6ACF]0">
-                            ⬆️ Subir foto
-                        </label>
                     </div>
                     <div class="flex items-center justify-center border-neutral-300 p-4 dark:border-neutral-700">
                         <button type="submit"
