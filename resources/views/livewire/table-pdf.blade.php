@@ -154,8 +154,21 @@
                 </td>
                 <!-- Más datos según las columnas -->
                 <td>
-                    <img src="data:image/png;base64,{{ base64_encode(file_get_contents(storage_path('app/public/Signature/' . $entrega->solicitud->user->signature))) }}" alt="Firma" style="width:100px; height:auto; background-color:#ffffff">
-                </td>
+                    @php
+                    $signaturePath = storage_path('app/public/Signature/' . $entrega->solicitud->user->signature);
+                    $firmaBase64 = '';
+
+                    if (is_file($signaturePath) && is_readable($signaturePath)) {
+                        $firmaBase64 = base64_encode(file_get_contents($signaturePath));
+                    }
+                @endphp
+
+                @if($firmaBase64)
+                    <img src="data:image/png;base64,{{ $firmaBase64 }}" alt="Firma" style="width:100px; height:auto; background-color:#ffffff">
+                @else
+                    <p>No se encontró la firma.</p>
+                @endif
+              </td>
             </tr>
             @endforeach
 
