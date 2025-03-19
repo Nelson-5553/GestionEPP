@@ -58,10 +58,8 @@ class StatisticsController extends Controller
     {
         Gate::authorize('descargar reportes pdf');
 
-        $data = ['title' => 'Ejemplo de PDF en Laravel 11'];
-
         // Cargar una vista Blade y pasarle datos
-        $pdf = Pdf::loadView('pdf.reporte', $data)->setPaper('a4', 'landscape');
+        $pdf = Pdf::loadView('pdf.reporte')->setPaper('a4', 'landscape');
 
         // Descargar el PDF
         return $pdf->download('reporte.pdf');
@@ -73,7 +71,7 @@ class StatisticsController extends Controller
     public function exportexcel()
     {
         Gate::authorize('descargar reportes pdf');
-        
+
         return Excel::download(new EntregasExport, 'entregas.xlsx');
     }
     /**
