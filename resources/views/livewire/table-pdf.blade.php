@@ -154,7 +154,7 @@
                 </td>
                 <!-- Más datos según las columnas -->
                 <td>
-                    <img src="data:image/png;base64,{{ base64_encode(file_get_contents(storage_path('app/public/Signature/' . $entrega->solicitud->user->signature))) }}" alt="Firma" style="width:100px; height:auto;">
+                    <img src="data:image/png;base64,{{ base64_encode(file_get_contents(storage_path('app/public/Signature/' . $entrega->solicitud->user->signature))) }}" alt="Firma" style="width:100px; height:auto; background-color:#ffffff">
                 </td>
             </tr>
             @endforeach
