@@ -139,7 +139,7 @@
 
                             @can('ver usuario')
                                 <x-dropdown-link href="{{ route('user.index') }}">
-                                    {{ __('Usuarios') }}
+                                    {{ __('User') }}
                                 </x-dropdown-link>
                             @endcan
 
@@ -225,7 +225,7 @@
                 <!-- User list -->
                 @can('ver usuario')
                     <x-responsive-nav-link href="{{ route('user.index') }}" :active="request()->routeIs('user.index')">
-                        {{ __('username') }}
+                        {{ __('User') }}
                     </x-responsive-nav-link>
                 @endcan
                 <!-- Roles list -->
