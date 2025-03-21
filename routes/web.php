@@ -64,6 +64,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('entrega', [EntregaController::class, 'index'])->name('entrega.index');
     Route::get('entrega/{entrega}', [EntregaController::class, 'show'])->name('entrega.show');
     Route::patch('entrega/{entrega}', [EntregaController::class, 'update'])->name('entrega.update');
+    Route::patch('entrega/cancel/{entrega}', [EntregaController::class, 'updatecancel'])->name('entrega.updatecancel');
 
 //Rutas de Usuarios
 

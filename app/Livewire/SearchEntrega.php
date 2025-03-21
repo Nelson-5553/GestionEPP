@@ -52,7 +52,7 @@ class SearchEntrega extends Component
                     $query->where('cantidad', 'LIKE', '%' . $this->search . '%');
                 });
             })
-            ->orderBy('state', 'desc')
+            ->orderBy('updated_at', 'desc')
             ->paginate(5);
 
         return view('livewire.search-entrega', compact('entregas'));

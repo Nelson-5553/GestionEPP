@@ -112,6 +112,10 @@
 <br>
 <h1 class="text-xl font-bold text-gray-900 dark:text-gray-200">Entrega confirmada</h1>
 <br>
+@elseif ($entrega->state === 'Cancelado')
+<br>
+<h1 class="text-xl font-bold text-gray-900 dark:text-gray-200">Entrega Cancelada</h1>
+<br>
 @else
 <br>
           <h1 class="text-xl font-bold text-gray-900 dark:text-gray-200">Confirmar entrega</h1>
@@ -136,7 +140,6 @@
               <label class="block text-gray-900 dark:text-gray-200 font-semibold">Observación</label>
               <textarea name="observations" class="w-full mt-1 p-2 border rounded-lg dark:bg-neutral-700 dark:text-gray-200" rows="4" placeholder="Colocar alguna observacion del Epp (Opcional)"></textarea>
           </div>
-          <span></span>
           <div>
               <button type="submit" class="flex flex-row justify-center w-full mt-1 py-2 px-6 border rounded-lg bg-blue-600 text-white hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 gap-2.5">
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
@@ -146,6 +149,11 @@ Entregar EPP
               </button>
           </div>
       </form>
+      <form action="{{route('entrega.updatecancel', $entrega)}}" method="POST">
+        @csrf
+        @method('PATCH')
+      <x-cancel-modal/>
+    </form>
   </div>
 
 @endif

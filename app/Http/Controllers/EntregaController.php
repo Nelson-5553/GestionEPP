@@ -77,6 +77,22 @@ class EntregaController extends Controller
     return redirect()->route('entrega.index')->with('success', 'EPP Entregado');
 }
 
+//cambiar estado a cancelado
+    public function updatecancel(Request $request, Entrega $entrega)
+{
+    Gate::authorize('actualizar entrega');
+    // dd($request);
+    $request->validate([
+        'state' => 'in:Pendiente,Entregado,Cancelado',
+      ]);
+
+    $entrega->update([
+        'state' => 'Cancelado',
+    ]);
+
+    return redirect()->route('entrega.index')->with('success', 'Entrega de epp cancelado');
+}
+
 
     /**
      * Remove the specified resource from storage.
