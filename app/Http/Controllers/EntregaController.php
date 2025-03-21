@@ -102,7 +102,7 @@ public function updatecancel(Request $request, Entrega $entrega)
         ]);
     }
 
-    return redirect()->route('entrega.index')->with('success', 'Entrega de EPP cancelada correctamente.');
+    return redirect()->route('entrega.index')->with('success', 'Entrega cancelada correctamente.');
 }
 
 

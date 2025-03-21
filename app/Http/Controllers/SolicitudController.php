@@ -40,6 +40,13 @@ class SolicitudController extends Controller
     {
         Gate::authorize('guardar solicitud');
 
+        if(Auth::user()->signature === null){
+
+            return redirect()->route('solicitud.index')
+            ->withErrors('Aun no has registrado una firma dirigite a a tu perfil para realizar un registro');
+
+        } else {
+
         $solicitud = new Solicitud();
 
         $solicitud->user_id = $request->user_id;
@@ -52,7 +59,7 @@ class SolicitudController extends Controller
         $solicitud->save();
 
         return redirect()->route('solicitud.index')->with('success', 'solicitud enviada');
-
+    }
     }
 
     /**
@@ -77,9 +84,9 @@ class SolicitudController extends Controller
      */
     public function update(Request $request, Solicitud $solicitud)
     {
-        Gate::authorize('actualizar entrega');
+        Gate::authorize('actualizar solicitud');
         // Validar el estado recibido
-        Gate::authorize('editar solicitud');
+
         $request->validate([
             'state' => 'required|in:Pendiente,Aprobado,Rechazado',
         ]);
