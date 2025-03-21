@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Gate;
 use App\Models\Entrega;
+use App\Models\Epp;
 use Illuminate\Http\Request;
 
 class EntregaController extends Controller
@@ -78,20 +79,32 @@ class EntregaController extends Controller
 }
 
 //cambiar estado a cancelado
-    public function updatecancel(Request $request, Entrega $entrega)
+public function updatecancel(Request $request, Entrega $entrega)
 {
     Gate::authorize('actualizar entrega');
-    // dd($request);
-    $request->validate([
-        'state' => 'in:Pendiente,Entregado,Cancelado',
-      ]);
 
+    // Verificar si la entrega estaba en estado "Pendiente" antes de cancelar
+    $state= $entrega->state === 'Pendiente';
+
+    // Actualizar el estado de la entrega a "Cancelado"
     $entrega->update([
         'state' => 'Cancelado',
     ]);
 
-    return redirect()->route('entrega.index')->with('success', 'Entrega de epp cancelado');
+    // Si la entrega estaba en estado "Pendiente", revertimos el stock del EPP
+    if ($state) {
+        // Obtener el EPP relacionado con la solicitud de la entrega
+        $epp = Epp::findOrFail($entrega->solicitud->epp_id);
+
+        // Revertir la cantidad del EPP
+        $epp->update([
+            'cantidad' => $epp->cantidad + $entrega->solicitud->cantidad
+        ]);
+    }
+
+    return redirect()->route('entrega.index')->with('success', 'Entrega de EPP cancelada correctamente.');
 }
+
 
 
     /**
