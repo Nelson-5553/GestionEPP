@@ -43,7 +43,7 @@ class SolicitudController extends Controller
         if(Auth::user()->signature === null){
 
             return redirect()->route('solicitud.index')
-            ->withErrors('Aun no has registrado una firma dirigite a a tu perfil para realizar un registro');
+            ->withErrors('Aun no has registrado una firma dirigite a tu perfil para realizar un registro');
 
         } else {
 
