@@ -34,11 +34,13 @@ class EppController extends Controller
 
         $Epp = new Epp();
 
+             // Tomar registros de los inputs
         $Epp->name = $request->name;
         $Epp->cantidad = $request->cantidad;
         $Epp->unity = $request->unity;
         $Epp->description = $request->description;
 
+        // si image es un archivo
         if ($request->hasFile('image')) {
             $file = $request->file('image');
             $filename = time() . '_' . $file->getClientOriginalName();
@@ -48,10 +50,14 @@ class EppController extends Controller
 
             $Epp->image = $filename;
         } else {
+            // si hay un error devolvera esto
             return back()->withErrors(['image' => 'Error al subir la imagen']);
         }
 
+        // guadar todos los datos extraidos de los request
         $Epp->save();
+
+        //guardado correctamente
         return redirect()->route('epp.index')->with('success', 'La Epp fue creada con éxito');
 
 
@@ -81,12 +87,17 @@ class EppController extends Controller
     public function update(Request $request, Epp $epp)
     {
         Gate::authorize('actualizar epp');
+
+        // validamos peticiones
+
         $request->validate([
             'name' => 'required',
             'cantidad' => 'required',
             'unity'=>'required',
             'description' => 'max:255',
         ]);
+
+        // actualizar datos de la peticion
 
         $epp->update($request->all());
 
@@ -100,6 +111,9 @@ class EppController extends Controller
     public function destroy(Epp $epp)
     {
         Gate::authorize('eliminar epp');
+
+        // eliminar un epp
+        
         $epp->delete();
         return redirect()->route('epp.index')->with('success', 'Epp eliminada correctamente');
     }
