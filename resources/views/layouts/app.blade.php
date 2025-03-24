@@ -34,34 +34,26 @@
         <nav x-cloak
             class="fixed left-0 z-20 flex h-svh w-60 shrink-0 flex-col border-r border-neutral-300 bg-neutral-50 dark:bg-gray-950 p-4 transition-transform duration-300 md:w-64 md:translate-x-0 md:relative dark:border-neutral-700"
             x-bind:class="showSidebar ? 'translate-x-0' : '-translate-x-60'" aria-label="sidebar navigation">
+
             <!-- logo  -->
-            <div class="flex flex-row items-center gap-2 mb-6">
+            <div class="flex flex-row items-center gap-1 mb-6">
+                <div>
                 <span
                     class="flex size-10 items-center justify-center overflow-hidden rounded-full bg-[#5A67BA] text-white text-lg font-bold tracking-wider text-on-danger/80">G</span>
-                <a href="#" class="ml-2 w-fit text-2xl font-bold text-[#5A67BA]">
+                </div>
+                <div class="flex flex-col text-start items-center">
+                    <a href="{{route('dashboard')}}" class="ml-2 w-fit text-2xl font-bold text-[#5A67BA]">
                     <h1 class="">Gestion EPP</h1>
                 </a>
-            </div>
-            <!-- search  -->
-            <div class="relative my-4 flex w-full max-w-xs flex-col gap-1 text-neutral-600 dark:text-neutral-300">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" fill="none"
-                    stroke-width="2"
-                    class="absolute left-2 top-1/2 size-5 -translate-y-1/2 text-neutral-600/50 dark:text-neutral-300/50"
-                    aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                        d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
-                </svg>
-                <input type="search"
-                    class="w-full border border-neutral-300 rounded-sm bg-white dark:bg-gray-900 px-2 py-1.5 pl-9 text-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black disabled:cursor-not-allowed disabled:opacity-75 dark:border-neutral-700 dark:bg-neutral-950/50 dark:focus-visible:outline-white"
-                    name="search" aria-label="Search" placeholder="Search" />
+                <p class="text-start text-sm">Sistema de Gestion</p>
+                </div>
             </div>
 
             <!-- sidebar links  -->
             <div class="flex flex-col gap-2 overflow-y-auto pb-6">
                 <p class="prose dark:prose-invert text-[#5A6ACF] font-bold">Menu</p>
 
-
-
+                {{-- Inicio --}}
                 <x-nav-link
                     class="flex items-center rounded-sm gap-2 px-2 py-1.5 text-sm font-medium text-neutral-600 underline-offset-2 hover:bg-black/5 hover:text-[#5A6ACF] focus-visible:underline focus:outline-hidden dark:text-neutral-300 dark:hover:bg-white/5 dark:hover:text-[#5A6ACF]"
                     href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
@@ -71,6 +63,8 @@
 
                       {{ __('Home') }}
                 </x-nav-link>
+
+                {{-- dashboard --}}
                 @can('ver dashboard')
                 <x-nav-link
                     class="flex items-center rounded-sm gap-2 px-2 py-1.5 text-sm font-medium text-neutral-600 underline-offset-2 hover:bg-black/5 hover:text-[#5A6ACF] focus-visible:underline focus:outline-hidden dark:text-neutral-300 dark:hover:bg-white/5 dark:hover:text-[#5A6ACF]"
@@ -83,6 +77,9 @@
                     {{ __('Dashboard') }}
                 </x-nav-link>
                 @endcan
+
+                {{-- solicitudes --}}
+
                 @can('ver solicitud')
                 <x-nav-link
                     class="flex items-center rounded-sm gap-2 px-2 py-1.5 text-sm font-medium text-neutral-600 underline-offset-2 hover:bg-black/5 hover:text-[#5A6ACF] focus-visible:underline focus:outline-hidden dark:text-neutral-300 dark:hover:bg-white/5 dark:hover:text-[#5A6ACF]"
@@ -91,6 +88,9 @@
                     <span>Solicitar</span>
                 </x-nav-link>
                 @endcan
+
+                {{-- entregas --}}
+
                 @can('ver entrega')
                 <x-nav-link
                     class="flex items-center rounded-sm gap-2 px-2 py-1.5 text-sm font-medium text-neutral-600 underline-offset-2 hover:bg-black/5 hover:text-[#5A6ACF] focus-visible:underline focus:outline-hidden dark:text-neutral-300 dark:hover:bg-white/5 dark:hover:text-[#5A6ACF]"
@@ -105,6 +105,9 @@
                     {{-- <span class="sr-only">active</span> --}}
                 </x-nav-link>
                 @endcan
+
+                {{-- Elementeos de proteccion personal --}}
+
                 @can('ver epp')
                 <x-nav-link
                     class="flex items-center rounded-sm gap-2 px-2 py-1.5 text-sm font-medium text-neutral-600 underline-offset-2 hover:bg-black/5 hover:text-[#5A6ACF] focus-visible:underline focus:outline-hidden dark:text-neutral-300 dark:hover:bg-white/5 dark:hover:text-[#5A6ACF]"
@@ -120,6 +123,8 @@
 
                 @can('ver sede')
 
+                {{-- Sedes --}}
+
                 <x-nav-link
                     class="flex items-center rounded-sm gap-2 px-2 py-1.5 text-sm font-medium text-neutral-600 underline-offset-2 hover:bg-black/5 hover:text-[#5A6ACF] focus-visible:underline focus:outline-hidden dark:text-neutral-300 dark:hover:bg-white/5 dark:hover:text-[#5A6ACF]"
                     href="{{ route('sede.index') }}" :active="request()->routeIs('sede.index', 'sede.show')">
@@ -130,6 +135,9 @@
                     <span>Sedes</span>
                 </x-nav-link>
                 @endcan
+
+                {{-- Areas --}}
+
                 @can('ver area')
                 <x-nav-link
                     class="flex items-center rounded-sm gap-2 px-2 py-1.5 text-sm font-medium text-neutral-600 underline-offset-2 hover:bg-black/5 hover:text-[#5A6ACF] focus-visible:underline focus:outline-hidden dark:text-neutral-300 dark:hover:bg-white/5 dark:hover:text-[#5A6ACF]"
@@ -138,6 +146,8 @@
                     <span>Area</span>
                 </x-nav-link>
                 @endcan
+
+                {{-- Perfil --}}
 
                 <x-nav-link
                     class="flex items-center rounded-sm gap-2 px-2 py-1.5 text-sm font-medium text-neutral-600 underline-offset-2 hover:bg-black/5 hover:text-[#5A6ACF] focus-visible:underline focus:outline-hidden dark:text-neutral-300 dark:hover:bg-white/5 dark:hover:text-[#5A6ACF]"
@@ -149,6 +159,8 @@
                     </svg>
                     {{ __('Cuenta') }}
                 </x-nav-link>
+
+                {{-- Informacion --}}
 
                 <x-nav-link
                     class="flex items-center rounded-sm gap-2 px-2 py-1.5 text-sm font-medium text-neutral-600 underline-offset-2 hover:bg-black/5 hover:text-[#5A6ACF] focus-visible:underline focus:outline-hidden dark:text-neutral-300 dark:hover:bg-white/5 dark:hover:text-[#5A6ACF]"
