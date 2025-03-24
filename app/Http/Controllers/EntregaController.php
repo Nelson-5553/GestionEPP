@@ -40,6 +40,9 @@ class EntregaController extends Controller
     public function show(Entrega $entrega)
     {
         Gate::authorize('ver entrega detalle');
+
+        // ver detalles de una entrega por id
+
         return view('entrega.EntregaShow', compact('entrega'));
     }
 
@@ -57,7 +60,9 @@ class EntregaController extends Controller
     public function update(Request $request, Entrega $entrega)
 {
     Gate::authorize('actualizar entrega');
-    // dd($request);
+
+    //validaciones antes de realizar el proceso de actualizacion
+
     $request->validate([
         'state' => 'in:Pendiente,Entregado,Cancelado',
         'start_time_labor' => 'required',
@@ -67,7 +72,7 @@ class EntregaController extends Controller
 
     // Actualizar la entrega en la base de datos
 
-    // dd($entrega);
+
     $entrega->update([
         'state' => 'Entregado',
         'start_time_labor' => $request->start_time_labor,
@@ -78,7 +83,10 @@ class EntregaController extends Controller
     return redirect()->route('entrega.index')->with('success', 'EPP Entregado');
 }
 
-//cambiar estado a cancelado
+/**
+* Update the specified resource in state canceled.
+*/
+
 public function updatecancel(Request $request, Entrega $entrega)
 {
     Gate::authorize('actualizar entrega');
