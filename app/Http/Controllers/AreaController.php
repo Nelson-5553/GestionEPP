@@ -16,8 +16,11 @@ class AreaController extends Controller
      */
     public function index()
     {
+
         Gate::authorize('ver area');
-        // $areas = Area::with('sede')->get();
+
+        // Extraer sedes para el formulario de registro de areas
+
         $sedes = Sede::select('id', 'name')->get();
         return view('area.AreaIndex', compact('sedes'));
     }
@@ -38,11 +41,17 @@ class AreaController extends Controller
 
         $Area = new Area();
 
+        // Tomar registros de los inputs
+
         $Area->name = $request->name;
         $Area->sede_id = $request->sede_id;
         $Area->description = $request->description;
 
+        // Guardar informacion en base de datos
+
         $Area->save();
+
+        // Volver a pestaña principal
 
         return redirect()->route('area.index')->with('success', 'La area fue creada con éxito');
 
@@ -53,8 +62,13 @@ class AreaController extends Controller
      */
     public function show(Area $area)
     {
+
         Gate::authorize('ver area detalle');
+
+        // Cargar relaciones
         $area->load('Sede');
+
+        //ir a vista para ver detalles
         return view('area.AreaShow', compact('area'));
     }
 
@@ -64,6 +78,9 @@ class AreaController extends Controller
     public function edit(Area $area)
     {
         Gate::authorize('editar area');
+
+     // Cargar relaciones para la posterior edicion de registros
+
         $sedes = Sede::select('id', 'name')->get();
         return view('area.AreaEdit', compact('area', 'sedes'));
     }
@@ -74,16 +91,22 @@ class AreaController extends Controller
     public function update(Request $request, Area $area)
     {
         Gate::authorize('actualizar area');
+
+    // validadciones de las peticiones de la vista
         $request->validate([
             'name' => 'required',
             'sede_id' => 'required',
             'description' => 'max:255',
         ]);
 
+        // actualizar todos los elementos
+
         $area->update($request->all());
 
+        //Area actualizada correctamente
+
         return redirect()->route('area.index')
-        ->with('success', 'Sede actualizada correctamente.');
+        ->with('success', 'Area actualizada correctamente.');
 
     }
 
@@ -93,7 +116,13 @@ class AreaController extends Controller
     public function destroy(Area $area)
     {
         Gate::authorize('eliminar area');
+
+        // eliminar elemento seleccionado por id
+
         $area->delete();
+
+        //Area eliminada correctamente
+        
         return redirect()->route('area.index')->with('success', 'La area fue eliminada con éxito');
     }
 }
