@@ -5,7 +5,7 @@
 
             <div class="bg-white dark:bg-neutral-800 shadow-xl rounded-lg overflow-hidden">
                 <img class="w-full h-56 object-cover object-center"
-                src="{{ asset('storage/epp/' . $epp->image) }}" alt="avatar">
+                src="{{ Storage::url('epp/' . $epp->image) }}" alt="avatar">
                     <div class="px-4 py-2">
                         <h1 class="text-2xl font-bold text-[#5A6ACF] dark:text-white">{{$epp->name}}</h1>
                         <p class="mt-1 text-[#5A6ACF] dark:text-white truncate">Cantidad: {{$epp->cantidad}}</p>
