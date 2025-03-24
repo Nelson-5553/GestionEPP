@@ -101,11 +101,8 @@ class SolicitudController extends Controller
             // Iniciar transacción para asegurar consistencia de datos
             DB::beginTransaction();
 
-            // Actualizar el estado en la base de datos
-            $solicitud->update([
-                'state' => $request->state,
-                'aprobado_por_id' => Auth::id(),
-            ]);
+
+
 
             if ($request->state === 'Aprobado') {
                 // Bloquear la fila del EPP para evitar condiciones de carrera
@@ -129,6 +126,12 @@ class SolicitudController extends Controller
                             $solicitud->cantidad . ', Cantidad disponible: ' . $epp->cantidad);
                 }
             }
+
+            // Actualizar el estado en la base de datos
+            $solicitud->update([
+                'state' => $request->state,
+                'aprobado_por_id' => Auth::id(),
+            ]);
 
             // Confirmar todas las operaciones
             DB::commit();
