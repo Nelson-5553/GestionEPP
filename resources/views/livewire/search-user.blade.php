@@ -1,7 +1,7 @@
 <div class="mt-6">
 {{ $users->links() }}
 <div class="flex flex-row mt-6  rounded-lg">
-    <div class="overflow-hidden w-full overflow-x-auto rounded-sm border border-neutral-300 dark:border-neutral-700">
+    <div class="overflow-hidden w-full overflow-x-auto rounded-xl border border-neutral-300 dark:border-neutral-700">
         <table class="w-full text-left text-sm text-neutral-600 dark:text-neutral-300">
             <thead class="border-b border-[#5A6ACF] bg-[#5A6ACF] text-sm text-white">
                 <tr>
