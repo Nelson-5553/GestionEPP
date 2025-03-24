@@ -40,14 +40,18 @@ class SolicitudController extends Controller
     {
         Gate::authorize('guardar solicitud');
 
+        // si el usuario no tiene una firma registrada te devolvera este mensaje
+
         if(Auth::user()->signature === null){
 
             return redirect()->route('solicitud.index')
             ->withErrors('Aun no has registrado una firma dirigite a tu perfil para realizar un registro');
 
         } else {
-
+            // si no la solicitud se realizara con normalidad
         $solicitud = new Solicitud();
+
+        // se toman datos de la solicitud
 
         $solicitud->user_id = $request->user_id;
         $solicitud->epp_id = $request->epp_id;
@@ -55,8 +59,10 @@ class SolicitudController extends Controller
         $solicitud->area_id = $request->area_id;
         $solicitud->cantidad = $request->cantidad;
 
-        // dd($solicitud);
+    //   GUARDAR DATOS DE SOLICITUD
         $solicitud->save();
+
+        //solicitud enviada
 
         return redirect()->route('solicitud.index')->with('success', 'solicitud enviada');
     }
