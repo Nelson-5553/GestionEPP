@@ -36,8 +36,10 @@ class SedeController extends Controller
     public function store(SedeRequest $request)
     {
 
-        // Gate::authorize('crear sede');
         $Sede = new Sede();
+
+        // guardamos datos de la peticion
+
         $Sede->name = $request->name;
         $Sede->direction = $request->direction;
         $Sede->description = $request->description;
@@ -52,12 +54,14 @@ class SedeController extends Controller
 
             $Sede->image = $filename;
         } else {
+            // si hay un error devolvera esto
             return back()->withErrors(['image' => 'Error al subir la imagen']);
         }
 
-        // dd($Sede);
+        //Guardar sede
         $Sede->save();
 
+        // guardado correctamente
         return redirect()->route('sede.index')->with('success', 'La sede fue creada con éxito');
 
     }
@@ -87,11 +91,16 @@ class SedeController extends Controller
     public function update(Request $request, Sede $sede)
     {
         Gate::authorize('actualizar sede');
+
+        // validamos datos de la peticion
+
         $request->validate([
             'name' => 'required',
             'direction' => 'required',
             'description' => 'max:255',
         ]);
+
+        //actualizamos datos
 
         $sede->update($request->all());
 
@@ -106,6 +115,8 @@ class SedeController extends Controller
     public function destroy(Sede $sede)
     {
         Gate::authorize('eliminar sede');
+
+        // eliminar sede por id
         $sede->delete();
 
         return redirect()->route('sede.index')->with('success', 'La sede fue eliminada con éxito');
