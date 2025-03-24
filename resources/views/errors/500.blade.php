@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>500 - Error del Servidor</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" type="image/svg+xml" href="{{ asset('favicon.svg') }}">
 </head>
 <body class="h-full bg-gray-100">
     <main class="grid min-h-screen place-items-center bg-white px-6 py-24 sm:py-32 lg:px-8">
