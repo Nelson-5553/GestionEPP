@@ -26,6 +26,9 @@ class RoleController extends Controller
     public function create()
     {
         Gate::authorize('crear role');
+
+        // Cargar permissos para su posterior uso en formularios
+
         $permissions = Permission::select('name', 'id')->get();
         return view('role.RoleCreate', compact('permissions'));
     }
@@ -36,6 +39,9 @@ class RoleController extends Controller
     public function store(Request $request)
     {
         Gate::authorize('guardar role');
+
+        // validamos informacion de la peticion
+
         $request->validate([
             'name' => 'required|unique:roles,name',
             'permissions' => 'array' // Aseguramos que 'permissions' es un array
@@ -48,6 +54,8 @@ class RoleController extends Controller
         if ($request->has('permissions')) {
             $role->permissions()->sync($request->permissions);
         }
+
+        //guardado correctamente
 
         return redirect()->route('role.index')->with('success', 'Rol creado correctamente');
     }
