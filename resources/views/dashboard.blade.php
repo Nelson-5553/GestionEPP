@@ -1,8 +1,8 @@
 <x-app-layout>
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="overflow-hidden shadow-xl sm:rounded-lg">
-                <div class="grid grid-cols-1 lg:grid-cols-3 w-full gap-4 mt-12">
+    
+                <div class="grid grid-cols-1 lg:grid-cols-3 w-full gap-6 mt-12">
                     <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md flex flex-col items-center text-center">
                         <div class="w-12 h-12 bg-indigo-100 dark:bg-indigo-500 rounded-lg flex items-center justify-center mb-4 mx-auto">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-indigo-600 dark:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -34,7 +34,7 @@
                     </div>
                 </div>
 
-            </div>
+
         </div>
     </div>
 </x-app-layout>
