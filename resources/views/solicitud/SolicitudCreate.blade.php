@@ -4,6 +4,9 @@
             Gestión Salud Solicitud
         </p>
 
+          {{-- mensaje de error --}}
+          <x-error-menssage />
+          
         <div class="mt-8 bg-[#F1F2F7] dark:bg-neutral-800 p-6 rounded-lg">
             <form action="{{route('solicitud.store')}}" method="POST">
                 @method('POST')

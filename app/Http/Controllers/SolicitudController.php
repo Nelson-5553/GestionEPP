@@ -6,6 +6,7 @@ use App\Models\Epp;
 use App\Models\Solicitud;
 use App\Models\Entrega;
 use Illuminate\Http\Request;
+use App\Http\Requests\SolicitudRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\DB;
@@ -36,11 +37,9 @@ class SolicitudController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(SolicitudRequest $request)
     {
-        Gate::authorize('guardar solicitud');
-
-        // si el usuario no tiene una firma registrada te devolvera este mensaje
+       // si el usuario no tiene una firma registrada te devolvera este mensaje
 
         if(Auth::user()->signature === null){
 
