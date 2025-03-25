@@ -5,12 +5,12 @@
     <!-- Toggle Button -->
     <button type="button" x-on:click="isOpen = true" x-on:keydown.space.prevent="openedWithKeyboard = true"
         x-on:keydown.enter.prevent="openedWithKeyboard = true" x-on:keydown.down.prevent="openedWithKeyboard = true"
-        class="flex items-center justify-center rounded-full border border-neutral-300 bg-neutral-50 p-2 text-sm font-medium transition hover:opacity-75 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-800 dark:border-neutral-700 dark:bg-neutral-900 dark:focus-visible:outline-neutral-300"
+        class="flex items-center justify-center rounded-full border border-neutral-300 bg-neutral-50 p-1 text-sm font-medium transition hover:opacity-75 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-800 dark:border-neutral-700 dark:bg-neutral-900 dark:focus-visible:outline-neutral-300"
         x-bind:class="isOpen || openedWithKeyboard ? 'text-neutral-900 dark:text-white' : 'text-neutral-600 dark:text-neutral-300'"
         x-bind:aria-expanded="isOpen || openedWithKeyboard" aria-haspopup="true">
 
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"
-            class="w-6 h-6">
+            class="size-5">
             <path fill-rule="evenodd"
                 d="M5.25 9a6.75 6.75 0 0113.5 0v.75c0 2.123.8 4.057 2.118 5.52a.75.75 0 01-.297 1.206c-1.544.57-3.16.99-4.831 1.243a3.75 3.75 0 11-7.48 0 24.585 24.585 0 01-4.831-1.244.75.75 0 01-.298-1.205A8.217 8.217 0 005.25 9.75V9zm4.502 8.9a2.25 2.25 0 104.496 0 25.057 25.057 0 01-4.496 0z"
                 clip-rule="evenodd" />
@@ -36,7 +36,7 @@
     <div x-cloak x-show="isOpen || openedWithKeyboard" x-transition x-trap="openedWithKeyboard"
         x-on:click.outside="isOpen = false, openedWithKeyboard = false" x-on:keydown.down.prevent="$focus.wrap().next()"
         x-on:keydown.up.prevent="$focus.wrap().previous()"
-        class="absolute top-11 right-6 flex w-fit min-w-80 flex-col overflow-hidden rounded-md border border-neutral-300 bg-neutral-50 p-4 dark:border-neutral-700 dark:bg-neutral-900"
+        class="absolute top-11 right-6 flex w-fit min-w-80 flex-col z-40 overflow-hidden rounded-md border border-neutral-300 bg-neutral-50 p-4 dark:border-neutral-700 dark:bg-neutral-900"
         role="menu">
 
         @if ($notifications->isEmpty())
