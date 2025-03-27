@@ -95,7 +95,7 @@
                     <div class="flex flex-row justify-center w-full bg-slate-300/50 dark:bg-slate-600/50 rounded-lg p-4">
                         <div class="text-gray-900 dark:text-gray-200 w-full">
                             @if ($solicitud->state === 'Aprobado')
-                                <p class="text-center">Ya la solicitud ha sido aprobada</p>
+                                <p class="text-center">Ya la solicitud ha sido aprobada por <span class="underline uppercase">{{$solicitud->aprobadoPor->name}}</span></p>
                             @else
                                 <form action="{{ route('solicitud.update', $solicitud->id) }}" method="POST" class="flex flex-col md:flex-row justify-center items-center w-full space-y-2 md:space-y-0 md:space-x-2">
                                     @method('PATCH')

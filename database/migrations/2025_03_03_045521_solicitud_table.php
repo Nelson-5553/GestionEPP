@@ -19,7 +19,7 @@ return new class extends Migration
             $table->foreignId("area_id")->constrained()->onDelete("cascade");
             $table->text("cantidad");
             $table->string("state")->default('Pendiente');
-            $table->integer("aprobado_por_id")->nullable();
+            $table->foreignId("aprobado_por_id")->nullable()->constrained("users")->onDelete("cascade");
             $table->timestamps();
         });
     }
