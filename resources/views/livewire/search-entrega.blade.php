@@ -54,7 +54,7 @@
                                 {{ ucfirst($entrega->state) ?: 'No hay estado' }}
                             </span>
                         </td>
-                        {{-- @can('ver solicitud detalle') --}}
+                        {{-- @can('ver solicitud detalles') --}}
                         <td class="p-4"><a href="{{ route('entrega.show', $entrega) }}"
                                 class="whitespace-nowrap rounded-sm bg-transparent p-0.5 font-semibold text-black outline-black hover:opacity-75 focus-visible:outline-2 focus-visible:outline-offset-2 active:opacity-100 active:outline-offset-0 dark:text-white dark:outline-white">Revisar</a>
                         </td>
