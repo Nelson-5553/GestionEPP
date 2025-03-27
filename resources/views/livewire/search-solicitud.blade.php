@@ -35,6 +35,7 @@
                         <th scope="col" class="p-4">Epp</th>
                         <th scope="col" class="p-4">Sede/Area</th>
                         <th scope="col" class="p-4">Cantidad</th>
+                        <th scope="col" class="p-4">Fecha</th>
                         <th scope="col" class="p-4">Estado</th>
                         @can('ver solicitud detalle')
                         <th scope="col" class="p-4">Accion</th>
@@ -55,7 +56,8 @@
                         <td class="p-4">{{$solicitud->epp->name}}</td>
                         <td class="p-4"><span class="font-bold">{{$solicitud->sede->name}}</span> <br> {{$solicitud->area->name}}</td>
                         <td class="p-4"><span class="font-bold">{{$solicitud->cantidad}}</td>
-                            <td class="p-4">
+                        <td class="p-4"><span class="font-bold">{{ $solicitud->created_at->format('d-m-Y') }}</td>
+                        <td class="p-4">
                                 @php
                                     $colores = [
                                         'Pendiente' => 'border-yellow-500 text-yellow-500 bg-yellow-500/10',
