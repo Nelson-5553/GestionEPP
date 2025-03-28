@@ -1,6 +1,6 @@
 <div>
     <div wire:loading.grid class="grid grid-cols-1 gap-12 mt-8 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4">
-        @for ($i = 0; $i < 4; $i++)
+        @for ($i = 0; $i < 8; $i++)
             <div class="bg-white dark:bg-neutral-800 shadow-xl rounded-lg overflow-hidden animate-pulse">
                 <div class="w-full h-56 bg-gray-300 dark:bg-gray-700"></div>
                 <div class="px-4 py-2">

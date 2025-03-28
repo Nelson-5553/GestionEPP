@@ -49,7 +49,7 @@
         </tr>
     </thead>
     <tbody class="divide-y divide-neutral-300 dark:divide-neutral-700">
-        @for ($i = 0; $i < 4; $i++)
+        @for ($i = 0; $i < 5; $i++)
         <tr class="animate-pulse">
             <td class="p-4">
                 <div class="flex w-max items-center gap-2">

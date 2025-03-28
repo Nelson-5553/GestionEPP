@@ -19,7 +19,7 @@
                 </tr>
             </thead>
             <tbody class="divide-y divide-neutral-300 dark:divide-neutral-700">
-                @for ($i = 0; $i < 4; $i++)
+                @for ($i = 0; $i < 5; $i++)
                     <tr class="animate-pulse">
                         <td class="p-4">
                             <div class="h-4 w-20 bg-gray-300 dark:bg-gray-700 rounded"></div>

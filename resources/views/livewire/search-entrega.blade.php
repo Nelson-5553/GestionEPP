@@ -4,7 +4,59 @@
 
     <div
         class="overflow-hidden w-full overflow-x-auto rounded-lg border border-neutral-300 dark:border-neutral-700 mt-6">
-        <table class="w-full text-left text-sm text-neutral-600 dark:text-neutral-300">
+        <table wire:loading.table class="w-full text-left text-sm text-neutral-600 dark:text-neutral-300 animate-pulse">
+            <thead class="border-b border-[#5A6ACF] bg-[#5A6ACF] text-sm text-white">
+                <tr>
+                    <th scope="col" class="p-4">User</th>
+                    <th scope="col" class="p-4">Epp</th>
+                    <th scope="col" class="p-4">Sede/Area</th>
+                    <th scope="col" class="p-4">Cantidad</th>
+                    <th scope="col" class="p-4">Fecha de Actualización</th>
+                    <th scope="col" class="p-4">Estado</th>
+                    <th scope="col" class="p-4">Accion</th>
+                </tr>
+            </thead>
+            <tbody class="divide-y divide-neutral-300 dark:divide-neutral-700">
+                @for ($i = 0; $i < 5; $i++)
+                    <tr class="animate-pulse">
+                        <td class="p-4">
+                            <div class="flex w-max items-center gap-2">
+                                <div class="flex flex-col">
+                                    <div class="h-4 w-24 bg-gray-300 dark:bg-gray-700 rounded"></div>
+                                    <div class="h-3 w-16 bg-gray-300 dark:bg-gray-700 rounded mt-1"></div>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="p-4">
+                            <div class="h-4 w-16 bg-gray-300 dark:bg-gray-700 rounded"></div>
+                        </td>
+
+                        <td class="p-4">
+                            <div class="flex w-max items-center gap-2">
+                                <div class="flex flex-col">
+                                    <div class="h-4 w-24 bg-gray-300 dark:bg-gray-700 rounded"></div>
+                                    <div class="h-3 w-16 bg-gray-300 dark:bg-gray-700 rounded mt-1"></div>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="p-4">
+                            <div class="h-4 w-20 bg-gray-300 dark:bg-gray-700 rounded"></div>
+                        </td>
+                        <td class="p-4">
+                            <div class="h-4 w-16 bg-gray-300 dark:bg-gray-700 rounded"></div>
+                        </td>
+
+                        <td class="p-4">
+                            <div class="h-4 w-12 bg-gray-300 dark:bg-gray-700 rounded"></div>
+                        </td>
+                        <td class="flex flex-row justify-center space-x-3 p-4">
+                            <div class="w-8 h-4 bg-gray-300 dark:bg-gray-700 rounded"></div>
+                        </td>
+                    </tr>
+                @endfor
+            </tbody>
+        </table>
+        <table wire:loading.remove class="w-full text-left text-sm text-neutral-600 dark:text-neutral-300">
             <thead class="border-b border-[#5A6ACF] bg-[#5A6ACF] text-sm text-white">
                 <tr>
                     <th scope="col" class="p-4">User</th>
@@ -20,6 +72,11 @@
             </thead>
             <tbody class="divide-y divide-neutral-300 dark:divide-neutral-700">
                 <tr>
+                    @if($entregas->isEmpty())
+                    <tr>
+                        <td colspan="7" class="p-4 text-center text-gray-500 dark:text-gray-400">No hay entrega relacionadas.</td>
+                    </tr>
+                    @else
                     @foreach ($entregas as $entrega)
                         <td class="p-4">
                             <div class="flex w-max items-center gap-2">
@@ -61,6 +118,7 @@
                         {{-- @endcan --}}
                 </tr>
                 @endforeach
+                @endif
             </tbody>
         </table>
     </div>
