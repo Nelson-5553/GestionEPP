@@ -37,7 +37,7 @@
 <table wire:loading.table class="w-full text-left text-sm text-neutral-600 dark:text-neutral-300 animate-pulse">
     <thead class="border-b border-[#5A6ACF] bg-[#5A6ACF] text-sm text-white">
         <tr>
-            <th scope="col" class="p-4">User</th>
+            <th scope="col" class="p-4">Usuario</th>
             <th scope="col" class="p-4">Epp</th>
             <th scope="col" class="p-4">Sede/Area</th>
             <th scope="col" class="p-4">Cantidad</th>
@@ -88,7 +88,7 @@
 <table wire:loading.remove class="w-full text-left text-sm text-neutral-600 dark:text-neutral-300">
     <thead class="border-b border-[#5A6ACF] bg-[#5A6ACF] text-sm text-white">
         <tr>
-            <th scope="col" class="p-4">User</th>
+            <th scope="col" class="p-4">Usuario</th>
             <th scope="col" class="p-4">Epp</th>
             <th scope="col" class="p-4">Sede/Area</th>
             <th scope="col" class="p-4">Cantidad</th>
