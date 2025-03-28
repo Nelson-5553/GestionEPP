@@ -45,7 +45,7 @@
                     <a href="{{route('dashboard')}}" class="ml-2 w-fit text-2xl font-bold text-[#5A67BA]">
                     <h1 class="">Gestion EPP</h1>
                 </a>
-                <p class="text-start text-sm">Sistema de Gestion</p>
+                <p class="text-start text-sm dark:text-white">Sistema de Gestion</p>
                 </div>
             </div>
 
