@@ -192,9 +192,10 @@
 
                 <!-- Page Content -->
                 <main>
+                    <x-loader>
 
                     {{ $slot }}
-
+                    </x-loader>
                 </main>
             </div>
         </div>
