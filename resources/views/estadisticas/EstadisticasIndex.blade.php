@@ -8,7 +8,7 @@
         {{-- mensaje de error --}}
         <x-error-menssage />
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-5 mt-12">
-        <div class="rounded-lg col-span-2" id="chart" data-categories='@json($categories)'
+        <div class="rounded-lg sm:col-span-1 md:col-span-1 lg:col-span-2" id="chart" data-categories='@json($categories)'
             data-solicitudes='@json($solicitudesData)' data-entregas='@json($entregasData)'>
         </div>
 
@@ -35,6 +35,4 @@
 
         @livewire('table-pdf')
     </div>
-    {{-- @livewire('update-signature-user') --}}
-
 </x-app-layout>

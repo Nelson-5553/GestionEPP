@@ -1,5 +1,5 @@
 <div>
-    <div class="bg-white dark:bg-gray-800 text-gray-900 dark:text-white p-6 rounded-lg shadow-lg">
+    <div class="bg-white dark:bg-gray-800 text-gray-900 dark:text-white p-6 rounded-lg shadow-lg col-span-1">
         <h2 class="text-2xl font-bold">EPPs mas solicitados</h2>
         <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">Los epp mas solicitados (Solicitudes vs cantidad)</p>
 
