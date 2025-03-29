@@ -13,7 +13,7 @@ class EppCount extends Component
         $eppcount = Solicitud::select('epp_id', DB::raw('COUNT(*) as total' ), DB::raw('SUM(cantidad::integer) as total_cantidad'))
         ->groupBy('epp_id')
         ->orderByDesc('total')
-        ->limit(3)
+        ->take(3)
         ->get();
 
         return view('livewire.epp-count', compact('eppcount'));

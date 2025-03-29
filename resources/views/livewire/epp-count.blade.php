@@ -15,7 +15,7 @@
                     </div>
                 </div>
 
-                <span class="px-4 py-2 text-sm font-semibold rounded-full bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300 flex items-center gap-2">
+                <span class="px-4 py-2 text-sm font-semibold text-blue-800 dark:text-blue-300 flex items-center gap-2">
                     <span class="bg-blue-500 text-white px-2 py-1 rounded text-xs dark:bg-blue-700">
                         {{$count->total}}
                     </span>
