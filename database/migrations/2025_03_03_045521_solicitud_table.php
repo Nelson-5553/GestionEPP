@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreignId("epp_id")->constrained()->onDelete("cascade");
             $table->foreignId("sede_id")->constrained()->onDelete("cascade");
             $table->foreignId("area_id")->constrained()->onDelete("cascade");
-            $table->text("cantidad");
+            $table->integer("cantidad");
             $table->string("state")->default('Pendiente');
             $table->foreignId("aprobado_por_id")->nullable()->constrained("users")->onDelete("cascade");
             $table->timestamps();
