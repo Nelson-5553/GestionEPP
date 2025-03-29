@@ -143,15 +143,15 @@
                         <div>
                             <label class="block text-gray-900 dark:text-gray-200 font-semibold">Inicio de turno</label>
                             <input name="start_time_labor" type="time"
-                                class="w-full mt-1 p-2 border rounded-lg dark:bg-neutral-700 dark:text-gray-200" />
+                                class="w-full mt-1 p-2 border rounded-lg dark:bg-neutral-700 dark:text-gray-200  " />
 
                         </div>
                         <div>
-                            <label class="block text-gray-900 dark:text-gray-200 font-semibold">Fin de turno</label>
+                            <label class="block text-gray-900 dark:text-gray-200 font-semibold ">Fin de turno</label>
                             <input name="end_time_labor" type="time"
                                 class="w-full mt-1 p-2 border rounded-lg dark:bg-neutral-700 dark:text-gray-200" />
                         </div>
-                        <div class="col-span-2">
+                        <div class="sm:col-span-2 md:col-span-2 lg:col-span-2">
                             <label class="block text-gray-900 dark:text-gray-200 font-semibold">Observación</label>
                             <textarea name="observations" class="w-full mt-1 p-2 border rounded-lg dark:bg-neutral-700 dark:text-gray-200"
                                 rows="4" placeholder="Colocar alguna observacion del Epp (Opcional)"></textarea>
