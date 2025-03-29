@@ -21,7 +21,7 @@ class TablePdf extends Component
     public function render()
     {
 
-
+        
         $entregas = Entrega::where('state', 'Entregado')
         ->where(function ($query) {
             $query->whereHas('solicitud.user', function ($query) {
