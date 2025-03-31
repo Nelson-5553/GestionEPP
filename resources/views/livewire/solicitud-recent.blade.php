@@ -1,8 +1,9 @@
 
-    <div class="bg-white dark:bg-gray-800 text-gray-900 dark:text-white p-6 rounded-lg shadow-lg col-span-1">
+    <div class="bg-white dark:bg-gray-800 text-gray-900 dark:text-white {{$altura}} p-6 rounded-lg shadow-lg col-span-1">
         <h2 class="text-2xl font-bold">Solicitudes Recientes</h2>
         <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">Últimas solicitudes registradas en el sistema</p>
 
+    <div class="overflow-y-auto {{$scroll}}">
         @foreach ($recentsolicitudes as $solicitud)
             <div class="flex items-center justify-between p-3 bg-gray-100 dark:bg-gray-700 rounded-lg mb-2">
                 <div class="flex items-center">
@@ -28,5 +29,6 @@
                 </span>
             </div>
         @endforeach
+    </div>
     </div>
 
