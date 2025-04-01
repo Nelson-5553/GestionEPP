@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
             ? {
                 background: "#1e1e1e",
                 textColor: "#f5f5f5",
-                gridColor: "#555",  // Color de las líneas del gráfico en modo oscuro
+                gridColor: "#efefef",  // Color de las líneas del gráfico en modo oscuro
                 barColors: ["#007BFF", "#00E676"] // Azul y Verde Neón en modo oscuro
               }
             : {
@@ -33,21 +33,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
         var options = {
             series: [
-                { name: 'Solicitudes', data: solicitudesData },
-                { name: 'Entregas', data: entregasData }
+                { name: "Solicitudes", data: solicitudesData },
+                { name: "Entregas", data: entregasData }
             ],
             chart: {
-                type: 'bar',
+                type: "bar",
                 height: 350,
                 background: theme.background
             },
             title: {
-                text: 'Solicitudes y Entregas Mensuales',
-                align: 'left',
+                text: "Solicitudes y Entregas Mensuales",
+                align: "left",
                 style: {
-                    fontSize: '18px',
-                    fontWeight: 'bold',
-                    fontFamily: 'Arial',
+                    fontSize: "18px",
+                    fontWeight: "bold",
+                    fontFamily: "Arial",
                     color: theme.textColor
                 }
             },
@@ -55,40 +55,46 @@ document.addEventListener("DOMContentLoaded", function () {
             plotOptions: {
                 bar: {
                     horizontal: false,
-                    columnWidth: '55%',
-                    borderRadius: 5,
-                    borderRadiusApplication: 'end'
+                    columnWidth: "55%",
+                    borderRadius: 2,
+                    opacity: 0
                 }
             },
-            dataLabels: { enabled: false },
+            dataLabels: {
+                enabled: true, // Ahora está activado correctamente
+                offsetY: -10,
+                style: {
+                    fontSize: "12px",
+                    colors: [theme.textColor]
+                }
+            },
             stroke: {
                 show: true,
                 width: 2,
-                colors: ['transparent']
             },
             xaxis: {
                 categories: categories,
                 labels: {
-                    style: { color: theme.textColor } // Aplicar color a los meses
+                    style: {
+                        colors: Array(categories.length).fill(theme.textColor) // Se fuerza el color en todas las etiquetas
+                    }
                 },
-                axisBorder: {
-                    color: theme.gridColor // Color del borde inferior
-                },
-                axisTicks: {
-                    color: theme.gridColor // Color de las marcas en el eje x
-                }
+                axisBorder: { color: theme.gridColor },
+                axisTicks: { color: theme.gridColor }
             },
+
             yaxis: {
-                labels: {
-                    style: { color: theme.textColor } // Aplicar color a los valores numéricos
-                }
+                labels: { style: { color: theme.textColor } },
+                axisBorder: { color: theme.gridColor },
+                axisTicks: { color: theme.gridColor }
             },
             grid: {
-                borderColor: theme.gridColor, // Color de la cuadrícula
+                borderColor: theme.textColor, // Usar el color del texto en vez del gridColor oscuro
                 strokeDashArray: 4
             },
+
             tooltip: {
-                theme: document.documentElement.classList.contains("dark") ? "dark" : "light",
+                theme: theme.background === "#1e1e1e" ? "dark" : "light",
                 y: {
                     formatter: (val) => val + " solicitudes/entregas"
                 }
