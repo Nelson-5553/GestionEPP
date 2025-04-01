@@ -15,7 +15,7 @@
 
 
             @livewire('epp-count')
-            @livewire('solicitud-recent')
+            <livewire:solicitud-recent altura="h-[21.5rem]" scroll="max-h-56"/>
 
         </div>
         <div class="flex flex-col lg:flex-row justify-between items-center mt-5">

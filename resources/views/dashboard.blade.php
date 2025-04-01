@@ -4,15 +4,12 @@
             Bienvenido al Sistema de Gestión EPP
         </h1>
 
-        <div class="flex justify-end w-auto mb-4">
-        <x-button-create route="{{route('solicitud.create')}}" name="Nueva Solicitud" />
-        </div>
         <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             @php
-                $fullWidth = !Gate::allows('ver dashboard') ? 'col-span-3' : 'col-span-2';
+                $fullWidth = Gate::allows('ver dashboard') ? 'col-span-3' : 'col-span-2';
             @endphp
 
-            <div class="bg-white dark:bg-gray-800 text-gray-900 dark:text-white py-6 rounded-lg shadow-lg {{ $fullWidth }}">
+            <div class="bg-white dark:bg-gray-800 text-gray-900 dark:text-white py-6 rounded-lg shadow-lg col-span-2">
                 <div class="px-6 pb-4 ">
                     <span class="text-xl text-indigo-500 font-bold">Menú</span>
                 </div>
@@ -104,9 +101,8 @@
                 </div>
             </div>
 
-            @can('ver dashboard')
-            <livewire:solicitud-recent altura="h-auto" scroll="max-h-96"/>
-            @endcan
+            <livewire:solicitud-recent altura="h-auto" scroll="max-h-auto"/>
+
         </section>
     </div>
 </x-app-layout>

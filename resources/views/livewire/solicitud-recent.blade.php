@@ -4,9 +4,16 @@
         <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">Últimas solicitudes registradas en el sistema</p>
 
     <div class="overflow-y-auto {{$scroll}}">
+
+        @if ($recentsolicitudes->isEmpty())
+        <div class="flex flex-col justify-center items-center mb-4 space-y-2">
+        <p class="text-xl text-gray-800 dark:text-gray-100 mb-4">No hay solicitudes</p>
+            <x-button-create route="{{route('solicitud.create')}}" name="Solicitud" />
+        </div>
+        @else
         @foreach ($recentsolicitudes as $solicitud)
-            <div class="flex items-center justify-between p-3 bg-gray-100 dark:bg-gray-700 rounded-lg mb-2">
-                <div class="flex items-center">
+        <div class="flex items-center justify-between p-3 bg-gray-100 dark:bg-gray-700 rounded-lg mb-2">
+            <div class="flex items-center">
                     <div>
                         <p class="font-semibold">{{ $solicitud->user?->name ?? 'Usuario desconocido' }}</p>
                         <p class="text-gray-500 dark:text-gray-400 text-sm">
@@ -22,13 +29,14 @@
                     'Rechazado' => 'border-red-500 text-white bg-red-500',
                 ];
                 $clase = $colores[$solicitud->state] ?? 'border-gray-500 text-gray-500 bg-gray-500';
-                 @endphp
+                @endphp
                 <span class="px-3 py-1 text-sm font-semibold rounded-full
-                  {{$clase}}">
-                    {{ $solicitud->state }}
-                </span>
-            </div>
+                {{$clase}}">
+                {{ $solicitud->state }}
+            </span>
+        </div>
         @endforeach
+        @endif
     </div>
     </div>
 

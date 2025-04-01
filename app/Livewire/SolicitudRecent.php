@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use Livewire\Component;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Solicitud;
 
 class SolicitudRecent extends Component
@@ -18,7 +19,17 @@ class SolicitudRecent extends Component
 
     public function render()
     {
-        $recentsolicitudes = Solicitud::select('user_id', 'sede_id', 'area_id', 'state', 'cantidad')->orderBy('updated_at', 'desc')->take(6)->get();
+        $user = Auth::user();
+
+        $recentsolicitudes = Solicitud::select('user_id', 'sede_id', 'area_id', 'state', 'cantidad')
+        ->when(!$user->hasAnyRole('admin', 'supervisor'), function ($query) use ($user) {
+            $query->where('user_id', $user->id);
+        })
+        ->orderBy('updated_at', 'desc')
+        ->take(6)
+        ->get();
+
         return view('livewire.solicitud-recent', compact('recentsolicitudes'));
+
     }
 }
