@@ -58,30 +58,27 @@ class EntregaController extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request, Entrega $entrega)
-{
-    Gate::authorize('actualizar entrega');
+    {
+        Gate::authorize('actualizar entrega');
 
-    //validaciones antes de realizar el proceso de actualizacion
+        // Validaciones
+        $request->validate([
+            'state' => 'in:Pendiente,Entregado,Cancelado',
+            'start_time_labor' => 'required|date_format:H:i',
+            'end_time_labor' => 'required|date_format:H:i|after:start_time_labor',
+            'observations' => 'max:255'
+        ]);
 
-    $request->validate([
-        'state' => 'in:Pendiente,Entregado,Cancelado',
-        'start_time_labor' => 'required',
-        'end_time_labor' => 'required',
-        'observations' => 'max:255'
-    ]);
+        // Actualizar la entrega en la base de datos
+        $entrega->update([
+            'state' => 'Entregado',
+            'start_time_labor' => $request->start_time_labor,
+            'end_time_labor' => $request->end_time_labor,
+            'observations' => $request->observations
+        ]);
 
-    // Actualizar la entrega en la base de datos
-
-
-    $entrega->update([
-        'state' => 'Entregado',
-        'start_time_labor' => $request->start_time_labor,
-        'end_time_labor' => $request->end_time_labor,
-        'observations' => $request->observations
-    ]);
-
-    return redirect()->route('entrega.index')->with('success', 'EPP Entregado');
-}
+        return redirect()->route('entrega.index')->with('success', 'EPP Entregado');
+    }
 
 /**
 * Update the specified resource in state canceled.
