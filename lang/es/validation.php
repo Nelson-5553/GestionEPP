@@ -278,5 +278,7 @@ return [
         'winner'                   => 'ganador',
         'work'                     => 'trabajo',
         'year'                     => 'año',
+        'start_time_labor'         => 'Inicio de turno',
+        'end_time_labor'           => 'Fin de turno',
     ],
 ];
