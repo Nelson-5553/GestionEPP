@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Gate;
 use App\Models\Entrega;
 use App\Models\Epp;
+use App\Http\requests\EntregaRequest;
 use Illuminate\Http\Request;
 
 class EntregaController extends Controller
@@ -57,18 +58,8 @@ class EntregaController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Entrega $entrega)
+    public function update(EntregaRequest $request, Entrega $entrega)
     {
-        Gate::authorize('actualizar entrega');
-
-        // Validaciones
-        $request->validate([
-            'state' => 'in:Pendiente,Entregado,Cancelado',
-            'start_time_labor' => 'required|date_format:H:i',
-            'end_time_labor' => 'required|date_format:H:i|after:start_time_labor',
-            'observations' => 'max:255'
-        ]);
-
         // Actualizar la entrega en la base de datos
         $entrega->update([
             'state' => 'Entregado',
