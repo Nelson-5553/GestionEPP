@@ -1,5 +1,5 @@
 <x-app-layout>
-    <div class=" px-8 md:px-48 py-12 space-y-6">
+    <div class=" px-8 md:px-12 py-12 space-y-6">
         <h1 class="text-2xl font-bold text-black dark:text-white md:-ml-8">
             Bienvenido al Sistema de Gestión EPP
         </h1>
