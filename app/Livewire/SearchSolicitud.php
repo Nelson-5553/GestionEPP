@@ -33,34 +33,42 @@ class SearchSolicitud extends Component
     {
         $user = Auth::user();
 
-        $solicitudes = Solicitud::when(!$user->hasAnyRole('admin', 'supervisor'), function ($query) use ($user) {
+        // Base query for counts and filtered results
+        $baseQuery = Solicitud::when(!$user->hasAnyRole('admin', 'supervisor'), function ($query) use ($user) {
             $query->where('user_id', $user->id);
-        })
-        ->when($this->estadoFiltro, function ($query) {
-            $query->where('state', $this->estadoFiltro); // El filtro de estado SIEMPRE se aplica Primero
-        })
-        ->where(function ($query) {
-            $query->whereHas('user', function ($query) {
-                $query->where('name', 'LIKE', '%' . $this->search . '%')
-                      ->orWhere('card', 'LIKE', '%' . $this->search . '%');
+        });
+
+        // Get all counts
+        $totalSolicitudes = (clone $baseQuery)->count();
+        $aprobadas = (clone $baseQuery)->where('state', 'Aprobado')->count();
+        $rechazadas = (clone $baseQuery)->where('state', 'Rechazado')->count();
+        $pendientes = (clone $baseQuery)->where('state', 'Pendiente')->count();
+
+        // Get filtered solicitudes
+        $solicitudes = $baseQuery
+            ->when($this->estadoFiltro, function ($query) {
+                $query->where('state', $this->estadoFiltro);
             })
-            ->orWhereHas('epp', function ($query) {
-                $query->where('name', 'LIKE', '%' . $this->search . '%');
+            ->where(function ($query) {
+                $query->whereHas('user', function ($query) {
+                    $query->where('name', 'LIKE', '%' . $this->search . '%')
+                          ->orWhere('card', 'LIKE', '%' . $this->search . '%');
+                })
+                ->orWhereHas('epp', function ($query) {
+                    $query->where('name', 'LIKE', '%' . $this->search . '%');
+                })
+                ->orWhereHas('sede', function ($query) {
+                    $query->where('name', 'LIKE', '%' . $this->search . '%');
+                })
+                ->orWhereHas('area', function ($query) {
+                    $query->where('name', 'LIKE', '%' . $this->search . '%');
+                });
             })
-            ->orWhereHas('sede', function ($query) {
-                $query->where('name', 'LIKE', '%' . $this->search . '%');
-            })
-            ->orWhereHas('area', function ($query) {
-                $query->where('name', 'LIKE', '%' . $this->search . '%');
-            });
-        })
-        ->orderBy('updated_at', 'desc')
-        ->paginate(5);
+            ->orderBy('updated_at', 'desc')
+            ->paginate(5);
 
-
-
-
-        return view('livewire.search-solicitud', compact('solicitudes'));
+            return view('livewire.search-solicitud', compact(
+                'solicitudes', 'totalSolicitudes', 'aprobadas', 'rechazadas', 'pendientes'
+            ));
     }
 }
-
