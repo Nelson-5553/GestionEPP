@@ -77,7 +77,7 @@
                     <div class="flex flex-col justify-center items-center gap-2 mb-6">
                         {{-- <span
                             class="flex size-12 md:size-24 items-center justify-center overflow-hidden rounded-full bg-[#5A67BA] text-white text-xl md:text-6xl font-bold tracking-wider text-on-danger/80 mb-12">G</span> --}}
-                        <x-logo-icon class="size-52"/>
+                        <x-logo-icon class="size-44 mb-10"/>
                             <a href="#" class="ml-2 w-fit  text-3xl  md:text-6xl font-bold text-[#5A67BA]">
                             <h1 class="">Gestion EPP</h1>
                         </a>

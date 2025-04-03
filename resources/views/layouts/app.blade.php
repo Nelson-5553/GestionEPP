@@ -38,7 +38,8 @@
             <!-- logo  -->
             <div class="flex flex-row items-center gap-1 mb-6">
                 <div>
-                    <x-logo-icon class="size-16"/>                </div>
+                    <x-logo-icon class="size-12"/>
+                 </div>
                 <div class="flex flex-col text-start items-center">
                     <a href="{{route('dashboard')}}" class="ml-2 w-fit text-2xl font-bold text-[#5A67BA]">
                     <h1 class="">Gestion EPP</h1>
