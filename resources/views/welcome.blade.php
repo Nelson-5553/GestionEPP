@@ -24,7 +24,7 @@
         <header class="absolute inset-x-0 top-0 z-50">
             <nav class="flex items-center justify-between p-6 lg:px-8" aria-label="Global">
                 <div class="flex lg:flex-1">
-                    <x-logo-icon class="size-12"/>
+                    <x-logo-icon class="size-8"/>
                 </div>
                 <div class="flex ">
                     <div class="lg:flex lg:flex-1 lg:justify-end">
@@ -77,7 +77,7 @@
                     <div class="flex flex-col justify-center items-center gap-2 mb-6">
                         {{-- <span
                             class="flex size-12 md:size-24 items-center justify-center overflow-hidden rounded-full bg-[#5A67BA] text-white text-xl md:text-6xl font-bold tracking-wider text-on-danger/80 mb-12">G</span> --}}
-                        <x-logo-icon class="size-64"/>
+                        <x-logo-icon class="size-52"/>
                             <a href="#" class="ml-2 w-fit  text-3xl  md:text-6xl font-bold text-[#5A67BA]">
                             <h1 class="">Gestion EPP</h1>
                         </a>

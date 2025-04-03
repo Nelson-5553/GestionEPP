@@ -8,7 +8,7 @@
 
     <title>{{ config('app.name', 'Gestion EPP') }}</title>
 <!-- Favicon -->
-<link rel="icon" type="image/svg+xml" href="{{ asset('favicon.svg') }}">
+<link rel="icon" type="image/svg+xml" href="{{ asset('icon.png') }}">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -38,9 +38,7 @@
             <!-- logo  -->
             <div class="flex flex-row items-center gap-1 mb-6">
                 <div>
-                <span
-                    class="flex size-10 items-center justify-center overflow-hidden rounded-full bg-[#5A67BA] text-white text-lg font-bold tracking-wider text-on-danger/80">G</span>
-                </div>
+                    <x-logo-icon class="size-16"/>                </div>
                 <div class="flex flex-col text-start items-center">
                     <a href="{{route('dashboard')}}" class="ml-2 w-fit text-2xl font-bold text-[#5A67BA]">
                     <h1 class="">Gestion EPP</h1>
