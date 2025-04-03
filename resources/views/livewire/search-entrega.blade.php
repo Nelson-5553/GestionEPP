@@ -72,11 +72,11 @@
             </thead>
             <tbody class="divide-y divide-neutral-300 dark:divide-neutral-700">
                 <tr>
-                    @if($entregas->isEmpty())
+                    {{-- @if($entregas->isEmpty())
                     <tr>
                         <td colspan="7" class="p-4 text-center text-gray-500 dark:text-gray-400">No hay entrega relacionadas.</td>
                     </tr>
-                    @else
+                    @else --}}
                     @foreach ($entregas as $entrega)
                         <td class="p-4">
                             <div class="flex w-max items-center gap-2">
@@ -118,7 +118,7 @@
                         {{-- @endcan --}}
                 </tr>
                 @endforeach
-                @endif
+                {{-- @endif --}}
             </tbody>
         </table>
     </div>
