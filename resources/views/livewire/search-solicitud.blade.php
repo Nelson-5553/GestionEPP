@@ -181,6 +181,7 @@
         </table>
 
     </div>
+    @hasanyrole(['admin', 'supervisor'])
     <script>
         document.addEventListener("DOMContentLoaded", async function() {
             const { CountUp } = await import("https://cdn.jsdelivr.net/npm/countup.js@2.0.7/dist/countUp.min.js");
@@ -198,3 +199,4 @@
             }
         });
     </script>
+    @endhasrole
