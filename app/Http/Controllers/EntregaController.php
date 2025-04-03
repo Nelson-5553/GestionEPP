@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Gate;
 use App\Models\Entrega;
 use App\Models\Epp;
-use App\Http\requests\EntregaRequest;
+use App\Http\Requests\EntregaRequest;
 use Illuminate\Http\Request;
 
 class EntregaController extends Controller
