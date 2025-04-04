@@ -11,19 +11,19 @@
                 <form action="{{ route('sede.store') }}" method="POST" enctype="multipart/form-data" class="p-6 w-96">
                     @csrf
                     <label class="block text-gray-700 dark:text-neutral-50 text-left font-medium">Nombre de Sede</label>
-                    <input type="text" name="name"
+                    <input type="text" name="name" value="{{ old('name') }}"
                         class="w-full p-2 border border-gray-300 dark:border-gray-700 dark:bg-gray-900 rounded-md mb-3 focus:outline-none focus:ring-2 focus:ring-purple-500"
                         placeholder="Nombre de sede">
 
                     <label class="block text-gray-700 text-left dark:text-neutral-50 font-medium">Dirección</label>
-                    <input type="text" name="direction"
+                    <input type="text" name="direction" value="{{ old('direction') }}"
                         class="w-full p-2 border border-gray-300 dark:border-gray-700 dark:bg-gray-900 rounded-md mb-3 focus:outline-none focus:ring-2 focus:ring-purple-500"
                         placeholder="Dirección">
 
                     <label class="block text-gray-700 text-left dark:text-neutral-50 font-medium">Descripción</label>
                     <textarea name="description"
                         class="w-full h-32 p-2 border border-gray-300 dark:border-gray-700 dark:bg-gray-900 rounded-md mb-3 focus:outline-none focus:ring-2 focus:ring-purple-500"
-                        placeholder="Algo que añadir..."></textarea>
+                        placeholder="Algo que añadir...">{{ old('description') }}</textarea>
 
                     <div class="mb-3">
                         <!-- Input oculto -->
