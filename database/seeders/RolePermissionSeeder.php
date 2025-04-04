@@ -41,7 +41,7 @@ class RolePermissionSeeder extends Seeder
         Permission::create(['name' => 'crear epp'])->assignRole([$supervisor]);
         Permission::create(['name' => 'editar epp'])->assignRole([$supervisor]);
         Permission::create(['name' => 'actualizar epp'])->assignRole([$supervisor]);
-        Permission::create(['name' => 'eliminar epp'])->assignRole([$supervisor]);
+        Permission::create(['name' => 'eliminar epp']);
         Permission::create(['name' => 'ver epp'])->assignRole([$supervisor]);
         Permission::create(['name' => 'ver epp detalle'])->assignRole([$supervisor]);
 

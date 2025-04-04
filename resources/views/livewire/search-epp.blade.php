@@ -35,6 +35,7 @@
                                     <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m30 7l-5-5L5 22l-2 7l7-2Zm-9-1l5 5ZM5 22l5 5Z"/>
                                 </svg>
                             </a>
+                            @can("eliminar epp")
                             <form action="{{ route('epp.destroy', $epp)}}" method="POST" class="inline">
                                 @csrf
                                 @method('DELETE')
@@ -43,6 +44,7 @@
                                     <p>Estás a punto de eliminar esta EPP, ¿estás seguro que la quieres eliminar?</p>
                                 </x-delete-modal>
                             </form>
+                            @endcan
                         </div>
                     </div>
                 </div>
