@@ -29,18 +29,16 @@
                         {{ $area->sede->name }}
                     </p>
                 </div>
-                <div class="col-span-2">
-                    <div class="flex flex-row items-center space-x-3">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5 text-[#5A67BA]">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" />
-                        </svg>
-                        <p class="text-lg font-semibold text-gray-900 dark:text-gray-200">Descripción:</p>
-                    </div>
-                    <p class="text-gray-700 dark:text-gray-400 bg-gray-100 dark:bg-gray-700 rounded-md p-2">
-                        {{ $area->description }}
-                    </p>
-                </div>
             </div>
+            <div class="flex flex-row items-center space-x-3 mt-6">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5 text-[#5A67BA]">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" />
+                    </svg>
+                    <p class="text-lg font-semibold text-gray-900 dark:text-gray-200">Descripción:</p>
+                </div>
+                <p class="text-gray-700 dark:text-gray-400 bg-gray-100 dark:bg-gray-700 rounded-md p-2">
+                    {{ $area->description }}
+                </p>
             <div class="flex justify-end mt-6 gap-3">
                 <a href="{{route('area.edit', $area)}}" class="text-blue-500 hover:text-blue-600 transition-colors">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 shrink-0" viewBox="0 0 32 32">
