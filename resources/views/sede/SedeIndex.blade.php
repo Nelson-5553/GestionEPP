@@ -8,7 +8,7 @@
             {{-- <x-search-input /> --}}
 
             <x-register-modal name=sede>
-                <form action="{{ route('sede.store') }}" method="POST" enctype="multipart/form-data" class="p-6 w-96">
+                <form action="{{ route('sede.store') }}" method="POST" enctype="multipart/form-data" class="flex flex-col justify-start p-6 w-full">
                     @csrf
                     <label class="block text-gray-700 dark:text-neutral-50 text-left font-medium">Nombre de Sede</label>
                     <input type="text" name="name" value="{{ old('name') }}"

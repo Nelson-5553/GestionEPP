@@ -61,7 +61,7 @@
                     <label class="block text-gray-900 dark:text-gray-200 font-semibold">Areas relacionadas</label>
                 </div>
 
-                <div class="grid grid-cols-3 md:grid-cols-4 gap-4 mt-6">
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-6">
                   @foreach ($sede->areas as $areas)
                     <div
                         class="flex items-center gap-2 px-4 py-3 border border-gray-700 rounded-lg text-gray-700 dark:text-gray-300 bg-gray-200/50 dark:bg-gray-800/50">
