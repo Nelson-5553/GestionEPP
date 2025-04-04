@@ -36,7 +36,7 @@
     <div x-cloak x-show="isOpen || openedWithKeyboard" x-transition x-trap="openedWithKeyboard"
         x-on:click.outside="isOpen = false, openedWithKeyboard = false" x-on:keydown.down.prevent="$focus.wrap().next()"
         x-on:keydown.up.prevent="$focus.wrap().previous()"
-        class="absolute top-11 -right-2  md:right-3 lg:right-6 flex w-fit min-w-80 flex-col z-40 overflow-hidden rounded-md border border-neutral-300 bg-neutral-50 p-4 dark:border-neutral-700 dark:bg-neutral-900"
+        class="absolute top-11 -right-4  md:right-3 lg:right-6 flex w-fit min-w-80 flex-col z-40 overflow-hidden rounded-md border border-neutral-300 bg-neutral-50 p-4 dark:border-neutral-700 dark:bg-neutral-900"
         role="menu">
 
         @if ($notifications->isEmpty())
