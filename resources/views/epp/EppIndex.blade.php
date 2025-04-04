@@ -8,15 +8,15 @@
             <x-search-epp />
 
             <x-register-modal name=Epp>
-                <form action="{{ route('epp.store') }}" method="POST" enctype="multipart/form-data" class="p-6 w-96">
+                <form action="{{ route('epp.store') }}" method="POST" enctype="multipart/form-data" class="flex flex-col justify-start p-6 w-full">
                     @csrf
                     <label class="block text-gray-700 dark:text-neutral-50 text-left font-medium">Nombre de Epp</label>
                     <input type="text" name="name" {{ old('name') }}
                         class="w-full p-2 border border-gray-300 dark:border-gray-700 dark:bg-gray-900 rounded-md mb-3 focus:outline-none focus:ring-2 focus:ring-purple-500"
                         placeholder="Nombre de epp">
-                        <div class="grid grid-cols-2 gap-8">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                             <!-- Cantidad -->
-                            <div class="flex flex-col gap-4">
+                            <div class="flex flex-col justify-center gap-4 ">
                                 <div x-data="{
                                     currentVal: 1,
                                     minVal: 0,

@@ -5,7 +5,7 @@
         </p>
 
         <div class="mt-8 bg-[#F1F2F7] dark:bg-neutral-800 p-6 rounded-lg">
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div class="flex flex-col text-gray-900 dark:text-gray-200 space-y-4">
                     <div class="flex flex-row items-center space-x-2">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5 text-[#5A67BA]">
@@ -43,18 +43,18 @@
                       <p class="text-sm">{{$epp->unity}}</p>
                     </div>
                   </div>
-                  <div class="flex flex-col text-gray-900 dark:text-gray-200 space-y-4 col-span-2">
-                    <div class="flex flex-row items-center space-x-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5 text-[#5A67BA]">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" />
-                        </svg>
-                      <p class="font-semibold text-sm md:text-base">DESCRIPCION</p>
-                    </div>
-                    <div class="bg-slate-300/50 dark:bg-slate-600/50 rounded-lg p-4">
-                      <p class="text-sm">{{$epp->description ?? 'No hay descripcion Disponible'}}</p>
-                    </div>
+                </div>
+                <div class="flex flex-col text-gray-900 dark:text-gray-200 space-y-4 w-full mt-6">
+                  <div class="flex flex-row items-center space-x-2">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5 text-[#5A67BA]">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" />
+                      </svg>
+                    <p class="font-semibold text-sm md:text-base">DESCRIPCION</p>
                   </div>
-            </div>
+                  <div class="bg-slate-300/50 dark:bg-slate-600/50 rounded-lg p-4">
+                    <p class="text-sm">{{$epp->description ?? 'No hay descripcion Disponible'}}</p>
+                  </div>
+                </div>
             <div class="flex justify-end mt-6 gap-2">
                 <a href="{{route('epp.edit', $epp)}}"
                 class="text-blue-500 hover:text-blue-600">
