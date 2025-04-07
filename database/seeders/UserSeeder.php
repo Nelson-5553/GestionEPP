@@ -46,9 +46,9 @@ class UserSeeder extends Seeder
                 ])->assignRole('user');
 
                 // Usuario user aleatorios
-                User::factory()->count(20)->create()->each(function ($user) {
-                 $user->assignRole('user');
-                });
+                // User::factory()->count(20)->create()->each(function ($user) {
+                //  $user->assignRole('user');
+                // });
 
                 }
 }
