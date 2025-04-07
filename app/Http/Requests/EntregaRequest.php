@@ -25,7 +25,7 @@ class EntregaRequest extends FormRequest
         return [
             'state' => 'in:Pendiente,Entregado,Cancelado',
             'start_time_labor' => 'required|date_format:H:i',
-            'end_time_labor' => 'required|date_format:H:i|after:start_time_labor',
+            'end_time_labor' => 'required|date_format:H:i',
             'observations' => 'max:255'
         ];
     }
