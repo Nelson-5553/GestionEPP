@@ -26,7 +26,7 @@ class DatabaseSeeder extends Seeder
             SedeSeeder::class,
             AreaSeeder::class,
             EppSeeder::class,
-            // SolicitudSeeder::class
+            SolicitudSeeder::class
         ]);
 
     }
