@@ -83,7 +83,7 @@
                         </a>
                     </div>
                     <p class="mt-8 text-pretty text-lg font-medium text-gray-500 sm:text-xl/8">La solución eficiente
-                        para el control de Equipos de Protección Personal en Gestión Salud. Optimiza la administración,
+                        para el control de Equipos de Protección Personal en las empresas. Optimiza la administración,
                         asegura el cumplimiento y lleva un registro preciso en un solo lugar.</p>
                     <div class="flex justify-center mt-4" x-data="{ videoModalIsOpen: false }">
                         <button x-on:click="videoModalIsOpen = true, $refs.video.play()" type="button"
