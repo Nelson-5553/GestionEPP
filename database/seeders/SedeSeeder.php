@@ -18,19 +18,19 @@ class SedeSeeder extends Seeder
             'name' => 'San fernando',
             'direction' => 'Cl. 15 #80C-70, San Fernando, Cartagena de Indias',
             'description' => 'Gestion salud sanfernado',
-            'image' => 'Sanfernando.webp',
+            'image' => 'sedes/Sanfernando.webp',
         ]);
         Sede::create([
             'name' => 'Maria Auxiliadora',
             'direction' => 'Cra. 38 #29-18, Alcibia, Cartagena de Indias',
             'description' => 'Gestion salud Maria Auxiliadora',
-            'image' => 'mauxiliadora.png',
+            'image' => 'sedes/mauxiliadora.png',
         ]);
         Sede::create([
             'name' => 'Santa Marta',
             'direction' => '6RR7+FM, Av. El Libertador #24 - 107, Comuna 3, Santa Marta, Magdalena',
             'description' => 'Gestion salud Santa Marta',
-            'image' => 'Amberes.jpeg',
+            'image' => 'sedes/Amberes.jpeg',
         ]);
     }
 }

@@ -6,6 +6,7 @@ use App\Models\Sede;
 use App\Http\Requests\SedeRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
+ use Illuminate\Support\Facades\Storage;
 // use Illuminate\Support\Facades\Validator;
 
 use function Laravel\Prompts\error;
@@ -33,38 +34,37 @@ class SedeController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(SedeRequest $request)
-    {
 
-        $Sede = new Sede();
 
-        // guardamos datos de la peticion
+public function store(SedeRequest $request)
+{
+    $Sede = new Sede();
 
-        $Sede->name = $request->name;
-        $Sede->direction = $request->direction;
-        $Sede->description = $request->description;
+    // Guardamos datos de la petición
+    $Sede->name = $request->name;
+    $Sede->direction = $request->direction;
+    $Sede->description = $request->description;
 
-        // Manejo correcto de la imagen
-        if ($request->hasFile('image')) {
-            $file = $request->file('image');
-            $filename = time() . '_' . $file->getClientOriginalName();
+    // Manejo correcto de la imagen
+    if ($request->hasFile('image')) {
+        $file = $request->file('image');
 
-            // Mover a la carpeta correcta
-            $file->move(storage_path('app/public/sedes'), $filename);
+        // Subimos la imagen a S3 en la carpeta 'sedes'
+        $path = $file->store('sedes', 's3'); // 's3' es el disk definido en filesystems.php
 
-            $Sede->image = $filename;
-        } else {
-            // si hay un error devolvera esto
-            return back()->withErrors(['image' => 'Error al subir la imagen']);
-        }
-
-        //Guardar sede
-        $Sede->save();
-
-        // guardado correctamente
-        return redirect()->route('sede.index')->with('success', 'La sede fue creada con éxito');
-
+        // Guardamos el path completo en la base de datos
+        $Sede->image = $path;
+    } else {
+        return back()->withErrors(['image' => 'Error al subir la imagen']);
     }
+
+    // Guardar sede
+    $Sede->save();
+
+    return redirect()->route('sede.index')->with('success', 'La sede fue creada con éxito');
+}
+
+
 
 
     /**
