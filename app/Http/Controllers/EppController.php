@@ -6,6 +6,7 @@ use App\Http\Requests\EppRequest;
 use App\Models\Epp;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Storage;
 
 class EppController extends Controller
 {
@@ -29,39 +30,36 @@ class EppController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(EppRequest $request)
-    {
 
-        $Epp = new Epp();
+public function store(EppRequest $request)
+{
+    $Epp = new Epp();
 
-             // Tomar registros de los inputs
-        $Epp->name = $request->name;
-        $Epp->cantidad = $request->cantidad;
-        $Epp->unity = $request->unity;
-        $Epp->description = $request->description;
+    // Tomar registros de los inputs
+    $Epp->name = $request->name;
+    $Epp->cantidad = $request->cantidad;
+    $Epp->unity = $request->unity;
+    $Epp->description = $request->description;
 
-        // si image es un archivo
-        if ($request->hasFile('image')) {
-            $file = $request->file('image');
-            $filename = time() . '_' . $file->getClientOriginalName();
+    // Subir imagen a S3
+    if ($request->hasFile('image')) {
+        $file = $request->file('image');
 
-            // Mover a la carpeta correcta
-            $file->move(storage_path('app/public/epp'), $filename);
+        // Subimos la imagen a S3 en la carpeta 'epp'
+        $path = $file->store('epp', 's3'); // se almacena como 'epp/filename.ext'
 
-            $Epp->image = $filename;
-        } else {
-            // si hay un error devolvera esto
-            return back()->withErrors(['image' => 'Error al subir la imagen']);
-        }
-
-        // guadar todos los datos extraidos de los request
-        $Epp->save();
-
-        //guardado correctamente
-        return redirect()->route('epp.index')->with('success', 'La Epp fue creada con éxito');
-
-
+        // Guardamos el path completo en la base de datos
+        $Epp->image = $path;
+    } else {
+        return back()->withErrors(['image' => 'Error al subir la imagen']);
     }
+
+    // Guardar los datos
+    $Epp->save();
+
+    return redirect()->route('epp.index')->with('success', 'La Epp fue creada con éxito');
+}
+
 
     /**
      * Display the specified resource.
@@ -113,7 +111,7 @@ class EppController extends Controller
         Gate::authorize('eliminar epp');
 
         // eliminar un epp
-        
+
         $epp->delete();
         return redirect()->route('epp.index')->with('success', 'Epp eliminada correctamente');
     }

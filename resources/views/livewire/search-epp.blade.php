@@ -20,7 +20,7 @@
         <div class="grid grid-cols-1 gap-12 mt-8 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4">
             @foreach ($epps as $epp)
                 <div class="bg-white dark:bg-neutral-800 shadow-xl rounded-lg overflow-hidden">
-                    <img class="w-full h-56 object-cover object-center" src="{{ Storage::url('epp/' . $epp->image) }}" alt="avatar">
+                    <img class="w-full h-56 object-cover object-center" src="{{ Storage::disk('s3')->url($epp->image) }}" alt="avatar">
                     <div class="px-4 py-2">
                         <h1 class="text-2xl font-bold text-[#5A6ACF] dark:text-white">{{$epp->name}}</h1>
                         <p class="mt-1 text-[#5A6ACF] dark:text-white truncate">Cantidad: {{$epp->cantidad}}</p>
